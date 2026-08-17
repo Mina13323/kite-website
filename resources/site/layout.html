@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <header class="site-header {{headerClass}}">
+    <div class="header-inner">
+      <a class="brand" href="/home" aria-label="MWG home">
+        <svg viewBox="0 0 220 92" fill="currentColor" aria-hidden="true">
+          <text x="0" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-style="italic" font-weight="500" letter-spacing="-1.5">mwg</text>
+          <text x="148" y="24" font-family="Georgia, serif" font-size="14">®</text>
+          <text x="2" y="74" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2">ADVERTISING</text>
+          <text x="2" y="88" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" letter-spacing="7.4">AGENCY</text>
+        </svg>
+      </a>
+
+      <ul class="nav">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/big-bang">Big Bang</a></li>
+        <li class="has-drop">
+          <a href="/services">Services <span class="caret">▾</span></a>
+          <ul class="dropdown">
+            <li>
+              <a href="/services/digital-marketing">Digital Marketing <span>▸</span></a>
+              <ul class="nested">
+                <li><a href="/services/content-creation">Content Creation</a></li>
+                <li><a href="/services/social-media">Social Media</a></li>
+                <li><a href="/services/seo">SEO</a></li>
+                <li><a href="/services/media-buying">Media Buying</a></li>
+              </ul>
+            </li>
+            <li><a href="/services/graphic-design">Graphic Design</a></li>
+            <li><a href="/services/web-mobile-apps">Web &amp; Mobile Apps</a></li>
+            <li><a href="/services/btl">BTL</a></li>
+            <li><a href="/services/media-production">Media Production</a></li>
+          </ul>
+        </li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+      </ul>
+
+      <div class="socials">
+        <a href="https://www.behance.net/mwgadvertising" target="_blank" rel="noopener" aria-label="Behance">
+          <svg viewBox="0 0 24 24"><path d="M6.7 6.2h4.2c1.9 0 3.2 1 3.2 2.7 0 1.2-.6 2.1-1.7 2.5 1.5.3 2.4 1.4 2.4 2.9 0 2-1.6 3.1-3.7 3.1H6.7V6.2zm2.1 4.3h1.8c.8 0 1.3-.4 1.3-1.1S11.4 8.3 10.6 8.3H8.8v2.2zm0 5.3h2.1c.9 0 1.5-.5 1.5-1.3s-.6-1.3-1.5-1.3H8.8v2.6zM15.4 8.4h5.1V7.1h-5.1v1.3zm5.4 5.1c0 2.4-1.6 4.1-4.1 4.1-2.5 0-4.2-1.8-4.2-4.3 0-2.5 1.8-4.3 4.3-4.3 2.6 0 4 1.8 4 4.5zm-6.1-.2c0 1.3.8 2.3 2.1 2.3 1.2 0 2-.8 2-2.3-.1-1.4-.8-2.3-2.1-2.3-1.3 0-2 .9-2 2.3z"/></svg>
+        </a>
+        <a href="https://instagram.com/mwg.advertising" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2zm4.6-3.5a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/MateWayGroup/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/user/MateWayGroup" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23 12.2s0-3.2-.4-4.6c-.2-.9-.9-1.6-1.8-1.8C19.2 5.4 12 5.4 12 5.4s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 9 1 12.2 1 12.2s0 3.2.4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.6.4-4.6zM9.8 15.6V8.8l6.2 3.4-6.2 3.4z"/></svg>
+        </a>
+      </div>
+
+      <button class="menu-btn" type="button" aria-label="Open menu"><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Mobile">
+    <a href="/home">Home</a>
+    <a href="/big-bang">Big Bang</a>
+    <a href="/services">Services</a>
+    <div class="sub">
+      <a href="/services/digital-marketing">Digital Marketing</a>
+      <a href="/services/content-creation">Content Creation</a>
+      <a href="/services/social-media">Social Media</a>
+      <a href="/services/seo">SEO</a>
+      <a href="/services/media-buying">Media Buying</a>
+      <a href="/services/graphic-design">Graphic Design</a>
+      <a href="/services/web-mobile-apps">Web &amp; Mobile Apps</a>
+      <a href="/services/btl">BTL</a>
+      <a href="/services/media-production">Media Production</a>
+    </div>
+    <a href="/portfolio">Portfolio</a>
+    <a href="/case-studies">Case Studies</a>
+    <a href="/blog">Blog</a>
+    <a href="/contact-us">Contact Us</a>
+  </nav>
+
+  <main>
+    {{content}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="giant">mwg</div>
+        <ul class="footer-services">
+          <li>PRODUCTION</li>
+          <li>GRAPHIC DESIGN</li>
+          <li>DIGITAL</li>
+          <li>BTL</li>
+          <li>WEB &amp; MOBILE APPS</li>
+        </ul>
+        <div class="footer-mark">MWG ADVERTISING</div>
+      </div>
+      <div>
+        <p style="color:var(--muted);font-size:14px;max-width:28ch;">The world without stories to tell will be meaningless. Let us tell your success story.</p>
+        <p style="margin-top:18px;font-size:14px;">Email: <a href="mailto:info@mwg.co.com">info@mwg.co.com</a></p>
+        <p style="color:var(--muted);font-size:13px;margin-top:10px;">Egypt +20 100 005 0126<br>UAE +971 58 660 6426<br>USA +1 818 405 2158</p>
+      </div>
+      <div class="contact-box">
+        <h2>Get in touch</h2>
+        <form class="form" data-lead>
+          <input name="name" placeholder="Name *" required>
+          <input type="email" name="email" placeholder="Email *" required>
+          <input name="business" placeholder="Type of business *">
+          <input name="mobile" placeholder="Mobile no. *">
+          <div class="full services-dd">
+            <input data-services-toggle placeholder="Services *" readonly value="Select Services">
+            <div class="services-panel">
+              <label><input type="checkbox" data-select-all> Select All</label>
+              <label><input type="checkbox" name="services[]" value="Digital Services"> Digital Services</label>
+              <label><input type="checkbox" name="services[]" value="Web/App Development"> Web/App Development</label>
+              <label><input type="checkbox" name="services[]" value="Media Production"> Media Production</label>
+              <label><input type="checkbox" name="services[]" value="On-Ground Activations"> On-Ground Activations</label>
+              <label><input type="checkbox" name="services[]" value="Brand Identity Development"> Brand Identity Development</label>
+              <label><input type="checkbox" name="services[]" value="Visualisation"> Visualisation</label>
+              <label><input type="checkbox" name="services[]" value="Generic Inquiry"> Generic Inquiry</label>
+            </div>
+          </div>
+          <div class="full"><button class="btn" type="submit">Submit</button></div>
+          <p class="form-note"></p>
+        </form>
+      </div>
+    </div>
+    <div class="container legal">
+      <span>© 2026 MWG Advertising Agency. Cairo · Dubai · Hollywood.</span>
+      <span>Starter clone — customize freely.</span>
+    </div>
+  </footer>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
