@@ -62,14 +62,30 @@
   }
 
   document.querySelectorAll('form[data-lead]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const note = form.querySelector('.form-note');
-      if (note) {
-        note.style.display = 'block';
-        note.textContent = 'Thank you. Our team will get in touch shortly.';
+      const body = new URLSearchParams(new FormData(form));
+      try {
+        const res = await fetch(form.getAttribute('action') || '/contact-us', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+        if (!res.ok) throw new Error('send-failed');
+        if (note) {
+          note.style.display = 'block';
+          note.style.color = '';
+          note.textContent = 'Thank you. Our team will get in touch shortly.';
+        }
+        form.reset();
+      } catch {
+        if (note) {
+          note.style.display = 'block';
+          note.style.color = '#c0392b';
+          note.textContent = 'Could not send. Please try again or WhatsApp KITE.';
+        }
       }
-      form.reset();
     });
   });
 

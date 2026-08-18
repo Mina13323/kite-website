@@ -1,0 +1,90 @@
+{
+  "origin": "http://127.0.0.1:4173",
+  "started_at": "2026-08-18T02:53:58.391Z",
+  "routes": {
+    "total": 26,
+    "passed": 26,
+    "failed": []
+  },
+  "pages": {
+    "total": 26,
+    "passed": 26,
+    "failed": []
+  },
+  "links": {
+    "total": 522,
+    "passed": 522,
+    "broken": []
+  },
+  "assets": {
+    "total": 22,
+    "checked": 22,
+    "broken": []
+  },
+  "services": {
+    "total": 5,
+    "passed": 5,
+    "failed": []
+  },
+  "projects": {
+    "total": 30,
+    "published": 0,
+    "verified": 1,
+    "failed": []
+  },
+  "case_studies": {
+    "total": 0,
+    "published": 0,
+    "verified": 0,
+    "failed": []
+  },
+  "clients": {
+    "total": 30,
+    "published": 30,
+    "verified": 30,
+    "failed": []
+  },
+  "animations": {
+    "total": 12,
+    "verified": 12,
+    "failed": []
+  },
+  "cms": {
+    "create": "SKIP",
+    "edit": "PASS",
+    "preview": "PASS",
+    "publish": "PASS",
+    "unpublish": "PASS"
+  },
+  "forms": {
+    "passed": 2,
+    "failed": []
+  },
+  "seo": {
+    "passed": 3,
+    "failed": []
+  },
+  "security": {
+    "passed": 2,
+    "failed": []
+  },
+  "mwg": {
+    "production": [],
+    "docs": [
+      "README.md",
+      "docs/website/QA_PRODUCTION_RUN.json",
+      "scripts/qa-production.cjs"
+    ]
+  },
+  "unexpected": {
+    "403": 0,
+    "404": 0,
+    "419": 0,
+    "422": 0,
+    "500": 0,
+    "other": []
+  },
+  "placeholders": [],
+  "console_note": "BROWSER QA BLOCKED — no headed browser in this environment",
+  "finished_at": "2026-08-18T02:53:58.740Z"
+}

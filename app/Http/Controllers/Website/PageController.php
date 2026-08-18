@@ -3,34 +3,32 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Website\CaseStudy;
-use App\Models\Website\Project;
-use App\Models\Website\Service;
+use App\Support\Website\PublicRenderer;
 use Illuminate\Http\Response;
 
 class PageController extends Controller
 {
     public function project(string $slug): Response
     {
-        $project = Project::query()->published()->where('slug', $slug)->first();
-        abort_unless($project, 404);
+        $html = PublicRenderer::projectPage($slug);
+        abort_unless($html, 404);
 
-        return response('Use the Node preview or extend the Blade renderer for this published project.', 200);
+        return response($html);
     }
 
     public function service(string $slug): Response
     {
-        $service = Service::query()->published()->where('slug', $slug)->first();
-        abort_unless($service, 404);
+        $html = PublicRenderer::servicePage($slug);
+        abort_unless($html, 404);
 
-        return response('Published service.', 200);
+        return response($html);
     }
 
     public function caseStudy(string $slug): Response
     {
-        $case = CaseStudy::query()->published()->where('slug', $slug)->first();
-        abort_unless($case, 404);
+        $html = PublicRenderer::caseStudyPage($slug);
+        abort_unless($html, 404);
 
-        return response('Published case study.', 200);
+        return response($html);
     }
 }

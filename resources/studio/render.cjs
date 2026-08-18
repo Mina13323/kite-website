@@ -14,6 +14,7 @@ function layout(title, body, active) {
     ['/studio/industries', 'Industries', 'industries'],
     ['/studio/clients', 'Clients / Kites', 'clients'],
     ['/studio/media', 'Media', 'media'],
+    ['/studio/animations', 'Animation library', 'anims'],
     ['/studio/contact', 'Contact & SEO', 'contact'],
   ];
   return `<!DOCTYPE html>

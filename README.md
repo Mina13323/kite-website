@@ -1,41 +1,69 @@
-# MWG website clone (starter)
+# KITE Design Studio — public website
 
-A close visual copy of [mwg.co.com/home/about](https://www.mwg.co.com/home/about), built so you can restyle and rebrand it.
+Public website for **KITE Design Studio** (AIM HIGH FLY HIGHER).
 
-This repo is still a Laravel app. The marketing site lives in plain HTML so you can edit it immediately.
+This is a Laravel app. The verified public + Studio runtime in this repository is `node server.cjs`, which reads the same CMS store Laravel now uses for Hostinger/PHP public pages.
 
-## What’s included
+MWG (`mwg.co.com`) was only an early information-architecture reference. It has no relationship with KITE and is not a runtime dependency, content source, or fallback.
 
-- Home / About (hero, stats, latest work, about tabs, case studies, clients, lead form)
-- Big Bang, Services (and sub-pages), Portfolio, Case Studies, Blog, Contact
-- Project, case study, and article templates
+## Official facts
 
-## Edit the copy
+- Company: KITE Design Studio
+- Site: https://www.kiteagency-eg.com
+- Phone / WhatsApp: +20 127 551 0701
+- Services: Branding, Media Production, Web Development, Digital Content, Marketing Materials
 
-| What | Where |
-| --- | --- |
-| Header / footer | `resources/site/layout.html` |
-| Home, listing pages | `resources/site/pages/*.html` |
-| Services, projects, posts | `resources/site/content.js` |
-| Look and feel | `public/assets/css/site.css` |
-| Images | `public/assets/images/` |
+Do not invent clients, metrics, campaign results, street address, or email. Empty official fields stay empty (`CONTENT_REQUIRED` in the CMS).
 
-## Preview (no PHP required)
+## Preview (verified runtime)
 
 ```bash
 node server.cjs
 ```
 
-Opens on port `4173`.
+Binds `0.0.0.0:4173`.
 
-## Laravel
+- Public site: `/`
+- Studio CMS: `/studio` (not in public navigation)
+- Studio email: `studio@kiteagency-eg.com`
+- Studio password: `STUDIO_PASSWORD` (default in `.env.example`)
 
-When PHP is available:
+## Laravel / Hostinger
+
+Document root is `public/` (standard Laravel `index.php` + `.htaccess`).
 
 ```bash
 cp .env.example .env
+# set APP_KEY, APP_URL=https://www.kiteagency-eg.com, APP_DEBUG=false, STUDIO_PASSWORD
 php artisan key:generate
-php artisan serve
 ```
 
-Routes in `routes/web.php` wrap the same HTML through `App\Http\Controllers\SiteController`.
+Public routes read `storage/app/website/cms.json` (seeded from `database/data/website-seed.json` if missing). They do **not** use any MWG service catalog.
+
+The full Creative Project Builder is implemented on the Node process. Laravel `/studio` is a login + dashboard gateway over the same JSON store.
+
+Optional database seeders remain for a future Eloquent path:
+
+```bash
+php artisan migrate
+php artisan db:seed --class=WebsiteContentSeeder
+```
+
+## Edit the site
+
+| What | Where |
+| --- | --- |
+| Header / footer chrome | `resources/site/layout.html` |
+| Homepage preloader + hero shell | `resources/site/pages/home.html` |
+| Public HTML renderer | `resources/site/public-render.cjs` and `app/Support/Website/PublicRenderer.php` |
+| CMS store | `database/data/cms-store.cjs` and `app/Support/Website/CmsStore.php` |
+| Seed content | `database/data/website-seed.json` |
+| Look and feel | `public/assets/css/site.css` |
+| Studio CMS UI | `resources/studio/` via `server.cjs` |
+
+## Verify
+
+```bash
+npm run preview
+node scripts/qa-production.cjs
+```

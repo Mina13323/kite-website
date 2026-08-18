@@ -60,13 +60,27 @@ function projectForm(p, services, industries, media, query) {
           <div class="checks"><label><input type="checkbox" name="featured" value="1" ${p.featured ? 'checked' : ''}> Feature on homepage</label></div>
         </label>
         <label class="full">Gallery URLs (one per line)<textarea name="gallery">${esc((p.gallery || []).map((g) => g.url || g).join('\n'))}</textarea></label>
-        <label class="full">Content blocks JSON<textarea name="blocks">${esc(JSON.stringify(p.blocks || [], null, 2))}</textarea></label>
+        <label>Page theme
+          <select name="anim_theme">
+            ${['default', 'cinematic', 'editorial', 'minimal'].map((t) => `<option value="${t}" ${(p.animation && p.animation.theme) === t ? 'selected' : ''}>${t}</option>`).join('')}
+          </select>
+        </label>
+        <label>Motion intensity
+          <select name="anim_intensity">
+            ${['low', 'medium', 'high'].map((t) => `<option value="${t}" ${(p.animation && p.animation.intensity) === t ? 'selected' : ''}>${t}</option>`).join('')}
+          </select>
+        </label>
       </div>
-      <p class="note">Block types: hero_image, heading, text, image, full_width_image, two_image, image_text, video, gallery, quote, project_info, website_preview, custom, spacer. JSON array only — no raw HTML.</p>
+      <h2 style="margin:28px 0 10px">Project sections</h2>
+      <p class="note">Each section has a layout and a <strong>preset</strong> — not custom JavaScript. Save, then preview with the same engine the public site uses.</p>
+      <div id="section-builder"></div>
+      <p class="row-actions"><button type="button" class="btn ghost" id="add-section">Add section</button></p>
+      <textarea name="sections" id="sections-json" hidden>${esc(JSON.stringify(p.sections || []))}</textarea>
       <div class="row-actions" style="margin-top:18px">
         <button class="btn" type="submit">Save</button>
-        ${!isNew ? `<a class="btn ghost" href="/project/${esc(p.slug)}" target="_blank">Preview (404 if draft)</a>` : ''}
+        ${!isNew ? `<a class="btn ghost" href="/studio/preview/project/${esc(p.slug)}" target="_blank">Preview</a>` : ''}
       </div>
+      <script src="/assets/js/studio-builder.js?v=1"></script>
     </form>
     ${!isNew ? `<form method="post" action="/studio/projects/${esc(p.slug)}/delete" style="margin-top:28px" onsubmit="return confirm('Delete this project?')">
       <button class="btn danger" type="submit">Delete project</button>
@@ -338,9 +352,37 @@ function contactPage(settings, company, query) {
   `, 'contact');
 }
 
+function animationsPage(presets, query) {
+  return layout('Animation library', `
+    ${flash(query)}
+    <h1>Animation library</h1>
+    <p class="lede">Registered presets only. The CMS cannot run custom JavaScript. Preview uses the public engine.</p>
+    <table class="table">
+      <tr><th>Preset</th><th>Category</th><th>Mobile</th><th>Reduced motion</th><th>Status</th></tr>
+      ${presets.map((p) => `<tr>
+        <td>${p.label} <code>${p.id}</code></td>
+        <td>${p.category}</td>
+        <td>${p.mobile}</td>
+        <td>${p.reduced}</td>
+        <td>${p.status}</td>
+      </tr>`).join('')}
+    </table>
+    <h2 style="margin:28px 0 12px">Live preview</h2>
+    <p class="note">Same <code>kite-presets.js</code> as the public site.</p>
+    <section class="kite-sec text" data-kite-anim="fade-up" data-kite-config='{"preset":"fade-up","start":"top 90%","duration":1,"intensity":0.4,"ease":"power3.out"}'>
+      <div class="wrap"><h2>Fade up</h2><p>Scroll this page. This block uses the registered fade-up preset.</p></div>
+    </section>
+    <link rel="stylesheet" href="/assets/css/kite-project.css?v=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/assets/js/kite-presets.js?v=1"></script>
+  `, 'anims');
+}
+
 module.exports = {
   projectsIndex,
   projectForm,
+  animationsPage,
   servicesIndex,
   serviceForm,
   industriesPage,

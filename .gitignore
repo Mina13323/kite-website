@@ -20,6 +20,7 @@
 /public/storage
 /storage/*.key
 /storage/app/website/cms.json
+/storage/app/website/leads.json
 /public/uploads/website/*
 !/public/uploads/website/.gitkeep
 /storage/pail

@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'studio' => \App\Http\Middleware\EnsureStudioAccess::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'contact-us',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

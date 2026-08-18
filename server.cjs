@@ -6,6 +6,7 @@ const cms = require('./database/data/cms-store.cjs');
 const studioUi = require('./resources/studio/render.cjs');
 const studioPages = require('./resources/studio/pages.cjs');
 const pubRender = require('./resources/site/public-render.cjs');
+const animLib = require('./database/data/animation-presets.cjs');
 
 const ROOT = __dirname;
 const PUBLIC = path.join(ROOT, 'public');
@@ -60,8 +61,22 @@ function redirect(res, to, extra = {}) {
   res.end();
 }
 
+const SERVICE_ALIASES = {
+  media: 'media-production',
+  web: 'web-development',
+  digital: 'digital-content',
+  marketing: 'marketing-materials',
+  'graphic-design': 'branding',
+  btl: 'marketing-materials',
+};
+
+function resolveServiceSlug(slug) {
+  return SERVICE_ALIASES[slug] || slug;
+}
+
 function layout(inner, meta = {}) {
-  const settings = cms.read().settings;
+  const data = cms.read();
+  const settings = data.settings;
   const socials = Object.entries(settings.socials || {})
     .filter(([, url]) => url)
     .map(([name, url]) => `<a href="${url}">${name[0].toUpperCase()}${name.slice(1)}</a>`)
@@ -69,9 +84,14 @@ function layout(inner, meta = {}) {
   const phone = settings.phone
     ? `<a href="${settings.socials.whatsapp || '#'}">${settings.phone}</a>`
     : '';
+  const footerServices = cms.published(data.services).map((s) =>
+    `<li><a href="/services/${s.slug}">${s.name.toUpperCase()}</a></li>`).join('');
+  const origin = process.env.APP_URL || 'https://www.kiteagency-eg.com';
+  const canonical = meta.canonical || `${origin.replace(/\/$/, '')}${meta.path || '/'}`;
   return readFile(path.join(SITE, 'layout.html'))
     .replaceAll('{{title}}', meta.title || 'KITE Design Studio')
     .replaceAll('{{description}}', meta.description || settings.tagline || '')
+    .replaceAll('{{canonical}}', canonical)
     .replaceAll('{{headerClass}}', meta.headerClass || '')
     .replaceAll('{{bodyClass}}', meta.bodyClass || '')
     .replaceAll('{{extraHead}}', meta.extraHead || '')
@@ -80,6 +100,7 @@ function layout(inner, meta = {}) {
     .replaceAll('{{footerWeb}}', (settings.website || '').replace(/^https?:\/\//, ''))
     .replaceAll('{{footerPhone}}', phone)
     .replaceAll('{{footerSocials}}', socials)
+    .replaceAll('{{footerServices}}', footerServices)
     .replace('{{content}}', inner);
 }
 
@@ -216,6 +237,22 @@ async function handleStudio(req, res, urlPath, urlFull) {
 
   if (urlPath === '/studio' || urlPath === '/studio/') {
     send(res, 200, studioUi.dashboard(cms.stats(), query));
+    return;
+  }
+  if (urlPath === '/studio/animations') {
+    send(res, 200, studioPages.animationsPage(animLib.PRESETS, query));
+    return;
+  }
+  if (urlPath.startsWith('/studio/preview/project/')) {
+    const slug = urlPath.slice('/studio/preview/project/'.length);
+    const p = cms.projectBySlug(slug, { allowUnpublished: true });
+    if (!p) { send(res, 404, 'Not found', 'text/plain'); return; }
+    const related = cms.publicPayload().projects.filter((x) => x.slug !== p.slug).slice(0, 3);
+    send(res, 200, layout(pubRender.projectPage(p, industryName(p.industry), related), {
+      title: `Preview · ${p.title}`,
+      headerClass: 'is-solid',
+      ...projectAssets(),
+    }));
     return;
   }
 
@@ -515,7 +552,35 @@ function saveProjectFields(id, f) {
     featured: f.featured === '1',
     gallery: lines(f.gallery).map((url) => ({ id: crypto.randomBytes(4).toString('hex'), url })),
     blocks,
+    sections: parseSections(f.sections),
+    animation: animLib.sanitizeProjectAnimation({
+      theme: f.anim_theme,
+      intensity: f.anim_intensity,
+      respect_reduced_motion: true,
+    }),
   });
+}
+
+function parseSections(raw) {
+  let list = [];
+  try { list = raw ? JSON.parse(raw) : []; } catch { list = []; }
+  if (!Array.isArray(list)) return [];
+  return list.map((s) => ({
+    id: String(s.id || `sec-${Date.now()}`).slice(0, 40),
+    type: animLib.SECTION_TYPES.some((t) => t.id === s.type) ? s.type : 'text',
+    heading: String(s.heading || '').slice(0, 200),
+    text: String(s.text || '').slice(0, 8000),
+    media: Array.isArray(s.media) ? s.media.map(String).filter(Boolean).slice(0, 12) : [],
+    video_url: String(s.video_url || '').slice(0, 400),
+    animation: animLib.sanitizeAnimation(s.animation || {}),
+  }));
+}
+
+function projectAssets() {
+  return {
+    extraHead: '<link rel="stylesheet" href="/assets/css/kite-project.css?v=1">',
+    extraScript: '<script src="/assets/js/kite-presets.js?v=1"></script>',
+  };
 }
 
 function saveServiceFields(id, f) {
@@ -566,10 +631,36 @@ function saveCaseFields(id, f) {
   });
 }
 
+function sitemapXml() {
+  const origin = (process.env.APP_URL || 'https://www.kiteagency-eg.com').replace(/\/$/, '');
+  const pub = cms.publicPayload();
+  const urls = ['/', '/home', '/services', '/portfolio', '/case-studies', '/contact-us'];
+  pub.services.forEach((s) => urls.push(`/services/${s.slug}`));
+  pub.projects.forEach((p) => urls.push(`/project/${p.slug}`));
+  pub.case_studies.forEach((c) => urls.push(`/case-study/${c.slug}`));
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map((u) => `  <url><loc>${origin}${u}</loc></url>`).join('\n')}
+</urlset>
+`;
+}
+
 function publicRoute(urlPath) {
   const pub = cms.publicPayload();
   if (urlPath === '/' || urlPath === '/home' || urlPath === '/home/about') {
     return { html: homePage() };
+  }
+  if (urlPath === '/about') {
+    return { location: '/home#about' };
+  }
+  if (urlPath === '/projects') {
+    return { location: '/portfolio' };
+  }
+  if (urlPath === '/sitemap.xml') {
+    return { raw: sitemapXml(), type: 'application/xml; charset=utf-8' };
+  }
+  if (urlPath === '/robots.txt') {
+    return { raw: 'User-agent: *\nAllow: /\nDisallow: /studio\nDisallow: /studio/\nSitemap: https://www.kiteagency-eg.com/sitemap.xml\n', type: 'text/plain; charset=utf-8' };
   }
   if (urlPath === '/services') {
     return {
@@ -580,7 +671,7 @@ function publicRoute(urlPath) {
     };
   }
   if (urlPath.startsWith('/services/')) {
-    const slug = urlPath.slice('/services/'.length);
+    const slug = resolveServiceSlug(urlPath.slice('/services/'.length));
     const s = cms.serviceBySlug(slug);
     if (!s) return { html: null };
     const related = cms.projectsForService(slug);
@@ -606,24 +697,30 @@ function publicRoute(urlPath) {
       ),
     };
   }
-  if (urlPath.startsWith('/case-study/')) {
-    const c = cms.caseBySlug(urlPath.slice('/case-study/'.length));
+  if (urlPath.startsWith('/case-studies/') || urlPath.startsWith('/case-study/')) {
+    const slug = urlPath.replace(/^\/case-stud(?:y|ies)\//, '');
+    const c = cms.caseBySlug(slug);
     if (!c) return { html: null };
-    return { html: layout(pubRender.casePage(c), { title: `${c.title} · Case Study`, headerClass: 'is-solid' }) };
+    return { html: layout(pubRender.casePage(c), { title: `${c.title} · Case Study`, headerClass: 'is-solid', path: `/case-study/${slug}` }) };
   }
   if (urlPath.startsWith('/project/')) {
     const p = cms.projectBySlug(urlPath.slice('/project/'.length));
     if (!p) return { html: null };
+    const list = pub.projects;
+    const i = list.findIndex((x) => x.slug === p.slug);
+    const related = [list[i - 1], list[i + 1]].filter(Boolean);
     return {
-      html: layout(pubRender.projectPage(p, industryName(p.industry)), {
+      html: layout(pubRender.projectPage(p, industryName(p.industry), related), {
         title: p.seo_title || `${p.title} · KITE`,
         description: p.seo_description || p.short_description,
         headerClass: 'is-solid',
+        path: `/project/${p.slug}`,
+        ...projectAssets(),
       }),
     };
   }
   if (urlPath === '/contact-us') {
-    return { html: layout(pubRender.contactPage(pub.settings), { title: `Contact · ${pub.settings.company_name}`, headerClass: 'is-solid' }) };
+    return { html: layout(pubRender.contactPage(pub.settings), { title: `Contact · ${pub.settings.company_name}`, headerClass: 'is-solid', path: '/contact-us' }) };
   }
   if (urlPath === '/big-bang') {
     return { location: '/portfolio' };
@@ -656,6 +753,38 @@ const server = http.createServer(async (req, res) => {
       await handleStudio(req, res, urlPath, urlFull);
       return;
     }
+    if (urlPath === '/contact-us' && req.method === 'POST') {
+      const { fields } = await parseBody(req);
+      const name = String(fields.name || '').trim();
+      const email = String(fields.email || '').trim();
+      const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!name || !validEmail) {
+        send(res, 200, layout(pubRender.contactPage(cms.read().settings, false, 'Please enter your name and a valid email.'), {
+          title: `Contact · ${cms.read().settings.company_name}`,
+          headerClass: 'is-solid',
+          path: '/contact-us',
+        }));
+        return;
+      }
+      const leadDir = path.join(ROOT, 'storage', 'app', 'website');
+      fs.mkdirSync(leadDir, { recursive: true });
+      const leads = path.join(leadDir, 'leads.json');
+      const existing = fs.existsSync(leads) ? JSON.parse(fs.readFileSync(leads, 'utf8')) : [];
+      existing.push({
+        name: name.slice(0, 120),
+        email: email.slice(0, 180),
+        business: String(fields.business || '').slice(0, 180),
+        mobile: String(fields.mobile || '').slice(0, 60),
+        at: new Date().toISOString(),
+      });
+      fs.writeFileSync(leads, JSON.stringify(existing, null, 2));
+      send(res, 200, layout(pubRender.contactPage(cms.read().settings, true), {
+        title: `Contact · ${cms.read().settings.company_name}`,
+        headerClass: 'is-solid',
+        path: '/contact-us',
+      }));
+      return;
+    }
     const result = publicRoute(urlPath);
     if (!result) {
       send(res, 404, layout('<section class="page-hero"><div class="container"><h1>Page not found</h1><p><a class="ghost-link" href="/home">Back home</a></p></div></section>', { title: 'Not found', headerClass: 'is-solid' }));
@@ -663,6 +792,10 @@ const server = http.createServer(async (req, res) => {
     }
     if (result.location) {
       redirect(res, result.location);
+      return;
+    }
+    if (result.raw) {
+      send(res, 200, result.raw, result.type);
       return;
     }
     if (!result.html) {

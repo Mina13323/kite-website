@@ -5,7 +5,8 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "preview": "node server.cjs"
+        "preview": "node server.cjs",
+        "test:site": "node scripts/qa-production.cjs"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

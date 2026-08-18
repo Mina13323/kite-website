@@ -1,4 +1,5 @@
 const { esc } = require('../studio/render.cjs');
+const { sanitizeAnimation, sanitizeProjectAnimation } = require('../../database/data/animation-presets.cjs');
 
 function tile(p, label) {
   const href = `/project/${esc(p.slug)}`;
@@ -17,6 +18,18 @@ function workCard(p) {
   </a>`;
 }
 
+const SERVICE_ART = {
+  branding: '/assets/kite/services/branding.jpg',
+  'media-production': '/assets/kite/services/media.jpg',
+  'web-development': '/assets/kite/services/web.jpg',
+  'digital-content': '/assets/kite/services/digital.jpg',
+  'marketing-materials': '/assets/kite/services/marketing.jpg',
+};
+
+function serviceCover(service) {
+  return service.cover_image || SERVICE_ART[service.slug] || null;
+}
+
 function servicesHorizon(services, projects) {
   const slides = services.map((s, i) => {
     const n = String(i + 1).padStart(2, '0');
@@ -26,8 +39,9 @@ function servicesHorizon(services, projects) {
     const chips = selected.length
       ? selected.map((p) => `<span>${esc(p.title)}</span>`).join('')
       : (s.capabilities || []).slice(0, 5).map((c) => `<span>${esc(c)}</span>`).join('');
-    const art = s.cover_image
-      ? `<figure class="svc-frame reveal-media"><img src="${esc(s.cover_image)}" alt=""></figure>`
+    const cover = serviceCover(s);
+    const art = cover
+      ? `<figure class="svc-frame reveal-media"><img src="${esc(cover)}" alt=""></figure>`
       : `<figure class="svc-frame"><div class="empty-visual"></div></figure>`;
     const theme = ['is-branding', 'is-media', 'is-web', 'is-digital', 'is-marketing'][i % 5];
     return `<article class="service-slide ${theme}" id="svc-${esc(s.slug)}">
@@ -88,9 +102,14 @@ function homeSections(pub) {
 
   const clientSlugs = home.featured_client_slugs || [];
   const shownClients = (clientSlugs.length ? clientSlugs.map((s) => clients.find((c) => c.slug === s)).filter(Boolean) : clients);
-  const logos = shownClients.map((c) => (c.logo
-    ? `<a class="client-logo" href="${esc(c.website_url || '#')}"><img src="${esc(c.logo)}" alt="${esc(c.name)}"></a>`
-    : `<span class="client-logo">${esc(c.name)}</span>`)).join('');
+  const logos = shownClients.map((c) => {
+    const mark = c.logo
+      ? `<img src="${esc(c.logo)}" alt="${esc(c.name)}">`
+      : esc(c.name);
+    return c.website_url
+      ? `<a class="client-logo" href="${esc(c.website_url)}" rel="noopener">${mark}</a>`
+      : `<span class="client-logo">${mark}</span>`;
+  }).join('');
 
   return `
 <section class="section" id="latest">
@@ -193,33 +212,118 @@ function websitePreview(url) {
   </div>`;
 }
 
-function projectPage(p, industryName) {
-  const blocks = (p.blocks && p.blocks.length)
-    ? renderBlocks(p.blocks, p)
-    : `<p>${esc(p.full_description || p.short_description || '')}</p>`;
-  const gallery = (p.gallery || []).map((g) => {
-    const src = g.url || g;
-    return src ? `<img src="${esc(src)}" alt="">` : '';
-  }).join('');
-  return `
-    <section class="project-hero">
-      ${p.hero_image || p.cover_image ? `<img src="${esc(p.hero_image || p.cover_image)}" alt="">` : ''}
-      <div class="shade"></div>
-      <div class="inner">
-        <div class="cat">${esc((p.service_labels || []).join(' · '))}${industryName ? ` · ${esc(industryName)}` : ''}${p.year ? ` · ${esc(p.year)}` : ''}</div>
-        <h1>${esc(p.title)}</h1>
-      </div>
-    </section>
-    <div class="project-body">
-      ${blocks}
-      ${p.challenge ? `<h3>Challenge</h3><p>${esc(p.challenge)}</p>` : ''}
-      ${p.approach ? `<h3>Approach</h3><p>${esc(p.approach)}</p>` : ''}
-      ${p.solution ? `<h3>Solution</h3><p>${esc(p.solution)}</p>` : ''}
-      ${p.results ? `<h3>Results</h3><p>${esc(p.results)}</p>` : ''}
-      ${p.external_url ? websitePreview(p.external_url) : ''}
-    </div>
-    ${gallery ? `<div class="gallery">${gallery}</div>` : ''}
-  `;
+function animAttrs(section) {
+  const cfg = sanitizeAnimation(section.animation || {});
+  return `data-kite-anim="${esc(cfg.preset)}" data-kite-config='${esc(JSON.stringify(cfg))}'`;
+}
+
+function mediaList(section) {
+  return (section.media || []).filter(Boolean);
+}
+
+function renderSection(section, project, related) {
+  const media = mediaList(section);
+  const type = section.type || 'text';
+  const heading = section.heading ? `<h2 data-stagger>${esc(section.heading)}</h2>` : '';
+  const text = section.text ? `<p data-stagger>${esc(section.text)}</p>` : '';
+  const img = (src, cls = '') => src ? `<div class="kite-media ${cls}"><img src="${esc(src)}" alt=""></div>` : '';
+
+  let inner = '';
+  switch (type) {
+    case 'hero':
+      inner = `<div class="wrap"><div class="kicker">${esc((project.service_labels || []).join(' · '))}</div>
+        <h1 data-stagger>${esc(section.heading || project.title)}</h1>${text}</div>
+        ${img(media[0] || project.hero_image || project.cover_image)}`;
+      break;
+    case 'full_image':
+    case 'full_visual':
+      inner = img(media[0]);
+      break;
+    case 'image_text':
+      inner = `<div class="wrap kite-split">${img(media[0])}<div>${heading}${text}</div></div>`;
+      break;
+    case 'two_image':
+    case 'before_after':
+      inner = `<div class="wrap kite-split">${img(media[0])}${img(media[1])}</div>`;
+      break;
+    case 'three_grid':
+      inner = `<div class="wrap kite-grid-3">${[0, 1, 2].map((i) => img(media[i])).join('')}</div>`;
+      break;
+    case 'gallery':
+      inner = `<div class="kite-h-gallery" data-h-track-wrap>
+        <div class="kite-h-track" data-h-track>${media.map((src) => `<img src="${esc(src)}" alt="">`).join('')}</div>
+      </div>`;
+      break;
+    case 'video':
+      inner = `<div class="wrap">${heading}${section.video_url ? `<p><a class="btn ghost" href="${esc(section.video_url)}">Watch video</a></p>` : ''}${text}</div>`;
+      break;
+    case 'quote':
+      inner = `<div class="wrap"><blockquote class="kite-quote" data-stagger>${esc(section.text || '')}</blockquote></div>`;
+      break;
+    case 'info':
+      inner = `<div class="wrap">${heading}<p>${esc(project.short_description || section.text || '')}</p>
+        ${project.year ? `<p>Year: ${esc(project.year)}</p>` : ''}
+        ${project.client ? `<p>Client: ${esc(project.client)}</p>` : ''}</div>`;
+      break;
+    case 'website_preview':
+      inner = `<div class="wrap kite-preview" data-pin-frame>
+        <h2>Website</h2>
+        ${project.external_url ? `<p style="margin:12px 0 18px"><a class="btn" href="${esc(project.external_url)}" target="_blank" rel="noopener">Open website</a></p>
+        <iframe src="${esc(project.external_url)}" title="Website preview" sandbox="allow-scripts allow-same-origin"></iframe>
+        <p style="margin-top:8px;color:var(--muted);font-size:13px">If embedding is blocked, use Open website.</p>` : '<p>No website URL yet.</p>'}
+      </div>`;
+      break;
+    case 'cta':
+      inner = `<div class="wrap"><h2 data-stagger>${esc(section.heading || 'Let’s work together')}</h2>${text}
+        <p style="margin-top:18px"><a class="btn" href="/contact-us">Start a project</a></p></div>`;
+      break;
+    case 'related':
+      inner = `<div class="wrap"><h2>More work</h2>
+        <div class="project-grid">${(related || []).map((p) => tile(p, (p.service_labels || [])[0])).join('')}</div></div>`;
+      break;
+    case 'story':
+    case 'text':
+    default:
+      inner = `<div class="wrap">${heading}${text}</div>`;
+  }
+
+  return `<section class="kite-sec ${esc(type)}" ${animAttrs(section)}>${inner}</section>`;
+}
+
+function projectPage(p, industryName, related) {
+  const theme = sanitizeProjectAnimation(p.animation || {}).theme;
+  const sections = Array.isArray(p.sections) && p.sections.length
+    ? p.sections
+    : fallbackSections(p, industryName);
+
+  const nav = Array.isArray(related) && related.length
+    ? `<nav class="kite-sec" style="padding-top:20px"><div class="wrap" style="display:flex;gap:18px;flex-wrap:wrap">
+        ${related.slice(0, 2).map((item, i) => `<a class="ghost-link" href="/project/${esc(item.slug)}">${i === 0 ? 'Previous' : 'Next'} · ${esc(item.title)}</a>`).join('')}
+      </div></nav>`
+    : '';
+  return `<article class="kite-project theme-${esc(theme)}">
+    ${sections.map((s) => renderSection(s, p, related)).join('')}
+    ${nav}
+  </article>`;
+}
+
+function fallbackSections(p, industryName) {
+  const san = sanitizeAnimation;
+  const secs = [
+    { type: 'hero', heading: p.title, text: [industryName, p.year].filter(Boolean).join(' · '), media: [p.hero_image || p.cover_image].filter(Boolean), animation: san({ preset: 'scale-in' }) },
+  ];
+  if (p.short_description || p.full_description) {
+    secs.push({ type: 'story', heading: 'The work', text: p.full_description || p.short_description, media: [], animation: san({ preset: 'text-stagger' }) });
+  }
+  if (p.challenge) secs.push({ type: 'text', heading: 'Challenge', text: p.challenge, media: [], animation: san({ preset: 'fade-up' }) });
+  if (p.approach) secs.push({ type: 'text', heading: 'Approach', text: p.approach, media: [], animation: san({ preset: 'fade-up' }) });
+  if (p.solution) secs.push({ type: 'text', heading: 'Solution', text: p.solution, media: [], animation: san({ preset: 'fade-up' }) });
+  if (p.results) secs.push({ type: 'text', heading: 'Results', text: p.results, media: [], animation: san({ preset: 'fade-up' }) });
+  const gallery = (p.gallery || []).map((g) => g.url || g).filter(Boolean);
+  if (gallery.length) secs.push({ type: 'gallery', heading: '', text: '', media: gallery, animation: san({ preset: 'horizontal-gallery' }) });
+  if (p.external_url) secs.push({ type: 'website_preview', heading: 'Website', text: '', media: [], animation: san({ preset: 'pin-scale' }) });
+  secs.push({ type: 'cta', heading: 'Let’s work together', text: '', media: [], animation: san({ preset: 'fade-up' }) });
+  return secs;
 }
 
 function casePage(c) {
@@ -258,7 +362,10 @@ function portfolioPage(pub) {
     </div></section>`;
 }
 
-function contactPage(settings) {
+function contactPage(settings, success = false, error = '') {
+  const note = success
+    ? '<p class="form-note" style="display:block">Thank you. Our team will get in touch shortly.</p>'
+    : (error ? `<p class="form-note" style="display:block;color:#c0392b">${esc(error)}</p>` : '');
   return `<section class="page-hero"><div class="container"><h1>Let's work together</h1><p>Tell us about the brand and the brief.</p></div></section>
     <section class="section"><div class="container">
       <div class="offices" style="grid-template-columns:1fr 1fr">
@@ -273,6 +380,17 @@ function contactPage(settings) {
           <h4>Follow</h4>
           ${Object.entries(settings.socials || {}).filter(([, u]) => u).map(([k, u]) => `<p><a href="${esc(u)}">${esc(k)}</a></p>`).join('')}
         </article>
+      </div>
+      <div class="contact-box" style="max-width:720px;margin-top:36px">
+        <h2>Start a project</h2>
+        <form class="form" data-lead method="post" action="/contact-us">
+          <input name="name" placeholder="Name *" required>
+          <input type="email" name="email" placeholder="Email *" required>
+          <input name="business" placeholder="Type of business *">
+          <input name="mobile" placeholder="Mobile no. *">
+          <div class="full"><button class="btn" type="submit">Start a project</button></div>
+          ${note}
+        </form>
       </div>
     </div></section>`;
 }

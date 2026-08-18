@@ -1,0 +1,40 @@
+.kite-project { background: #f4efeb; color: #111; }
+.kite-sec { padding: 88px 0; }
+.kite-sec .wrap { width: min(1100px, calc(100% - 48px)); margin: 0 auto; }
+.kite-sec.hero { min-height: 72vh; display: flex; align-items: flex-end; padding: 140px 0 56px; }
+.kite-sec.full_visual { min-height: 90vh; padding: 0; }
+.kite-sec.full_visual img, .kite-sec.full_image img { width: 100%; display: block; object-fit: cover; }
+.kite-sec.full_visual img { height: 90vh; }
+.kite-sec h1 { font-size: clamp(40px, 6vw, 80px); font-weight: 500; letter-spacing: -.04em; line-height: .95; }
+.kite-sec h2 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 500; letter-spacing: -.03em; margin-bottom: 16px; }
+.kite-sec p { color: rgba(17,17,17,.72); font-size: 16.5px; max-width: 62ch; }
+.kite-sec .kicker { letter-spacing: .16em; text-transform: uppercase; font-size: 12px; color: #6c292e; margin-bottom: 12px; }
+.kite-split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.kite-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.kite-grid-3 img, .kite-split img { width: 100%; height: 320px; object-fit: cover; display: block; }
+.kite-quote { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(28px, 4vw, 48px); line-height: 1.15; color: #6c292e; }
+.kite-h-gallery { overflow: hidden; }
+.kite-h-track { display: flex; gap: 16px; width: max-content; }
+.kite-h-track img { width: min(70vw, 720px); height: 62vh; object-fit: cover; }
+.kite-preview iframe { width: 100%; height: 520px; border: 1px solid rgba(17,17,17,.12); background: #fff; }
+.kite-media { overflow: hidden; }
+.kite-media img { width: 100%; display: block; }
+.kite-line-mask { display: block; overflow: hidden; }
+.kite-line { display: block; }
+.kite-sec mark {
+  background-image: linear-gradient(#ffca1c, #ffca1c);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: inherit;
+  padding: 0 .08em;
+}
+.theme-cinematic .kite-sec.hero { background: linear-gradient(180deg, #7fc4e5, #f4efeb); }
+.theme-editorial .kite-sec { padding: 110px 0; }
+.theme-minimal .kite-sec { padding: 64px 0; }
+@media (max-width: 800px) {
+  .kite-split, .kite-grid-3 { grid-template-columns: 1fr; }
+  .kite-h-track img { width: 86vw; height: 42vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kite-sec, .kite-sec img { transform: none !important; }
+}

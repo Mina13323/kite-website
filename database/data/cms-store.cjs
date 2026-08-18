@@ -105,10 +105,25 @@ function stats() {
   };
 }
 
+const SERVICE_ART = {
+  branding: '/assets/kite/services/branding.jpg',
+  'media-production': '/assets/kite/services/media.jpg',
+  'web-development': '/assets/kite/services/web.jpg',
+  'digital-content': '/assets/kite/services/digital.jpg',
+  'marketing-materials': '/assets/kite/services/marketing.jpg',
+};
+
+function withServiceArt(service) {
+  if (service && !service.cover_image && SERVICE_ART[service.slug]) {
+    return { ...service, cover_image: SERVICE_ART[service.slug] };
+  }
+  return service;
+}
+
 function publicPayload() {
   const data = read();
   const projects = published(data.projects);
-  const services = published(data.services);
+  const services = published(data.services).map(withServiceArt);
   const clients = published(data.clients);
   const cases = published(data.case_studies);
   const featuredSlugs = data.homepage.featured_project_slugs || [];
@@ -140,7 +155,7 @@ function serviceBySlug(slug, { allowUnpublished = false } = {}) {
   const s = read().services.find((x) => x.slug === slug);
   if (!s) return null;
   if (!allowUnpublished && s.status !== 'published') return null;
-  return s;
+  return withServiceArt(s);
 }
 
 function caseBySlug(slug, { allowUnpublished = false } = {}) {
@@ -218,6 +233,8 @@ function saveProject(id, patch) {
       seo_title: null,
       seo_description: null,
       sort_order: data.projects.length + 1,
+      sections: [],
+      animation: { intensity: 'medium', theme: 'default', respect_reduced_motion: true },
       manually_edited: true,
     };
     data.projects.push(project);
@@ -427,5 +444,7 @@ module.exports = {
   removeMedia,
   saveUpload,
   slugify,
+  SERVICE_ART,
+  withServiceArt,
   UPLOAD_DIR,
 };
