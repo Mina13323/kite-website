@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Studio;
 
 use App\Http\Controllers\Controller;
 use App\Support\Website\CmsStore;
+use App\Support\Website\StudioUi;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
-use Illuminate\View\View;
 
 class ContentController extends Controller
 {
-    public function dashboard(): View
+    public function dashboard(): Response
     {
-        return view('studio.dashboard', ['stats' => CmsStore::stats()]);
+        return response(StudioUi::dashboard(CmsStore::stats()));
     }
 
-    public function homepage(): View
+    public function homepage(): Response
     {
-        $data = CmsStore::read();
-        return view('studio.homepage', compact('data'));
+        return response(StudioUi::homepage(CmsStore::read()));
     }
 
     public function saveHomepage(Request $request): RedirectResponse
@@ -48,17 +48,17 @@ class ContentController extends Controller
         return back()->with('status', 'Homepage saved.');
     }
 
-    public function projects(): View
+    public function projects(): Response
     {
-        return view('studio.projects.index', ['projects' => CmsStore::read()['projects'] ?? []]);
+        return response(StudioUi::projectsIndex(CmsStore::read()['projects'] ?? []));
     }
 
-    public function project(?string $slug = null): View
+    public function project(?string $slug = null): Response
     {
         $data = CmsStore::read();
         $project = $slug ? collect($data['projects'] ?? [])->firstWhere('slug', $slug) : [];
         abort_if($slug && ! $project, 404);
-        return view('studio.projects.form', compact('data', 'project'));
+        return response(StudioUi::projectForm($data, $project));
     }
 
     public function saveProject(Request $request, ?string $slug = null): RedirectResponse
@@ -67,7 +67,7 @@ class ContentController extends Controller
             'title' => ['required', 'string', 'max:255'], 'slug' => ['nullable', 'string', 'max:100'], 'client' => ['nullable', 'string', 'max:255'],
             'year' => ['nullable', 'string', 'max:20'], 'industry' => ['nullable', 'string', 'max:100'], 'status' => ['required', 'in:draft,published,archived'],
             'short_description' => ['nullable', 'string', 'max:3000'], 'full_description' => ['nullable', 'string', 'max:20000'], 'services' => ['array'], 'services.*' => ['string'],
-            'external_url' => ['nullable', 'url', 'max:1000'], 'cover_image' => ['nullable', 'string', 'max:1000'], 'hero_image' => ['nullable', 'string', 'max:1000'],
+            'external_url' => ['nullable', 'string', 'max:1000'], 'cover_image' => ['nullable', 'string', 'max:1000'], 'hero_image' => ['nullable', 'string', 'max:1000'],
             'cover_file' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:8192'], 'hero_file' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:8192'],
             'seo_title' => ['nullable', 'string', 'max:255'], 'seo_description' => ['nullable', 'string', 'max:2000'],
             'challenge' => ['nullable', 'string', 'max:12000'], 'approach' => ['nullable', 'string', 'max:12000'], 'solution' => ['nullable', 'string', 'max:12000'], 'results' => ['nullable', 'string', 'max:12000'],
@@ -106,9 +106,9 @@ class ContentController extends Controller
         return redirect('/studio/projects')->with('status', 'Project deleted.');
     }
 
-    public function services(): View
+    public function services(): Response
     {
-        return view('studio.services.index', ['services' => CmsStore::read()['services'] ?? []]);
+        return response(StudioUi::servicesIndex(CmsStore::read()['services'] ?? []));
     }
 
     public function reorderServices(Request $request): RedirectResponse
@@ -117,11 +117,11 @@ class ContentController extends Controller
         return back()->with('status', 'Service order saved.');
     }
 
-    public function service(?string $slug = null): View
+    public function service(?string $slug = null): Response
     {
         $data = CmsStore::read(); $service = $slug ? collect($data['services'] ?? [])->firstWhere('slug', $slug) : [];
         abort_if($slug && ! $service, 404);
-        return view('studio.services.form', compact('data', 'service'));
+        return response(StudioUi::serviceForm($data, $service));
     }
 
     public function saveService(Request $request, ?string $slug = null): RedirectResponse
@@ -145,22 +145,22 @@ class ContentController extends Controller
         return redirect("/studio/services/{$savedSlug}")->with('status', 'Service saved.');
     }
 
-    public function clients(): View
+    public function clients(): Response
     {
-        return view('studio.clients.index', ['clients' => CmsStore::read()['clients'] ?? []]);
+        return response(StudioUi::clientsIndex(CmsStore::read()['clients'] ?? []));
     }
 
-    public function client(?string $slug = null): View
+    public function client(?string $slug = null): Response
     {
         $data = CmsStore::read(); $client = $slug ? collect($data['clients'] ?? [])->firstWhere('slug', $slug) : [];
-        abort_if($slug && ! $client, 404); return view('studio.clients.form', compact('data', 'client'));
+        abort_if($slug && ! $client, 404); return response(StudioUi::clientForm($data, $client));
     }
 
     public function saveClient(Request $request, ?string $slug = null): RedirectResponse
     {
         $f = $request->validate([
             'name' => ['required', 'string', 'max:255'], 'slug' => ['nullable', 'string', 'max:100'], 'logo' => ['nullable', 'string', 'max:1000'], 'logo_file' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:8192'],
-            'website_url' => ['nullable', 'url', 'max:1000'], 'industry' => ['nullable', 'string', 'max:100'], 'status' => ['required', 'in:draft,published,archived'], 'sort_order' => ['nullable', 'integer', 'min:0'],
+            'website_url' => ['nullable', 'string', 'max:1000'], 'industry' => ['nullable', 'string', 'max:100'], 'status' => ['required', 'in:draft,published,archived'], 'sort_order' => ['nullable', 'integer', 'min:0'],
         ]);
         $savedSlug = CmsStore::update(function (&$data) use ($request, $f, $slug) {
             $items = &$data['clients']; $index = $slug === null ? false : $this->indexOf($items, $slug); abort_if($slug !== null && $index === false, 404);
@@ -176,9 +176,9 @@ class ContentController extends Controller
         $this->remove('clients', $slug); return redirect('/studio/clients')->with('status', 'Client deleted.');
     }
 
-    public function media(): View
+    public function media(): Response
     {
-        $data = CmsStore::read(); return view('studio.media', compact('data'));
+        return response(StudioUi::media(CmsStore::read()));
     }
 
     public function uploadMedia(Request $request): RedirectResponse
@@ -200,9 +200,9 @@ class ContentController extends Controller
         return redirect('/studio/media')->with('status', 'Media removed.');
     }
 
-    public function contact(): View
+    public function contact(): Response
     {
-        return view('studio.contact', ['data' => CmsStore::read()]);
+        return response(StudioUi::contact(CmsStore::read()));
     }
 
     public function saveContact(Request $request): RedirectResponse

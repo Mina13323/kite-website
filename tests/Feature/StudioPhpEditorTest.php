@@ -12,11 +12,19 @@ class StudioPhpEditorTest extends TestCase
         $this->get('/studio/projects')->assertRedirect('/studio/login');
     }
 
-    public function test_all_hostinger_editor_sections_render_for_an_authenticated_editor(): void
+    public function test_all_hostinger_editor_sections_render_without_blade_views(): void
     {
+        config(['view.paths' => [base_path('tests/fixtures/no-blade-views')]]);
+
         foreach (['/studio', '/studio/homepage', '/studio/projects', '/studio/services', '/studio/clients', '/studio/media', '/studio/contact'] as $path) {
             $this->withSession(['kite_studio' => true])->get($path)->assertOk();
         }
+
+        $this->withSession(['kite_studio' => true])->get('/studio')
+            ->assertSee('Website content')
+            ->assertSee('Clients / Kites')
+            ->assertSee('Contact &amp; SEO', false)
+            ->assertSee('Sign out');
     }
 
     public function test_login_page_contains_a_csrf_protected_form(): void
