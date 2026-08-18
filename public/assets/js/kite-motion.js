@@ -153,14 +153,16 @@
         const items = parent.querySelectorAll(itemSel);
         if (!items.length) return;
         gsap.from(items, {
-          y: 36,
+          y: 28,
           autoAlpha: 0,
-          stagger: 0.08,
-          duration: 0.8,
+          stagger: 0.06,
+          duration: 0.7,
           ease: 'expo.out',
+          immediateRender: false,
           scrollTrigger: {
             trigger: parent,
-            start: 'top 86%',
+            start: 'top 90%',
+            once: true,
           },
         });
       });

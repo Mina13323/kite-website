@@ -32,8 +32,8 @@ function projectForm(p, services, industries, media, query) {
   return layout(isNew ? 'New project' : p.title, `
     ${flash(query)}
     <h1>${isNew ? 'New project' : esc(p.title)}</h1>
-    <p class="note">Cover 4:3 · 1600×1200. Gallery 3:2 · 1800×1200. Do not invent metrics or results.</p>
-    <form method="post" action="/studio/projects/${isNew ? 'new' : esc(p.slug)}">
+    <p class="note">Upload files, then Save. Cover 1600 × 1200. Gallery 1800 × 1200. Do not invent metrics or results.</p>
+    <form method="post" action="/studio/projects/${isNew ? 'new' : esc(p.slug)}" enctype="multipart/form-data">
       <div class="form-grid">
         <label>Title<input name="title" required value="${esc(p.title || '')}"></label>
         <label>Slug<input name="slug" value="${esc(p.slug || '')}" placeholder="auto from title"></label>
@@ -47,9 +47,16 @@ function projectForm(p, services, industries, media, query) {
           <div class="checks">${services.map((s) => `<label><input type="checkbox" name="services" value="${esc(s.slug)}" ${(p.services || []).includes(s.slug) ? 'checked' : ''}> ${esc(s.name)}</label>`).join('')}</div>
         </label>
         <label>External website URL<input name="external_url" value="${esc(p.external_url || '')}" placeholder="https://"></label>
-        <label>Cover image URL<input name="cover_image" value="${esc(p.cover_image || '')}"></label>
-        <label>Hero image URL<input name="hero_image" value="${esc(p.hero_image || '')}"></label>
-        <label>OG image URL<input name="og_image" value="${esc(p.og_image || '')}"></label>
+        <label class="full">Cover image · 1600 × 1200
+          ${p.cover_image ? `<div class="upload-preview"><img src="${esc(p.cover_image)}" alt=""><label class="checks"><input type="checkbox" name="cover_clear" value="1"> Remove</label></div>` : ''}
+          <input type="hidden" name="cover_image" value="${esc(p.cover_image || '')}">
+          <input type="file" name="cover_file" accept="image/jpeg,image/png,image/webp,image/svg+xml">
+        </label>
+        <label class="full">Hero image · 1920 × 1080
+          ${p.hero_image ? `<div class="upload-preview"><img src="${esc(p.hero_image)}" alt=""><label class="checks"><input type="checkbox" name="hero_clear" value="1"> Remove</label></div>` : ''}
+          <input type="hidden" name="hero_image" value="${esc(p.hero_image || '')}">
+          <input type="file" name="hero_file" accept="image/jpeg,image/png,image/webp,image/svg+xml">
+        </label>
         <label>SEO title<input name="seo_title" value="${esc(p.seo_title || '')}"></label>
         <label class="full">SEO description<textarea name="seo_description">${esc(p.seo_description || '')}</textarea></label>
         <label class="full">Challenge<textarea name="challenge">${esc(p.challenge || '')}</textarea></label>
@@ -126,7 +133,7 @@ function serviceForm(s, projects, query) {
     ${flash(query)}
     <h1>${isNew ? 'New service' : esc(s.name)}</h1>
     <p class="note">Service image 4:3 · 1600×1200.</p>
-    <form method="post" action="/studio/services/${isNew ? 'new' : esc(s.slug)}">
+    <form method="post" action="/studio/services/${isNew ? 'new' : esc(s.slug)}" enctype="multipart/form-data">
       <div class="form-grid">
         <label>Name<input name="name" required value="${esc(s.name || '')}"></label>
         <label>Slug<input name="slug" value="${esc(s.slug || '')}"></label>
@@ -135,7 +142,16 @@ function serviceForm(s, projects, query) {
         <label class="full">Short description<textarea name="short_description">${esc(s.short_description || '')}</textarea></label>
         <label class="full">Full description<textarea name="description">${esc(s.description || '')}</textarea></label>
         <label class="full">Capabilities (one per line)<textarea name="capabilities">${esc((s.capabilities || []).join('\n'))}</textarea></label>
-        <label>Cover image<input name="cover_image" value="${esc(s.cover_image || '')}"></label>
+        <label class="full">Horizontal tags (one per line)
+          <span style="text-transform:none;letter-spacing:0;color:rgba(17,17,17,.68);font-size:13px">These chips appear on the homepage Services slider. Leave empty to use capabilities.</span>
+          <textarea name="horizon_tags">${esc((s.horizon_tags || []).join('\n'))}</textarea>
+        </label>
+        <label class="full">Cover image
+          <span style="text-transform:none;letter-spacing:0;color:rgba(17,17,17,.68);font-size:13px">1600 × 1200 px · 4:3</span>
+          ${s.cover_image ? `<div class="upload-preview"><img src="${esc(s.cover_image)}" alt=""></div>` : ''}
+          <input type="hidden" name="cover_image" value="${esc(s.cover_image || '')}">
+          <input type="file" name="cover_file" accept="image/jpeg,image/png,image/webp,image/svg+xml">
+        </label>
         <label>SEO title<input name="seo_title" value="${esc(s.seo_title || '')}"></label>
         <label class="full">SEO description<textarea name="seo_description">${esc(s.seo_description || '')}</textarea></label>
         <label class="full">Featured projects

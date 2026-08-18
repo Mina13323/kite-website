@@ -152,17 +152,17 @@ function parseBody(req) {
         resolve(parseMultipart(buf, ct));
         return;
       }
-      resolve({ fields: parseUrlForm(buf.toString('utf8')), file: null });
+      resolve({ fields: parseUrlForm(buf.toString('utf8')), file: null, files: [] });
     });
   });
 }
 
 function parseMultipart(buf, contentType) {
   const m = /boundary=(?:"([^"]+)"|([^;]+))/i.exec(contentType);
-  if (!m) return { fields: {}, file: null };
+  if (!m) return { fields: {}, file: null, files: [] };
   const boundary = Buffer.from(`--${m[1] || m[2]}`);
   const fields = {};
-  let file = null;
+  const files = [];
   let start = 0;
   while (start < buf.length) {
     const idx = buf.indexOf(boundary, start);
@@ -178,9 +178,9 @@ function parseMultipart(buf, contentType) {
     const header = part.slice(0, split).toString('utf8');
     const body = part.slice(split + 4);
     const nameM = /name="([^"]+)"/.exec(header);
-    const fileM = /filename="([^"]+)"/.exec(header);
-    if (fileM && nameM) {
-      file = { field: nameM[1], filename: fileM[1], buffer: body };
+    const fileM = /filename="([^"]*)"/.exec(header);
+    if (fileM && nameM && fileM[1]) {
+      files.push({ field: nameM[1], filename: fileM[1], buffer: body });
     } else if (nameM) {
       const val = body.toString('utf8');
       if (fields[nameM[1]] === undefined) fields[nameM[1]] = val;
@@ -189,7 +189,7 @@ function parseMultipart(buf, contentType) {
     }
     start = next;
   }
-  return { fields, file };
+  return { fields, file: files[0] || null, files };
 }
 
 function qs(url) {
@@ -265,8 +265,8 @@ async function handleStudio(req, res, urlPath, urlFull) {
     return;
   }
   if (urlPath === '/studio/projects/new' && req.method === 'POST') {
-    const { fields } = await parseBody(req);
-    const p = saveProjectFields(null, fields);
+    const parsed = await parseBody(req);
+    const p = saveProjectFields(null, parsed.fields, parsed.files);
     redirect(res, `/studio/projects/${p.slug}?saved=1`);
     return;
   }
@@ -285,8 +285,8 @@ async function handleStudio(req, res, urlPath, urlFull) {
   }
   if (urlPath.startsWith('/studio/projects/') && req.method === 'POST') {
     const slug = urlPath.slice('/studio/projects/'.length);
-    const { fields } = await parseBody(req);
-    const p = saveProjectFields(slug, fields);
+    const parsed = await parseBody(req);
+    const p = saveProjectFields(slug, parsed.fields, parsed.files);
     redirect(res, `/studio/projects/${p.slug}?saved=1`);
     return;
   }
@@ -310,8 +310,8 @@ async function handleStudio(req, res, urlPath, urlFull) {
     return;
   }
   if (urlPath === '/studio/services/new' && req.method === 'POST') {
-    const { fields } = await parseBody(req);
-    const s = saveServiceFields(null, fields);
+    const parsed = await parseBody(req);
+    const s = saveServiceFields(null, parsed.fields, parsed.files);
     redirect(res, `/studio/services/${s.slug}?saved=1`);
     return;
   }
@@ -521,10 +521,30 @@ function lines(value) {
   return String(value || '').split('\n').map((s) => s.trim()).filter(Boolean);
 }
 
-function saveProjectFields(id, f) {
+function acceptUpload(file) {
+  if (!file || !file.filename) return null;
+  const ext = path.extname(file.filename).toLowerCase();
+  if (!ALLOWED_UPLOAD[ext] || file.buffer.length > 8 * 1024 * 1024) return null;
+  return cms.saveUpload(file.filename, file.buffer);
+}
+
+function applyUpload(current, files, field, clear) {
+  const uploaded = acceptUpload((files || []).find((f) => f.field === field && f.filename));
+  if (uploaded) return uploaded.url;
+  if (clear) return null;
+  return current || null;
+}
+
+function saveProjectFields(id, f, files = []) {
   let blocks = [];
   try { blocks = f.blocks ? JSON.parse(f.blocks) : []; } catch { blocks = []; }
   if (!Array.isArray(blocks)) blocks = [];
+  const kept = list(f.gallery_keep).filter((url) => !list(f.gallery_remove).includes(url));
+  const uploadedGallery = (files || [])
+    .filter((file) => file.field === 'gallery_files' && file.filename)
+    .map(acceptUpload)
+    .filter(Boolean)
+    .map((item) => item.url);
   return cms.saveProject(id, {
     title: f.title,
     slug: f.slug,
@@ -540,9 +560,9 @@ function saveProjectFields(id, f) {
       return s ? s.name : slug;
     }),
     external_url: f.external_url || null,
-    cover_image: f.cover_image || null,
-    hero_image: f.hero_image || null,
-    og_image: f.og_image || null,
+    cover_image: applyUpload(f.cover_image, files, 'cover_file', f.cover_clear === '1'),
+    hero_image: applyUpload(f.hero_image, files, 'hero_file', f.hero_clear === '1'),
+    og_image: applyUpload(f.og_image, files, 'og_file', f.og_clear === '1'),
     seo_title: f.seo_title || null,
     seo_description: f.seo_description || null,
     challenge: f.challenge || null,
@@ -550,7 +570,7 @@ function saveProjectFields(id, f) {
     solution: f.solution || null,
     results: f.results || null,
     featured: f.featured === '1',
-    gallery: lines(f.gallery).map((url) => ({ id: crypto.randomBytes(4).toString('hex'), url })),
+    gallery: [...kept, ...uploadedGallery].map((url) => ({ id: crypto.randomBytes(4).toString('hex'), url })),
     blocks,
     sections: parseSections(f.sections),
     animation: animLib.sanitizeProjectAnimation({
@@ -583,7 +603,7 @@ function projectAssets() {
   };
 }
 
-function saveServiceFields(id, f) {
+function saveServiceFields(id, f, files = []) {
   return cms.saveService(id, {
     name: f.name,
     slug: f.slug,
@@ -592,7 +612,8 @@ function saveServiceFields(id, f) {
     short_description: f.short_description,
     description: f.description,
     capabilities: lines(f.capabilities),
-    cover_image: f.cover_image || null,
+    horizon_tags: lines(f.horizon_tags),
+    cover_image: applyUpload(f.cover_image, files, 'cover_file', f.cover_clear === '1'),
     seo_title: f.seo_title || null,
     seo_description: f.seo_description || null,
     featured_project_slugs: list(f.featured_project_slugs),

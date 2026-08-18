@@ -25,7 +25,7 @@ function layout(title, body, active) {
   <meta name="color-scheme" content="light">
   <title>${esc(title)} · KITE Studio</title>
   <link rel="icon" href="/assets/kite/preloader/logo-icon.svg">
-  <link rel="stylesheet" href="/assets/css/studio.css?v=1">
+  <link rel="stylesheet" href="/assets/css/studio.css?v=2">
 </head>
 <body>
   <div class="studio-shell">
@@ -63,7 +63,7 @@ function loginPage(error) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sign in · KITE Studio</title>
-  <link rel="stylesheet" href="/assets/css/studio.css?v=1">
+  <link rel="stylesheet" href="/assets/css/studio.css?v=2">
 </head>
 <body class="login-wrap">
   <form class="login-card" method="post" action="/studio/login">

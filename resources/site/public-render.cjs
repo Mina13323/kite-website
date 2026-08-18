@@ -36,9 +36,10 @@ function servicesHorizon(services, projects) {
     const selected = (s.featured_project_slugs || [])
       .map((slug) => projects.find((p) => p.slug === slug))
       .filter(Boolean);
-    const chips = selected.length
-      ? selected.map((p) => `<span>${esc(p.title)}</span>`).join('')
-      : (s.capabilities || []).slice(0, 5).map((c) => `<span>${esc(c)}</span>`).join('');
+    const tags = (s.horizon_tags && s.horizon_tags.length)
+      ? s.horizon_tags
+      : (selected.length ? selected.map((p) => p.title) : (s.capabilities || []).slice(0, 5));
+    const chips = tags.map((c) => `<span>${esc(c)}</span>`).join('');
     const cover = serviceCover(s);
     const art = cover
       ? `<figure class="svc-frame reveal-media"><img src="${esc(cover)}" alt=""></figure>`

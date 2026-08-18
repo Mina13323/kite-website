@@ -213,7 +213,7 @@ ul { list-style: none; }
 .work-wrap { overflow: hidden; }
 .work-track {
   display: flex; gap: 16px; width: max-content;
-  animation: marquee 48s linear infinite;
+  animation: marquee 32s linear infinite;
 }
 .work-wrap:hover .work-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -231,11 +231,9 @@ ul { list-style: none; }
 .work-card:hover img { transform: scale(1.08); }
 .work-card figcaption {
   position: absolute; left: 18px; right: 18px; bottom: 18px;
-  opacity: 0; transform: translateY(10px);
-  transition: .35s var(--ease);
+  opacity: 1; transform: none;
   color: var(--text);
 }
-.work-card:hover figcaption { opacity: 1; transform: none; }
 .work-card strong { display: block; font-size: 18px; font-weight: 500; }
 .work-card span { color: var(--sky-deep); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 
