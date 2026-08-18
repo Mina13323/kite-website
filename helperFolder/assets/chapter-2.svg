@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="deco" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4a843"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg2)"/>
+  <!-- Art deco sunburst -->
+  <g opacity="0.2" transform="translate(150,180)">
+    <line x1="0" y1="0" x2="0" y2="-160" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="80" y2="-138" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="138" y2="-80" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="-80" y2="-138" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="-138" y2="-80" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="-160" y2="0" stroke="#d4a843" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="40" y2="-152" stroke="#d4a843" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="113" y2="-113" stroke="#d4a843" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="152" y2="-40" stroke="#d4a843" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="-40" y2="-152" stroke="#d4a843" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="-113" y2="-113" stroke="#d4a843" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="-152" y2="-40" stroke="#d4a843" stroke-width="0.5"/>
+  </g>
+  <!-- Concentric deco arcs -->
+  <circle cx="150" cy="180" r="50" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="150" cy="180" r="70" fill="none" stroke="#d4a843" stroke-width="0.8" opacity="0.2"/>
+  <circle cx="150" cy="180" r="90" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.15"/>
+  <!-- Geometric chevron -->
+  <polygon points="150,130 180,165 150,148 120,165" fill="url(#deco)" opacity="0.5"/>
+  <!-- Deco border -->
+  <rect x="16" y="16" width="268" height="368" rx="0" fill="none" stroke="#d4a843" stroke-width="2" opacity="0.3"/>
+  <!-- Corner ornaments -->
+  <rect x="16" y="16" width="20" height="20" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.4"/>
+  <rect x="264" y="16" width="20" height="20" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.4"/>
+  <rect x="16" y="364" width="20" height="20" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.4"/>
+  <rect x="264" y="364" width="20" height="20" fill="none" stroke="#d4a843" stroke-width="1" opacity="0.4"/>
+  <!-- Era text -->
+  <text x="150" y="360" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="10" fill="#d4a843" opacity="0.5" letter-spacing="4">MODERNE</text>
+</svg>
