@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KITE Preloader</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> 
+  </head>
+
+  <body>
+    <svg style="width: 0; height: 0; position: absolute" aria-hidden="true">
+      <defs>
+        <filter id="motion-blur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="0 0"
+            id="blur-filter"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <div
+      id="flash"
+      style="
+        position: fixed;
+        inset: 0;
+        background: #fff;
+        opacity: 0;
+        z-index: 9999;
+        pointer-events: none;
+      "
+    ></div>
+
+    <!-- GLOBAL NAVBAR -->
+    <nav class="site-navbar">
+      <div class="nav-left">KITE &bull; LET'S FLY</div>
+      <div class="nav-right">
+        <a href="../_our-kites/index.php" class="nav-link" style="text-decoration:none; color:inherit;">SIGN IN</a>
+        <span class="nav-link">TIMELINE</span>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <div class="scene-bg"></div>
+
+      <!-- CLOUDS -->
+      <div class="cloud cloud-1"><img src="assets/cloud.svg" /></div>
+      <div class="cloud cloud-2"><img src="assets/cloud.svg" /></div>
+      <div class="cloud cloud-3"><img src="assets/cloud.svg" /></div>
+      <div class="cloud cloud-4"><img src="assets/cloud.svg" /></div>
+      <div class="cloud cloud-5"><img src="assets/cloud.svg" /></div>
+      <div class="cloud cloud-6"><img src="assets/cloud.svg" /></div>
+
+      <!-- UI -->
+      <div class="ui">
+        <div class="sun-wrapper">
+          <span class="sun-glow"></span>
+          <!-- glow layer -->
+
+          <div class="brand-ring" aria-hidden="true"></div>
+
+          <div class="circle">
+            <img src="assets/logo-icon.svg" alt="logo" />
+            <div class="counter" id="counter">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKYLINE -->
+      <div class="skyline">
+        <div class="house house-01"><img src="assets/house-01.svg" /></div>
+        <div class="house house-02"><img src="assets/house-02.svg" /></div>
+        <div class="house house-03"><img src="assets/house-03.svg" /></div>
+        <div class="house house-04"><img src="assets/house-04.svg" /></div>
+        <div class="house house-05"><img src="assets/house-05.svg" /></div>
+        <div class="house house-06"><img src="assets/house-06.svg" /></div>
+        <div class="house house-07"><img src="assets/house-07.svg" /></div>
+        <div class="house house-08"><img src="assets/house-08.svg" /></div>
+        <div class="house house-09"><img src="assets/house-09.svg" /></div>
+      </div>
+      <!-- HERO -->
+      <div id="hero">
+        <div class="hero-copy">
+          <h1>Design that moves brands forward.</h1>
+          <p>
+            Kite is a creative studio building bold identities, digital
+            products, and visual systems that actually perform.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button">View work</button>
+            <a href="../_our-kites/index.php" class="btn btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; box-sizing: border-box;">
+              Client Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE SECTION -->
+    <section id="timeline">
+      <!-- THIN STICKY HEADER STRIP -->
+      <div class="timeline-header">
+        <span>CH.1</span>
+        <span>CH.2</span>
+        <span>CH.3</span>
+        <span>CH.4</span>
+      </div>
+
+      <!-- COMPACT CARD GRID -->
+      <div class="timeline-nav">
+        <div class="nav-item active" id="nav-ch1">
+          <h5 class="nav-ch-title">1700s–1900s</h5>
+          <div class="nav-ch-image">
+            <img src="assets/Screenshot 2026-04-21 003606.png" alt="CH.1 Preview" />
+          </div>
+        </div>
+
+        <div class="nav-item" id="nav-ch2">
+          <h5 class="nav-ch-title">1920s–1960s</h5>
+          <div class="nav-ch-image">
+            <img src="assets/Screenshot 2026-04-21 003622.png" alt="CH.2 Preview" />
+          </div>
+        </div>
+
+        <div class="nav-item" id="nav-ch3">
+          <h5 class="nav-ch-title">1970s–1990s</h5>
+          <div class="nav-ch-image">
+            <img src="assets/Screenshot 2026-04-21 003639.png" alt="CH.3 Preview" />
+          </div>
+        </div>
+
+        <div class="nav-item" id="nav-ch4">
+          <h5 class="nav-ch-title">2000s–present</h5>
+          <div class="nav-ch-image">
+            <img src="assets/Screenshot 2026-04-21 003653.png" alt="CH.4 Preview" />
+          </div>
+        </div>
+      </div>
+
+      <!-- PERIOD DETAIL SECTIONS (HORIZONTAL SCROLL) -->
+      <!-- PERIOD 1 DETAIL SECTIONS (HORIZONTAL SCROLL) -->
+      <div class="timeline-cols-container">
+        <div class="timeline-cols">
+
+          <!-- ====== PERIOD 1 — TITLE SLIDE ====== -->
+          <div class="timeline-col slide-period-title" id="ch1">
+            <div class="period-intro-content">
+              <div class="col-head">PERIOD 1</div>
+              <h2 class="col-title">1700s – <br>1900s</h2>
+              <div class="col-subtitle">ESTABLISHMENT<br>OF THE PRISON SYSTEM</div>
+            </div>
+          </div>
+
+          <!-- ====== CH.1 — SLIDE 1: THE FIRST US PENITENTIARY ====== -->
+          <div class="timeline-col slide-cream" id="ch1-s1">
+            <div class="col-content col-editorial">
+              <span class="slide-year">1790</span>
+              <h2 class="slide-headline">THE FIRST<br>US PENITENTIARY,</h2>
+              <div class="slide-gallery">
+                <div class="gallery-img framed"><img src="assets/Screenshot 2026-04-21 003606.png" alt="Historical prison" /></div>
+                <div class="gallery-img framed featured"><img src="assets/Screenshot 2026-04-21 003622.png" alt="Walnut Street" /></div>
+                <div class="gallery-img framed"><img src="assets/Screenshot 2026-04-21 003639.png" alt="Interior view" /></div>
+              </div>
+              <h2 class="slide-headline sub">WALNUT STREET JAIL,<br>OPENS IN PHILADELPHIA</h2>
+            </div>
+          </div>
+
+          <!-- ====== CH.1 — SLIDE 2: FIRST PROFITABLE PRISON ====== -->
+          <div class="timeline-col slide-dark" id="ch1-s2">
+            <div class="slide-split">
+              <div class="split-left">
+                <span class="slide-year light">1826</span>
+                <h2 class="slide-headline light">FIRST "PROFITABLE"<br>PRISON</h2>
+                <div class="slide-divider"></div>
+                <div class="slide-body">
+                  <span class="body-label">Fame</span>
+                  <p>After being constructed by incarcerated people, Sing Sing opens in New York. It is infamous for its harsh conditions.</p>
+                </div>
+              </div>
+              <div class="split-right">
+                <div class="slide-hero-img tinted-green">
+                  <img src="assets/Screenshot 2026-04-21 003653.png" alt="Sing Sing Prison" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== CH.1 — SLIDE 3: WOMEN'S PRISON ====== -->
+          <div class="timeline-col slide-mixed" id="ch1-s3">
+            <div class="slide-split">
+              <div class="split-left">
+                <div class="slide-hero-img tinted-teal">
+                  <img src="assets/Screenshot 2026-04-21 003639.png" alt="Indiana Women's Prison" />
+                </div>
+                <span class="slide-year">1873</span>
+                <p class="slide-caption">The Indiana Women's Prison</p>
+                <h2 class="slide-headline">THE FIRST PUBLIC AND<br>SEPARATE WOMEN'S PRISON</h2>
+              </div>
+              <div class="split-right slide-cream-bg">
+                <div class="slide-book">
+                  <img src="assets/Screenshot 2026-04-21 003622.png" alt="Book cover" />
+                </div>
+                <p class="slide-quote">"Who Would Believe a Prisoner?" — Indiana Women's Carceral Institutions, 1848–1920</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== CH.1 — SLIDE 4: PRECURSOR ====== -->
+          <div class="timeline-col slide-dark" id="ch1-s4">
+            <div class="slide-split">
+              <div class="split-left">
+                <div class="circle-gallery">
+                  <div class="circle-img"><img src="assets/Screenshot 2026-04-21 003606.png" alt="Archive 1" /></div>
+                  <div class="circle-img"><img src="assets/Screenshot 2026-04-21 003653.png" alt="Archive 2" /></div>
+                </div>
+                <div class="slide-body">
+                  <span class="body-label">Precursor</span>
+                  <p>Regarded as the first "profitable" prison for exploiting its incarcerated population in factory-style workshops for outside contractors, Sing Sing is arguably the precursor to the prison industrial complex.</p>
+                </div>
+              </div>
+              <div class="split-right">
+                <div class="slide-hero-img tinted-green">
+                  <img src="assets/Screenshot 2026-04-21 003639.png" alt="Prison corridor" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PERIOD 2 DETAIL SECTIONS (HORIZONTAL SCROLL) -->
+      <div class="timeline-cols-container">
+        <div class="timeline-cols">
+          <!-- ====== PERIOD 2 — TITLE SLIDE ====== -->
+          <div class="timeline-col slide-period-title" id="ch2">
+            <div class="period-intro-content">
+              <div class="col-head">PERIOD 2</div>
+              <h2 class="col-title">1920s – <br>1960s</h2>
+              <div class="col-subtitle">INITIAL ACTIONS TO SAFEGUARD THE RIGHTS<br>OF INCARCERATED INDIVIDUALS</div>
+            </div>
+          </div>
+
+          <!-- ====== CH.2 — SLIDE 1: ALCATRAZ / MARKER CIRCLE ====== -->
+          <div class="timeline-col slide-dark-red" id="ch2-s1">
+            <div class="col-content col-editorial text-heavy">
+              <span class="slide-year light">1934</span>
+              <h2 class="slide-headline light huge-text">
+                THE 
+                <span class="annotation">
+                  BLOODIEST
+                  <svg class="marker-svg marker-circle" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <!-- Messy hand-drawn circle -->
+                    <path d="M5,20 C10,5 90,5 95,20 C100,35 15,40 10,25 C5,15 20,10 40,15" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round" class="draw-path" />
+                  </svg>
+                </span>
+                <br>AND TOUGHEST
+              </h2>
+              <div class="slide-divider-light"></div>
+              <p class="slide-caption light large-caption">Alcatraz Federal Penitentiary becomes the ultimate maximum-security facility, known for extreme isolation and brutal discipline.</p>
+              
+              <div class="floating-image right">
+                <img src="assets/Screenshot 2026-04-21 003606.png" class="tinted-red" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== CH.2 — SLIDE 2: PROFITS / MARKER DOLLAR ====== -->
+          <div class="timeline-col slide-cream alt-grid" id="ch2-s2">
+            <div class="slide-split">
+              <div class="split-left justify-center relative">
+                <div class="slide-body big-body">
+                  <p>Prison labor industries expand rapidly. Throughout the 30s and 40s, the focus shifted heavily from rehabilitation back to sheer economic output.</p>
+                </div>
+                <div class="marker-graphic">
+                  <svg class="marker-svg marker-dollar" viewBox="0 0 60 80">
+                    <!-- Messy hand-drawn dollar and up arrow -->
+                    <path d="M20,10 L20,70 M30,10 L30,70 M42,20 C35,5 5,10 10,30 C15,50 50,45 42,65 C35,75 5,75 2,60 M52,60 L52,10 M40,22 L52,10 L62,22 M30,70 L30,75 M20,70 L20,75 M30,10 L30,5 M20,10 L20,5" stroke="#d93b48" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="draw-path" />
+                  </svg>
+                </div>
+              </div>
+              <div class="split-right">
+                <div class="slide-hero-img border-thick">
+                  <img src="assets/Screenshot 2026-04-21 003653.png" alt="Labor" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== CH.2 — SLIDE 3: ARROWS / REFORM ====== -->
+          <div class="timeline-col slide-dark" id="ch2-s3">
+             <div class="col-content center-vert">
+               <h2 class="slide-headline light text-center">
+                 DEMANDING<br>BASIC RIGHTS
+                 <div class="arrows-graphic">
+                   <svg class="marker-svg marker-arrow" viewBox="0 0 100 100">
+                      <!-- Two diagonal scribbled arrows pointing down-left -->
+                      <path d="M90,10 Q65,30 35,60 M50,60 L35,60 L35,45 M80,25 Q50,55 15,85 M35,85 L15,85 L15,65" stroke="#d93b48" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" class="draw-path" />
+                   </svg>
+                 </div>
+               </h2>
+               <div class="bottom-gallery spread-out">
+                  <div class="gallery-img framed rotate-left thick-mat"><img src="assets/Screenshot 2026-04-21 003639.png" /></div>
+                  <div class="gallery-img framed rotate-right thick-mat"><img src="assets/Screenshot 2026-04-21 003622.png" /></div>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

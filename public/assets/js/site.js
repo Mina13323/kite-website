@@ -1,4 +1,8 @@
 (() => {
+  document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('error', () => { img.style.display = 'none'; });
+  });
+
   const header = document.querySelector('.site-header');
   const menuBtn = document.querySelector('.menu-btn');
   const mobile = document.querySelector('.mobile-nav');

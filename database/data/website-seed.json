@@ -1,0 +1,1575 @@
+{
+  "meta": {
+    "source_documents": [
+      "KITE Company Profile (operator brief + official materials)",
+      "KITE Portfolio 2025 (operator brief; PDF not readable in this environment)"
+    ],
+    "company_name": "KITE Design Studio",
+    "tagline": "AIM HIGH FLY HIGHER",
+    "website": "www.kiteagency-eg.com",
+    "phone": "+20 127 551 0701"
+  },
+  "settings": {
+    "company_name": "KITE Design Studio",
+    "tagline": "AIM HIGH FLY HIGHER",
+    "website": "https://www.kiteagency-eg.com",
+    "phone": "+20 127 551 0701",
+    "email": null,
+    "email_status": "CONTENT_REQUIRED",
+    "address": null,
+    "address_status": "CONTENT_REQUIRED",
+    "socials": {
+      "behance": "https://www.behance.net/kiteagency2020",
+      "facebook": "https://www.facebook.com/kitedesignstudios",
+      "instagram": "https://www.instagram.com/kite_designs_studio/",
+      "linkedin": "https://www.linkedin.com/company/kite-design-studio/",
+      "whatsapp": "https://api.whatsapp.com/send/?phone=201275510701"
+    },
+    "social_url_note": "Social URLs taken from the official kiteagency-eg.com homepage, not invented."
+  },
+  "company": {
+    "story": "KITE began in 2022 with two Kiters and a simple ambition: to create work worth flying for. What started as a small creative team grew into a squad of 15, brought together by a shared love for ideas, design, storytelling and the challenge of making brands stand out.",
+    "positioning": "KITE creates visual communication for brands — across branding, media, digital content, marketing materials and web development.",
+    "vision": "A sky full of kites. A creative environment where every brand can have its own distinct shape, color and direction.",
+    "mission": "We create visual communication that looks distinctive, communicates clearly, and gives brands a voice people can remember.",
+    "philosophy": [
+      "Great branding needs to adapt.",
+      "Products, services and organizations change — their brands need to evolve with them.",
+      "Consistency alone is not enough.",
+      "Branding should create strategic and coherent conversations between brands and their audiences.",
+      "Creativity should connect business strategy with memorable visual execution."
+    ],
+    "how_we_work": "We don't fit projects into predetermined processes. We create bespoke teams around each project.",
+    "how_heading": "HOW WE MAKE IT FLY"
+  },
+  "industries": [
+    {
+      "name": "Real Estate",
+      "slug": "real-estate",
+      "sort_order": 1,
+      "status": "published",
+      "description": null
+    },
+    {
+      "name": "Food & Beverage",
+      "slug": "food-beverage",
+      "sort_order": 2,
+      "status": "published",
+      "description": null
+    },
+    {
+      "name": "Hospitality",
+      "slug": "hospitality",
+      "sort_order": 3,
+      "status": "published",
+      "description": null
+    },
+    {
+      "name": "Human Development",
+      "slug": "human-development",
+      "sort_order": 4,
+      "status": "published",
+      "description": null
+    },
+    {
+      "name": "Entertainment",
+      "slug": "entertainment",
+      "sort_order": 5,
+      "status": "published",
+      "description": null
+    },
+    {
+      "name": "Factories",
+      "slug": "factories",
+      "sort_order": 6,
+      "status": "published",
+      "description": null
+    },
+    {
+      "name": "Other",
+      "slug": "other",
+      "sort_order": 7,
+      "status": "published",
+      "description": null
+    }
+  ],
+  "services": [
+    {
+      "name": "Branding",
+      "slug": "branding",
+      "sort_order": 1,
+      "status": "published",
+      "description": "KITE builds brands from the idea outward — shaping identities, visual systems and brand experiences that give businesses a clear and memorable presence.",
+      "capabilities": [
+        "Brand Creation",
+        "Brand Values",
+        "Brand Mission",
+        "Brand Story",
+        "Brand Positioning",
+        "Taglines",
+        "Brand Naming",
+        "Logo Design",
+        "Logo Usage",
+        "Color Palette",
+        "Typography",
+        "Brand Guidelines",
+        "Company Profiles",
+        "Business Cards",
+        "Letterheads",
+        "Envelopes",
+        "Invoices",
+        "Quotations",
+        "Proposals",
+        "Contracts"
+      ],
+      "short_description": "KITE builds brands from the idea outward — shaping identities, visual systems and brand experiences that give businesses a clear and memorab",
+      "statement": "From the idea outward",
+      "featured": true,
+      "cover_image": null,
+      "images": [],
+      "featured_project_slugs": [],
+      "seo_title": "Branding · KITE Design Studio",
+      "seo_description": "KITE builds brands from the idea outward — shaping identities, visual systems and brand experiences that give businesses a clear and memorable presence."
+    },
+    {
+      "name": "Media Production",
+      "slug": "media-production",
+      "sort_order": 2,
+      "status": "published",
+      "description": "We turn ideas into visual stories through photography, video and production designed around the character of each brand.",
+      "capabilities": [
+        "Photo Shooting",
+        "Video Shooting",
+        "Media Production",
+        "Visual Storytelling"
+      ],
+      "short_description": "We turn ideas into visual stories through photography, video and production designed around the character of each brand.",
+      "statement": "Stories with a camera",
+      "featured": true,
+      "cover_image": null,
+      "images": [],
+      "featured_project_slugs": [],
+      "seo_title": "Media Production · KITE Design Studio",
+      "seo_description": "We turn ideas into visual stories through photography, video and production designed around the character of each brand."
+    },
+    {
+      "name": "Web Development",
+      "slug": "web-development",
+      "sort_order": 3,
+      "status": "published",
+      "description": "We design and build digital experiences that translate a brand's identity into clear, engaging and functional web experiences.",
+      "capabilities": [
+        "Website UI",
+        "Website Development",
+        "Digital Interfaces"
+      ],
+      "short_description": "We design and build digital experiences that translate a brand's identity into clear, engaging and functional web experiences.",
+      "statement": "Identity, online",
+      "featured": true,
+      "cover_image": null,
+      "images": [],
+      "featured_project_slugs": [],
+      "seo_title": "Web Development · KITE Design Studio",
+      "seo_description": "We design and build digital experiences that translate a brand's identity into clear, engaging and functional web experiences."
+    },
+    {
+      "name": "Digital Content",
+      "slug": "digital-content",
+      "sort_order": 4,
+      "status": "published",
+      "description": "We create digital content that keeps brands visible, relevant and visually recognizable across modern platforms.",
+      "capabilities": [
+        "Social Media Assets",
+        "Graphic Design",
+        "Photo Shooting",
+        "Video Shooting",
+        "Motion Graphics",
+        "Website UI",
+        "Mobile App UI"
+      ],
+      "short_description": "We create digital content that keeps brands visible, relevant and visually recognizable across modern platforms.",
+      "statement": "Visible and recognizable",
+      "featured": true,
+      "cover_image": null,
+      "images": [],
+      "featured_project_slugs": [],
+      "seo_title": "Digital Content · KITE Design Studio",
+      "seo_description": "We create digital content that keeps brands visible, relevant and visually recognizable across modern platforms."
+    },
+    {
+      "name": "Marketing Materials",
+      "slug": "marketing-materials",
+      "sort_order": 5,
+      "status": "published",
+      "description": "We extend brand ideas into physical and campaign-ready materials that help businesses communicate consistently across real-world touchpoints.",
+      "capabilities": [
+        "Billboards",
+        "Flyers",
+        "Promotional Items",
+        "Giveaways",
+        "Presentations",
+        "Brochures",
+        "Exhibition Stands",
+        "Company Profiles",
+        "Marketing Collateral"
+      ],
+      "short_description": "We extend brand ideas into physical and campaign-ready materials that help businesses communicate consistently across real-world touchpoints",
+      "statement": "The brand in the world",
+      "featured": true,
+      "cover_image": null,
+      "images": [],
+      "featured_project_slugs": [],
+      "seo_title": "Marketing Materials · KITE Design Studio",
+      "seo_description": "We extend brand ideas into physical and campaign-ready materials that help businesses communicate consistently across real-world touchpoints."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Boulevard",
+      "slug": "boulevard",
+      "client": "Boulevard",
+      "industry": "real-estate",
+      "services": [
+        "branding",
+        "marketing-materials",
+        "digital-content"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials",
+        "Digital Content"
+      ],
+      "short_description": "A modern residential development positioned around elegance, comfort and community.",
+      "full_description": "Boulevard is a modern residential development positioned around elegance, comfort and community. KITE developed a visual direction focused on creating a serene and contemporary brand presence through curated visual communication and marketing materials.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "GV Investments",
+      "slug": "gv-investments",
+      "client": "GV Investments",
+      "industry": "real-estate",
+      "services": [
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Marketing Materials"
+      ],
+      "short_description": "An Egyptian real estate company focused on integrated communities and sustainable development.",
+      "full_description": "GV Investments is an Egyptian real estate company focused on integrated communities and sustainable development. KITE created marketing materials supporting GV's communication around its developments and investment proposition.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Evora Developments",
+      "slug": "evora-developments",
+      "client": "Evora Developments",
+      "industry": "real-estate",
+      "services": [
+        "digital-content"
+      ],
+      "service_labels": [
+        "Digital Content"
+      ],
+      "short_description": "Modern residential and commercial projects emphasizing quality locations, innovative design and lasting value.",
+      "full_description": "Evora Developments focuses on modern residential and commercial projects, emphasizing quality locations, innovative design and lasting value. KITE developed digital marketing content designed around the project's contemporary positioning.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Albaraidi Developments",
+      "slug": "albaraidi-developments",
+      "client": "Albaraidi Developments",
+      "industry": "real-estate",
+      "services": [
+        "digital-content",
+        "media-production"
+      ],
+      "service_labels": [
+        "Digital Content",
+        "Media Production"
+      ],
+      "short_description": "Residential and commercial communication centered around quality, design and value.",
+      "full_description": "Albaraidi Developments focuses on modern residential and commercial projects, with communication centered around quality, design and value. KITE created digital content and media-driven brand communication for the development.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Point Mark",
+      "slug": "point-mark",
+      "client": "Point Mark",
+      "industry": "real-estate",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials"
+      ],
+      "short_description": "A real estate consultancy focused on property investment, development strategy and market analysis.",
+      "full_description": "Point Mark is a real estate consultancy focused on property investment, development strategy and market analysis. KITE developed its brand communication and supporting marketing materials.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Tarboul",
+      "slug": "tarboul",
+      "client": "Tarboul Industrial City",
+      "industry": "real-estate",
+      "services": [
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Marketing Materials"
+      ],
+      "short_description": "A smart and green industrial hub combining industrial, logistics, residential and commercial zones.",
+      "full_description": "Tarboul Industrial City is presented as a large smart and green industrial hub combining industrial, logistics, residential and commercial zones. KITE developed marketing materials supporting the project's positioning and communication.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Chick Chup",
+      "slug": "chick-chup",
+      "client": "Chick Chup",
+      "industry": "food-beverage",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding",
+        "Packaging Design"
+      ],
+      "short_description": "A fast-food restaurant in Minya specializing in fried chicken dishes.",
+      "full_description": "Chick Chup is a fast-food restaurant in Minya specializing in fried chicken dishes. KITE developed its visual identity and extended the brand into packaging and food-focused visual applications.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Paccino's",
+      "slug": "paccinos",
+      "client": "Paccino's",
+      "industry": "food-beverage",
+      "services": [
+        "branding",
+        "media-production"
+      ],
+      "service_labels": [
+        "Branding",
+        "Packaging Design",
+        "Photo Shooting"
+      ],
+      "short_description": "A restaurant and café in Minya offering a diverse dining experience.",
+      "full_description": "Paccino's is a restaurant and café in Minya offering a diverse dining experience. KITE developed the brand identity, packaging applications and food photography used to build a cohesive visual presence.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Tallah",
+      "slug": "tallah",
+      "client": "Tallah",
+      "industry": "food-beverage",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding",
+        "Packaging Design"
+      ],
+      "short_description": "A restaurant-café in Minya known for its Nile-side atmosphere.",
+      "full_description": "Tallah is a restaurant-café in Minya known for its Nile-side atmosphere and distinctive dining experience. KITE developed its identity and extended the brand across menus, packaging, cups, napkins and other customer-facing touchpoints.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Trevi",
+      "slug": "trevi",
+      "client": "Trevi Café & Restaurant",
+      "industry": "food-beverage",
+      "services": [
+        "branding",
+        "media-production",
+        "digital-content"
+      ],
+      "service_labels": [
+        "Branding",
+        "Photo & Video Production",
+        "Digital Content"
+      ],
+      "short_description": "A dining destination in Minya offering a varied menu in a welcoming environment.",
+      "full_description": "Trevi Café & Restaurant is a dining destination in Minya offering a varied menu in a welcoming environment. KITE worked across branding, visual production and digital marketing content to create a consistent presence across physical and digital touchpoints.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Layla's House",
+      "slug": "laylas-house",
+      "client": "Layla's House",
+      "industry": "hospitality",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "A restaurant and café in Minya with a Nile view.",
+      "full_description": "Layla's House is a restaurant and café in Minya with a Nile view, offering a cozy atmosphere and a varied menu. KITE developed its brand identity around the experience and character of the venue.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Greek",
+      "slug": "greek",
+      "client": "Greek",
+      "industry": "hospitality",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials"
+      ],
+      "short_description": "A Mediterranean-inspired café designed around the atmosphere of Santorini and Greece.",
+      "full_description": "Greek is a Mediterranean-inspired café designed around the visual atmosphere and culture of Santorini and Greece. KITE developed its identity and supporting marketing materials to create a recognizable café experience.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Les Clés",
+      "slug": "les-cles",
+      "client": "Les Clés",
+      "industry": "hospitality",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "A hospitality brand built around elegance, refined service and sophisticated interiors.",
+      "full_description": "Les Clés is a hospitality brand built around elegance, refined service and sophisticated interiors. KITE developed a premium identity and extended it across the guest-facing brand experience.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Marom Hotels",
+      "slug": "marom-hotels",
+      "client": "Marom Hotels",
+      "industry": "hospitality",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Branding",
+        "Hotel Kit Design"
+      ],
+      "short_description": "A modern beachfront hospitality brand in Port Said.",
+      "full_description": "Marom Hotels is a modern beachfront hospitality brand in Port Said. KITE developed the brand identity and hotel kit applications, extending the visual system into guest-facing materials and hospitality touchpoints.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Shakal Group",
+      "slug": "shakal-group",
+      "client": "Shakal Group",
+      "industry": "hospitality",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "A growing hospitality group operating restaurants and cafés.",
+      "full_description": "Shakal Group is a growing hospitality group operating restaurants and cafés. KITE developed its brand identity and visual applications around a welcoming hospitality experience.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Voyage",
+      "slug": "voyage",
+      "client": "Voyage",
+      "industry": "hospitality",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "A luxury hospitality brand inspired by Egyptian heritage and modern elegance.",
+      "full_description": "Voyage is a luxury hospitality brand inspired by Egyptian heritage and modern elegance. KITE developed a visual identity designed around discovery, sophistication and timeless hospitality.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "W.C.O — Women's Complaints Office",
+      "slug": "wco-womens-complaints-office",
+      "client": "Women's Complaints Office",
+      "industry": "human-development",
+      "services": [
+        "digital-content",
+        "media-production"
+      ],
+      "service_labels": [
+        "Social Media Content",
+        "Media Production"
+      ],
+      "short_description": "Part of the National Council for Women in Egypt, supporting women with advice and access to protection.",
+      "full_description": "The Women's Complaints Office is part of the National Council for Women in Egypt and provides women with support by listening to their concerns, offering legal advice and helping them access protection and assistance. KITE created social media content and media production supporting awareness and communication.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "CARE Egypt",
+      "slug": "care-egypt",
+      "client": "CARE Egypt",
+      "industry": "human-development",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Indoor Branding",
+        "Giveaways",
+        "Book Design"
+      ],
+      "short_description": "A nonprofit working to fight poverty and support development across Egypt.",
+      "full_description": "CARE Egypt is a nonprofit organization working to fight poverty and support development across Egypt, with a strong focus on empowering women and girls. KITE created indoor branding, giveaways and book designs supporting its communication.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Tanweer",
+      "slug": "tanweer",
+      "client": "Tanweer",
+      "industry": "human-development",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "A center providing psychological and educational consultation for children, adolescents and families.",
+      "full_description": "Tanweer is a specialized center providing psychological and educational consultation services for children, adolescents and families. KITE developed the visual identity around a supportive, child-friendly and educational positioning.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Cinematy",
+      "slug": "cinematy",
+      "client": "Cinematy",
+      "industry": "entertainment",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials"
+      ],
+      "short_description": "A modern cinema within the Port Said Cultural Entertainment Center.",
+      "full_description": "Cinematy is a modern cinema located within the Port Said Cultural Entertainment Center, offering a high-quality movie experience with advanced projection and sound systems. KITE developed the brand identity and marketing materials.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Gamers Without Borders — GWB",
+      "slug": "gamers-without-borders",
+      "client": "Gamers Without Borders",
+      "industry": "entertainment",
+      "services": [
+        "digital-content"
+      ],
+      "service_labels": [
+        "Digital Content"
+      ],
+      "short_description": "A global charitable esports event organized by the Saudi Esports Federation.",
+      "full_description": "Gamers Without Borders is a global charitable esports event organized by the Saudi Esports Federation. KITE created digital marketing content supporting the event's communication and online presence.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Performance Fitness Club",
+      "slug": "performance-fitness-club",
+      "client": "Performance Fitness Club",
+      "industry": "entertainment",
+      "services": [
+        "digital-content"
+      ],
+      "service_labels": [
+        "Digital Content"
+      ],
+      "short_description": "A fitness center focused on health, wellness and a supportive community.",
+      "full_description": "Performance Fitness Club is a fitness center focused on helping people improve their health and wellness through expert guidance, modern equipment and a supportive community. KITE developed digital marketing content for the brand.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Global Gala",
+      "slug": "global-gala",
+      "client": "Global Gala",
+      "industry": "entertainment",
+      "services": [
+        "marketing-materials",
+        "digital-content"
+      ],
+      "service_labels": [
+        "Marketing Materials",
+        "Digital Content"
+      ],
+      "short_description": "An events brand focused on luxury experiences, themed events and cultural celebrations.",
+      "full_description": "Global Gala is an events and entertainment brand focused on luxury experiences, themed events and cultural celebrations. KITE created marketing materials and digital content supporting the brand's event communication.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Akam Engineering",
+      "slug": "akam-engineering",
+      "client": "Akam Engineering",
+      "industry": "factories",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "Engineering solutions across industries, with a focus on quality and professional standards.",
+      "full_description": "Akam Engineering provides engineering solutions and services across different industries, with a focus on quality, technology and professional standards. KITE developed its visual identity and brand applications.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Kolo Fresh",
+      "slug": "kolo-fresh",
+      "client": "Kolo Fresh",
+      "industry": "factories",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials"
+      ],
+      "short_description": "A YouTube program combining gaming and cooking through entertaining challenges.",
+      "full_description": "Kolo Fresh is a YouTube program combining gaming and cooking concepts through entertaining challenges and live competitions. KITE developed the show's branding and supporting marketing materials.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Gulf Arabian Company — GAC",
+      "slug": "gulf-arabian-company",
+      "client": "Gulf Arabian Company",
+      "industry": "factories",
+      "services": [
+        "branding",
+        "marketing-materials"
+      ],
+      "service_labels": [
+        "Branding",
+        "Packaging Design",
+        "Marketing Materials"
+      ],
+      "short_description": "Founded in 1997, a producer of cooking oils and ghee.",
+      "full_description": "Gulf Arabian Company was founded in 1997 and grew from importing and distributing cooking oils into a major producer of oils and ghee. KITE developed branding, packaging and marketing materials supporting the company's product portfolio.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "OVIRA",
+      "slug": "ovira",
+      "client": "OVIRA",
+      "industry": "other",
+      "services": [
+        "branding"
+      ],
+      "service_labels": [
+        "Branding"
+      ],
+      "short_description": "A women's fashion brand built around a modern, minimal and versatile visual direction.",
+      "full_description": "OVIRA is a women's fashion brand built around a modern, minimal and versatile visual direction. KITE developed the brand identity and visual system.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Kandil Building Systems — KBS",
+      "slug": "kandil-building-systems",
+      "client": "Kandil Building Systems",
+      "industry": "factories",
+      "services": [
+        "branding",
+        "web-development"
+      ],
+      "service_labels": [
+        "Branding",
+        "Web Development"
+      ],
+      "short_description": "A Kandil Group subsidiary operating in steel and construction systems.",
+      "full_description": "Kandil Building Systems is a subsidiary of the Kandil Group operating in steel and construction systems. KITE developed the brand identity and website experience supporting the company's positioning and services.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "external_url_status": "CONTENT_REQUIRED",
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "Volcano Technology Avenue",
+      "slug": "volcano-technology-avenue",
+      "client": "Volcano Technology Avenue",
+      "industry": "other",
+      "services": [
+        "branding",
+        "marketing-materials",
+        "web-development"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials",
+        "Web Development"
+      ],
+      "short_description": "A technology-focused retail and event space in New Cairo.",
+      "full_description": "Volcano Technology Avenue is a technology-focused retail and event space in New Cairo serving technology enthusiasts and providing products and services from different partners. KITE developed the branding, marketing materials and website experience.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "external_url_status": "CONTENT_REQUIRED",
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    },
+    {
+      "title": "EG ART Contracting & Decoration",
+      "slug": "eg-art-contracting-decoration",
+      "client": "EG ART Contracting & Decoration",
+      "industry": "factories",
+      "services": [
+        "branding",
+        "marketing-materials",
+        "media-production",
+        "digital-content"
+      ],
+      "service_labels": [
+        "Branding",
+        "Marketing Materials",
+        "Media Production",
+        "Digital Content"
+      ],
+      "short_description": "Construction, decoration and finishing across residential, commercial and industrial work.",
+      "full_description": "EG ART for Contracting and Decoration is a company working across construction, decoration and finishing projects, including residential, commercial and industrial work. KITE developed branding, marketing materials, media production and digital marketing content.",
+      "featured": false,
+      "status": "draft",
+      "external_url": null,
+      "year": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "credits": null,
+      "blocks": [],
+      "gallery": [],
+      "cover_image": null,
+      "hero_image": null,
+      "og_image": null,
+      "sort_order": 0,
+      "is_case_study": false
+    }
+  ],
+  "clients": [
+    {
+      "id": "boulevard",
+      "name": "Boulevard",
+      "slug": "boulevard",
+      "logo": null,
+      "website_url": null,
+      "industry": "real-estate",
+      "sort_order": 1,
+      "status": "published"
+    },
+    {
+      "id": "gv-investments",
+      "name": "GV Investments",
+      "slug": "gv-investments",
+      "logo": null,
+      "website_url": null,
+      "industry": "real-estate",
+      "sort_order": 2,
+      "status": "published"
+    },
+    {
+      "id": "evora-developments",
+      "name": "Evora Developments",
+      "slug": "evora-developments",
+      "logo": null,
+      "website_url": null,
+      "industry": "real-estate",
+      "sort_order": 3,
+      "status": "published"
+    },
+    {
+      "id": "albaraidi-developments",
+      "name": "Albaraidi Developments",
+      "slug": "albaraidi-developments",
+      "logo": null,
+      "website_url": null,
+      "industry": "real-estate",
+      "sort_order": 4,
+      "status": "published"
+    },
+    {
+      "id": "point-mark",
+      "name": "Point Mark",
+      "slug": "point-mark",
+      "logo": null,
+      "website_url": null,
+      "industry": "real-estate",
+      "sort_order": 5,
+      "status": "published"
+    },
+    {
+      "id": "tarboul-industrial-city",
+      "name": "Tarboul Industrial City",
+      "slug": "tarboul-industrial-city",
+      "logo": null,
+      "website_url": null,
+      "industry": "real-estate",
+      "sort_order": 6,
+      "status": "published"
+    },
+    {
+      "id": "chick-chup",
+      "name": "Chick Chup",
+      "slug": "chick-chup",
+      "logo": null,
+      "website_url": null,
+      "industry": "food-beverage",
+      "sort_order": 7,
+      "status": "published"
+    },
+    {
+      "id": "paccinos",
+      "name": "Paccino's",
+      "slug": "paccinos",
+      "logo": null,
+      "website_url": null,
+      "industry": "food-beverage",
+      "sort_order": 8,
+      "status": "published"
+    },
+    {
+      "id": "tallah",
+      "name": "Tallah",
+      "slug": "tallah",
+      "logo": null,
+      "website_url": null,
+      "industry": "food-beverage",
+      "sort_order": 9,
+      "status": "published"
+    },
+    {
+      "id": "trevi-café-and-restaurant",
+      "name": "Trevi Café & Restaurant",
+      "slug": "trevi-café-and-restaurant",
+      "logo": null,
+      "website_url": null,
+      "industry": "food-beverage",
+      "sort_order": 10,
+      "status": "published"
+    },
+    {
+      "id": "laylas-house",
+      "name": "Layla's House",
+      "slug": "laylas-house",
+      "logo": null,
+      "website_url": null,
+      "industry": "hospitality",
+      "sort_order": 11,
+      "status": "published"
+    },
+    {
+      "id": "greek",
+      "name": "Greek",
+      "slug": "greek",
+      "logo": null,
+      "website_url": null,
+      "industry": "hospitality",
+      "sort_order": 12,
+      "status": "published"
+    },
+    {
+      "id": "les-clés",
+      "name": "Les Clés",
+      "slug": "les-clés",
+      "logo": null,
+      "website_url": null,
+      "industry": "hospitality",
+      "sort_order": 13,
+      "status": "published"
+    },
+    {
+      "id": "marom-hotels",
+      "name": "Marom Hotels",
+      "slug": "marom-hotels",
+      "logo": null,
+      "website_url": null,
+      "industry": "hospitality",
+      "sort_order": 14,
+      "status": "published"
+    },
+    {
+      "id": "shakal-group",
+      "name": "Shakal Group",
+      "slug": "shakal-group",
+      "logo": null,
+      "website_url": null,
+      "industry": "hospitality",
+      "sort_order": 15,
+      "status": "published"
+    },
+    {
+      "id": "voyage",
+      "name": "Voyage",
+      "slug": "voyage",
+      "logo": null,
+      "website_url": null,
+      "industry": "hospitality",
+      "sort_order": 16,
+      "status": "published"
+    },
+    {
+      "id": "womens-complaints-office",
+      "name": "Women's Complaints Office",
+      "slug": "womens-complaints-office",
+      "logo": null,
+      "website_url": null,
+      "industry": "human-development",
+      "sort_order": 17,
+      "status": "published"
+    },
+    {
+      "id": "care-egypt",
+      "name": "CARE Egypt",
+      "slug": "care-egypt",
+      "logo": null,
+      "website_url": null,
+      "industry": "human-development",
+      "sort_order": 18,
+      "status": "published"
+    },
+    {
+      "id": "tanweer",
+      "name": "Tanweer",
+      "slug": "tanweer",
+      "logo": null,
+      "website_url": null,
+      "industry": "human-development",
+      "sort_order": 19,
+      "status": "published"
+    },
+    {
+      "id": "cinematy",
+      "name": "Cinematy",
+      "slug": "cinematy",
+      "logo": null,
+      "website_url": null,
+      "industry": "entertainment",
+      "sort_order": 20,
+      "status": "published"
+    },
+    {
+      "id": "gamers-without-borders",
+      "name": "Gamers Without Borders",
+      "slug": "gamers-without-borders",
+      "logo": null,
+      "website_url": null,
+      "industry": "entertainment",
+      "sort_order": 21,
+      "status": "published"
+    },
+    {
+      "id": "performance-fitness-club",
+      "name": "Performance Fitness Club",
+      "slug": "performance-fitness-club",
+      "logo": null,
+      "website_url": null,
+      "industry": "entertainment",
+      "sort_order": 22,
+      "status": "published"
+    },
+    {
+      "id": "global-gala",
+      "name": "Global Gala",
+      "slug": "global-gala",
+      "logo": null,
+      "website_url": null,
+      "industry": "entertainment",
+      "sort_order": 23,
+      "status": "published"
+    },
+    {
+      "id": "akam-engineering",
+      "name": "Akam Engineering",
+      "slug": "akam-engineering",
+      "logo": null,
+      "website_url": null,
+      "industry": "factories",
+      "sort_order": 24,
+      "status": "published"
+    },
+    {
+      "id": "kolo-fresh",
+      "name": "Kolo Fresh",
+      "slug": "kolo-fresh",
+      "logo": null,
+      "website_url": null,
+      "industry": "factories",
+      "sort_order": 25,
+      "status": "published"
+    },
+    {
+      "id": "gulf-arabian-company",
+      "name": "Gulf Arabian Company",
+      "slug": "gulf-arabian-company",
+      "logo": null,
+      "website_url": null,
+      "industry": "factories",
+      "sort_order": 26,
+      "status": "published"
+    },
+    {
+      "id": "ovira",
+      "name": "OVIRA",
+      "slug": "ovira",
+      "logo": null,
+      "website_url": null,
+      "industry": "other",
+      "sort_order": 27,
+      "status": "published"
+    },
+    {
+      "id": "kandil-building-systems",
+      "name": "Kandil Building Systems",
+      "slug": "kandil-building-systems",
+      "logo": null,
+      "website_url": null,
+      "industry": "factories",
+      "sort_order": 28,
+      "status": "published"
+    },
+    {
+      "id": "volcano-technology-avenue",
+      "name": "Volcano Technology Avenue",
+      "slug": "volcano-technology-avenue",
+      "logo": null,
+      "website_url": null,
+      "industry": "other",
+      "sort_order": 29,
+      "status": "published"
+    },
+    {
+      "id": "eg-art-contracting-and-decoration",
+      "name": "EG ART Contracting & Decoration",
+      "slug": "eg-art-contracting-and-decoration",
+      "logo": null,
+      "website_url": null,
+      "industry": "factories",
+      "sort_order": 30,
+      "status": "published"
+    }
+  ],
+  "case_studies": [],
+  "media": [],
+  "homepage": {
+    "hero": {
+      "headline": "Design that moves brands forward.",
+      "supporting": "Kite is a creative studio building bold identities, digital products, and visual systems that actually perform.",
+      "cta_label": "View work",
+      "cta_url": "#latest",
+      "secondary_cta_label": "Start a project",
+      "secondary_cta_url": "/contact-us",
+      "media": null
+    },
+    "services_intro": {
+      "title": "Services",
+      "statement": "Five crafts under one studio.",
+      "supporting": "Branding, media production, web, digital content, and marketing materials."
+    },
+    "about": {
+      "title": "About Us",
+      "main_statement": "Who is KITE?",
+      "description": "KITE began in 2022 with two Kiters and a simple ambition: to create work worth flying for. What started as a small creative team grew into a squad of 15, brought together by a shared love for ideas, design, storytelling and the challenge of making brands stand out.",
+      "mission": "We create visual communication that looks distinctive, communicates clearly, and gives brands a voice people can remember.",
+      "vision": "A sky full of kites. A creative environment where every brand can have its own distinct shape, color and direction.",
+      "how_we_work": "We don't fit projects into predetermined processes. We create bespoke teams around each project.",
+      "cta_label": null,
+      "cta_url": null,
+      "media": null
+    },
+    "cta": {
+      "headline": "Let's work together",
+      "supporting": "Contact · Start a project",
+      "cta_label": "Start a project",
+      "cta_url": "/contact-us"
+    },
+    "featured_project_slugs": [],
+    "featured_case_study_slugs": [],
+    "featured_client_slugs": [
+      "boulevard",
+      "gv-investments",
+      "evora-developments",
+      "albaraidi-developments",
+      "point-mark",
+      "tarboul-industrial-city",
+      "chick-chup",
+      "paccinos",
+      "tallah",
+      "trevi-café-and-restaurant",
+      "laylas-house",
+      "greek",
+      "les-clés",
+      "marom-hotels",
+      "shakal-group",
+      "voyage",
+      "womens-complaints-office",
+      "care-egypt",
+      "tanweer",
+      "cinematy",
+      "gamers-without-borders",
+      "performance-fitness-club",
+      "global-gala",
+      "akam-engineering",
+      "kolo-fresh",
+      "gulf-arabian-company",
+      "ovira",
+      "kandil-building-systems",
+      "volcano-technology-avenue",
+      "eg-art-contracting-and-decoration"
+    ]
+  },
+  "image_specs": {
+    "project_cover": {
+      "ratio": "4:3",
+      "suggested": "1600×1200",
+      "notes": "Used on portfolio tiles and latest work."
+    },
+    "project_gallery": {
+      "ratio": "3:2",
+      "suggested": "1800×1200",
+      "notes": "Project gallery stills."
+    },
+    "case_study_hero": {
+      "ratio": "16:9",
+      "suggested": "1920×1080",
+      "notes": "Case study header."
+    },
+    "service_image": {
+      "ratio": "4:3",
+      "suggested": "1600×1200",
+      "notes": "Service slide artwork."
+    },
+    "client_logo": {
+      "ratio": "flexible",
+      "suggested": "transparent PNG, display ~160×64",
+      "notes": "No fake marks. Transparent background."
+    }
+  }
+}

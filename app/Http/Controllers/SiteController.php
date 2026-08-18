@@ -8,7 +8,37 @@ class SiteController extends Controller
 {
     public function home(): Response
     {
-        return $this->page('home', 'MWG Advertising Agency & Creative Agency Egypt');
+        return $this->page('home', 'KITE Design Studio — Aim High. Fly Higher.');
+    }
+
+    public function services(): Response
+    {
+        return $this->page('services', 'Services · KITE Design Studio');
+    }
+
+    public function portfolio(): Response
+    {
+        return $this->page('portfolio', 'Portfolio · KITE Design Studio');
+    }
+
+    public function caseStudies(): Response
+    {
+        return $this->page('case-studies', 'Case Studies · KITE Design Studio');
+    }
+
+    public function caseStudy(string $slug): Response
+    {
+        return app(\App\Http\Controllers\Website\PageController::class)->caseStudy($slug);
+    }
+
+    public function project(string $slug): Response
+    {
+        return app(\App\Http\Controllers\Website\PageController::class)->project($slug);
+    }
+
+    public function contact(): Response
+    {
+        return $this->page('contact', 'Contact · KITE Design Studio');
     }
 
     public function view(string $name, string $title): Response
@@ -68,8 +98,8 @@ HTML;
     {
         $html = (string) file_get_contents(resource_path('site/layout.html'));
         $html = str_replace(
-            ['{{title}}', '{{description}}', '{{headerClass}}', '{{content}}'],
-            [$title, 'MWG Advertising Agency & Creative Agency Egypt', $headerClass, $content],
+            ['{{title}}', '{{description}}', '{{headerClass}}', '{{bodyClass}}', '{{extraHead}}', '{{extraScript}}', '{{content}}', '{{footerTag}}', '{{footerWeb}}', '{{footerPhone}}', '{{footerSocials}}'],
+            [$title, 'KITE Design Studio', $headerClass, '', '', '', $content, 'Aim high. Fly higher.', 'www.kiteagency-eg.com', '+20 127 551 0701', ''],
             $html
         );
 

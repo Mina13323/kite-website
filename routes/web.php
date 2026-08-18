@@ -1,41 +1,31 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Studio\AuthController;
+use App\Http\Controllers\Studio\DashboardController;
+use App\Http\Controllers\Studio\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'home']);
 Route::get('/home', [SiteController::class, 'home']);
 Route::get('/home/about', [SiteController::class, 'home']);
-
-Route::get('/big-bang', fn () => app(SiteController::class)->view('big-bang', 'Big Bang · MWG'));
-Route::get('/services', fn () => app(SiteController::class)->view('services', 'Services · MWG'));
-Route::get('/portfolio', fn () => app(SiteController::class)->view('portfolio', 'Portfolio · MWG'));
-Route::get('/case-studies', fn () => app(SiteController::class)->view('case-studies', 'Case Studies · MWG'));
-Route::get('/blog', fn () => app(SiteController::class)->view('blog', 'The Big Bang Log · MWG'));
-Route::get('/contact-us', fn () => app(SiteController::class)->view('contact', 'Contact Us · MWG'));
-
+Route::get('/services', [SiteController::class, 'services']);
 Route::get('/services/{slug}', [SiteController::class, 'service']);
+Route::get('/portfolio', [SiteController::class, 'portfolio']);
+Route::get('/case-studies', [SiteController::class, 'caseStudies']);
+Route::get('/case-study/{slug}', [SiteController::class, 'caseStudy']);
+Route::get('/project/{slug}', [SiteController::class, 'project']);
+Route::get('/contact-us', [SiteController::class, 'contact']);
 
-Route::get('/project/{slug}', function (string $slug) {
-    return app(SiteController::class)->fallback(
-        str_replace('-', ' ', $slug),
-        'Project detail — customize this copy in resources/site/content.js and the Node preview, or extend SiteController.',
-        '/assets/images/hero.jpg'
-    );
-});
+Route::get('/studio/login', [AuthController::class, 'create'])->name('studio.login');
+Route::post('/studio/login', [AuthController::class, 'store'])->name('studio.login.store');
 
-Route::get('/case-study/{slug}', function (string $slug) {
-    return app(SiteController::class)->fallback(
-        str_replace('-', ' ', $slug),
-        'Case study — swap this for your own write-up after the clone.',
-        '/assets/images/projects/naguib-selim.jpg'
-    );
-});
-
-Route::get('/post/{slug}', function (string $slug) {
-    return app(SiteController::class)->fallback(
-        str_replace('-', ' ', $slug),
-        'Blog article starter. Replace with your own posts when you rebrand the site.',
-        '/assets/images/blog/01.jpg'
-    );
+Route::middleware(['auth', 'studio'])->prefix('studio')->name('studio.')->group(function () {
+    Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+    Route::get('/', DashboardController::class)->name('dashboard');
+    Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::post('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::post('/projects/{project}/upload', [ProjectController::class, 'upload'])->name('projects.upload');
+    Route::post('/projects/{project}/media', [ProjectController::class, 'removeMedia'])->name('projects.media.remove');
 });
