@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Studio\ContentController;
 use App\Http\Controllers\Studio\StudioGatewayController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,39 @@ Route::get('/blog', fn () => redirect('/home'));
 Route::get('/post/{slug}', fn () => redirect('/home'));
 
 Route::get('/studio/login', [StudioGatewayController::class, 'login'])->name('studio.login');
-Route::post('/studio/login', [StudioGatewayController::class, 'authenticate'])->name('studio.login.store');
-Route::post('/studio/logout', [StudioGatewayController::class, 'logout'])->name('studio.logout');
-Route::get('/studio', [StudioGatewayController::class, 'dashboard'])->name('studio.dashboard');
-Route::any('/studio/{path}', [StudioGatewayController::class, 'unavailable'])->where('path', '.*');
+Route::post('/studio/login', [StudioGatewayController::class, 'authenticate'])->name('studio.login.store')->middleware('throttle:10,1');
+Route::middleware('studio.session')->prefix('studio')->name('studio.')->group(function () {
+    Route::post('/logout', [StudioGatewayController::class, 'logout'])->name('logout');
+    Route::get('/', [ContentController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/homepage', [ContentController::class, 'homepage'])->name('homepage');
+    Route::post('/homepage', [ContentController::class, 'saveHomepage'])->name('homepage.save');
+
+    Route::get('/projects', [ContentController::class, 'projects'])->name('projects');
+    Route::get('/projects/new', [ContentController::class, 'project'])->name('projects.new');
+    Route::post('/projects/new', [ContentController::class, 'saveProject'])->name('projects.create');
+    Route::get('/projects/{slug}', [ContentController::class, 'project'])->name('projects.edit');
+    Route::post('/projects/{slug}', [ContentController::class, 'saveProject'])->name('projects.update');
+    Route::post('/projects/{slug}/delete', [ContentController::class, 'deleteProject'])->name('projects.delete');
+
+    Route::get('/services', [ContentController::class, 'services'])->name('services');
+    Route::post('/services/reorder', [ContentController::class, 'reorderServices'])->name('services.reorder');
+    Route::get('/services/new', [ContentController::class, 'service'])->name('services.new');
+    Route::post('/services/new', [ContentController::class, 'saveService'])->name('services.create');
+    Route::get('/services/{slug}', [ContentController::class, 'service'])->name('services.edit');
+    Route::post('/services/{slug}', [ContentController::class, 'saveService'])->name('services.update');
+
+    Route::get('/clients', [ContentController::class, 'clients'])->name('clients');
+    Route::get('/clients/new', [ContentController::class, 'client'])->name('clients.new');
+    Route::post('/clients/new', [ContentController::class, 'saveClient'])->name('clients.create');
+    Route::get('/clients/{slug}', [ContentController::class, 'client'])->name('clients.edit');
+    Route::post('/clients/{slug}', [ContentController::class, 'saveClient'])->name('clients.update');
+    Route::post('/clients/{slug}/delete', [ContentController::class, 'deleteClient'])->name('clients.delete');
+
+    Route::get('/media', [ContentController::class, 'media'])->name('media');
+    Route::post('/media', [ContentController::class, 'uploadMedia'])->name('media.upload');
+    Route::post('/media/{id}/delete', [ContentController::class, 'deleteMedia'])->name('media.delete');
+
+    Route::get('/contact', [ContentController::class, 'contact'])->name('contact');
+    Route::post('/contact', [ContentController::class, 'saveContact'])->name('contact.save');
+});

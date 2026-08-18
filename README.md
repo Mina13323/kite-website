@@ -40,7 +40,7 @@ php artisan key:generate
 
 Public routes read `storage/app/website/cms.json` (seeded from `database/data/website-seed.json` if missing). They do **not** use any MWG service catalog.
 
-The full Creative Project Builder is implemented on the Node process. Laravel `/studio` is a login + dashboard gateway over the same JSON store.
+Laravel `/studio` is the complete Hostinger-ready editor for projects, homepage content, services, clients, media uploads, and contact/company details. It uses file sessions by default and writes directly to the same JSON store as the public PHP site. The Node preview process also exposes its original Studio editor against that shared store.
 
 Optional database seeders remain for a future Eloquent path:
 
@@ -59,7 +59,8 @@ php artisan db:seed --class=WebsiteContentSeeder
 | CMS store | `database/data/cms-store.cjs` and `app/Support/Website/CmsStore.php` |
 | Seed content | `database/data/website-seed.json` |
 | Look and feel | `public/assets/css/site.css` |
-| Studio CMS UI | `resources/studio/` via `server.cjs` |
+| Hostinger PHP Studio | `app/Http/Controllers/Studio/ContentController.php` and `resources/views/studio/` |
+| Node preview Studio | `resources/studio/` via `server.cjs` |
 
 ## Verify
 

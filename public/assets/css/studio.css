@@ -41,6 +41,7 @@ button { cursor: pointer; }
 .studio-side a:hover, .studio-side a.is-on { background: rgba(127,196,229,.2); color: var(--text); }
 .studio-main { padding: 32px 36px 80px; }
 .studio-main h1 { font-size: 34px; font-weight: 500; letter-spacing: -.03em; }
+.studio-main h2 { margin: 28px 0 12px; font-size: 20px; font-weight: 500; }
 .lede { color: var(--muted); margin: 8px 0 24px; max-width: 62ch; }
 
 .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0 28px; }

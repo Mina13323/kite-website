@@ -57,7 +57,57 @@ class CmsStore
         if (! is_dir($dir)) {
             mkdir($dir, 0755, true);
         }
-        file_put_contents(self::storePath(), json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+        $temporary = self::storePath().'.tmp-'.bin2hex(random_bytes(4));
+        file_put_contents($temporary, $json, LOCK_EX);
+        rename($temporary, self::storePath());
+    }
+
+    /** Apply one CMS change while holding an exclusive lock. */
+    public static function update(callable $callback): mixed
+    {
+        $dir = dirname(self::storePath());
+        if (! is_dir($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        $lock = fopen(self::storePath().'.lock', 'c+');
+        if (! $lock || ! flock($lock, LOCK_EX)) {
+            throw new \RuntimeException('Unable to lock the website content store.');
+        }
+
+        try {
+            $data = self::read();
+            $result = $callback($data);
+            self::write($data);
+
+            return $result;
+        } finally {
+            flock($lock, LOCK_UN);
+            fclose($lock);
+        }
+    }
+
+    public static function slugify(string $value): string
+    {
+        $slug = strtolower(trim($value));
+        $slug = str_replace(['&', '’', "'"], ['and', '', ''], $slug);
+        $slug = trim((string) preg_replace('/[^a-z0-9]+/', '-', $slug), '-');
+
+        return substr($slug ?: 'item-'.time(), 0, 80);
+    }
+
+    public static function uniqueSlug(array $items, string $value, ?string $currentId = null): string
+    {
+        $base = self::slugify($value);
+        $slug = $base;
+        $number = 2;
+        while (array_filter($items, fn ($item) => ($item['slug'] ?? '') === $slug && ($item['id'] ?? $item['slug'] ?? '') !== $currentId)) {
+            $slug = $base.'-'.$number++;
+        }
+
+        return $slug;
     }
 
     public static function published(array $list): array

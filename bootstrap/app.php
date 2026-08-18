@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'studio' => \App\Http\Middleware\EnsureStudioAccess::class,
+            'studio.session' => \App\Http\Middleware\EnsureStudioSession::class,
         ]);
         $middleware->validateCsrfTokens(except: [
             'contact-us',
