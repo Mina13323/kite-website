@@ -120,7 +120,7 @@ function homePage() {
     description: hero.supporting,
     bodyClass: 'home-intro',
     extraHead: '<link rel="stylesheet" href="/assets/css/kite-intro.css?v=kite-sky-7">',
-    extraScript: '<script src="/assets/js/kite-intro.js?v=kite-sky-7"></script><script src="/assets/js/kite-services.js?v=kite-sky-7"></script>',
+    extraScript: '<script src="/assets/js/kite-intro.js?v=kite-sky-9"></script><script src="/assets/js/kite-services.js?v=kite-sky-9"></script>',
   });
 }
 

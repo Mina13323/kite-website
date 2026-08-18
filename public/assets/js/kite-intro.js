@@ -126,6 +126,4 @@
       document.getElementById('latest')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
-
-  window.onbeforeunload = () => window.scrollTo(0, 0);
 })();
