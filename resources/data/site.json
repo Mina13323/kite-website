@@ -1,0 +1,1311 @@
+{
+  "brand": {
+    "name": "MWG",
+    "fullName": "MWG Advertising Agency",
+    "tagline": "Your Advertising Agency.",
+    "logo": "https://www.mwg.co.com/assets/logo1.png",
+    "origin": "https://www.mwg.co.com"
+  },
+  "social": [
+    {
+      "name": "behance",
+      "url": "https://www.behance.net/mwgadvertising"
+    },
+    {
+      "name": "instagram",
+      "url": "https://instagram.com/mwg.advertising?igshid=j3p2j03ttz4o"
+    },
+    {
+      "name": "facebook",
+      "url": "https://www.facebook.com/MateWayGroup/"
+    },
+    {
+      "name": "youtube",
+      "url": "https://www.youtube.com/user/MateWayGroup"
+    }
+  ],
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/home"
+    },
+    {
+      "label": "Big Bang",
+      "href": "/big-bang"
+    },
+    {
+      "label": "Services",
+      "href": "/services",
+      "children": [
+        {
+          "label": "Digital Marketing",
+          "href": "/services/digital-marketing",
+          "children": [
+            {
+              "label": "- Content Creation",
+              "href": "/services/content-creation"
+            },
+            {
+              "label": "- Social Media",
+              "href": "/services/social-media"
+            },
+            {
+              "label": "- SEO",
+              "href": "/services/seo"
+            },
+            {
+              "label": "- Media Buying",
+              "href": "/services/media-buying"
+            }
+          ]
+        },
+        {
+          "label": "Graphic Design",
+          "href": "/services/graphic-design"
+        },
+        {
+          "label": "Web & Mobile Apps",
+          "href": "/services/web-mobile-apps"
+        },
+        {
+          "label": "BTL",
+          "href": "/services/btl"
+        },
+        {
+          "label": "Media Production",
+          "href": "/services/media-production"
+        }
+      ]
+    },
+    {
+      "label": "Portfolio",
+      "href": "/portfolio"
+    },
+    {
+      "label": "Case Studies",
+      "href": "/case-studies"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact-us"
+    }
+  ],
+  "disciplines": [
+    "PRODUCTION",
+    "GRAPHIC DESIGN",
+    "DIGITAL",
+    "BTL",
+    "WEB & MOBILE APPS"
+  ],
+  "serviceOptions": [
+    "Digital Services",
+    "Web/App Development",
+    "Media Production",
+    "On-Ground Activations",
+    "Brand Identity Development",
+    "Visualisation",
+    "Generic Inquiry"
+  ],
+  "offices": [
+    {
+      "country": "Egypt",
+      "address": "Nasr City, Ramo Buildings, Cairo, Egypt.",
+      "lines": [
+        "Cell: +201000050126",
+        "Landline: 02 2305 5056"
+      ]
+    },
+    {
+      "country": "UAE",
+      "address": "Design District Building-5 wing A Office-A105 Dubai, UAE",
+      "lines": [
+        "Cell: +971 58 660 6426"
+      ]
+    },
+    {
+      "country": "USA",
+      "address": "Hollywood blvd, Los Angeles, California, USA.",
+      "lines": [
+        "Cell: +1 818-405-2158"
+      ]
+    }
+  ],
+  "home": {
+    "title": "MWG Advertising Agency & Creative Agency Egypt",
+    "description": "MWG is a 360 advertising agency and creative agency in Egypt delivering media production, digital marketing, graphic design, BTL and web & mobile apps.",
+    "heroPrefix": "We Are",
+    "heroBrand": "mwg",
+    "heroSuffix": "Your Advertising Agency.",
+    "intro": "Those who are able to tell stories are able to rule the world, and we consider ourselves masters at storytelling. After all, storytelling has always been the best way to communicate ideas, persuade others, get what you want, and possibly influence the world.",
+    "pillars": [
+      {
+        "title": "Art Direction",
+        "text": "More than 100 Commercial & Digital Campaigns"
+      },
+      {
+        "title": "Video Production",
+        "text": "More than 5000 video for our clients"
+      },
+      {
+        "title": "BTL",
+        "text": "Creating interactive events to be in the center of the customer experience."
+      },
+      {
+        "title": "Digital Marketing",
+        "text": "More than 15000 posts on digital platforms"
+      }
+    ],
+    "aboutTabs": [
+      {
+        "label": "About MWG",
+        "heading": "A Revolutionary Spirit",
+        "body": "In response to the cultural upheaval that inspired the Arab Spring, Mate Way was founded in the spirit of that revolution to create a new standard for world class advertising. Not only did MWG manage to make its mark in Egypt, but it gained traction and popularity, forming firm partnerships and executing projects beyond Egypt's borders on the world stage. Building upon its outstanding creative momentum, MWG succeeded in extending its field of expertise, and influence, opening branches in major metropolitan cities including Paris, Dubai, and Hollywood.",
+        "points": [
+          {
+            "title": "Professionalism",
+            "text": "We invest all our professionalism, commitment and care."
+          },
+          {
+            "title": "Delivering Quality",
+            "text": "We care a lot about our clients and can often be found working out of hours to get everything \"just right\"!"
+          }
+        ],
+        "image": "https://www.mwg.co.com/assets/Untitled-1.jpg"
+      },
+      {
+        "label": "Mission",
+        "heading": "Our Mission",
+        "body": "To craft advertising that moves people. We combine strategy, storytelling and craft to build brands that earn attention, trust and loyalty across every screen, street and stage they live on.",
+        "points": [
+          {
+            "title": "Strategy First",
+            "text": "Every idea starts with a business problem and a human insight."
+          },
+          {
+            "title": "Craft Always",
+            "text": "From the first frame to the final post, we obsess over execution."
+          }
+        ],
+        "image": "https://www.mwg.co.com/assets/Untitled-1.jpg"
+      },
+      {
+        "label": "Vision",
+        "heading": "Our Vision",
+        "body": "To be the creative partner of choice for ambitious brands across Egypt, the Middle East and beyond — a house where world class advertising is made, from Cairo to Dubai to Hollywood.",
+        "points": [
+          {
+            "title": "Regional Reach",
+            "text": "Offices and productions across Egypt, the UAE and the USA."
+          },
+          {
+            "title": "Global Standard",
+            "text": "Work that competes on the world stage, made from the region."
+          }
+        ],
+        "image": "https://www.mwg.co.com/assets/Untitled-1.jpg"
+      }
+    ],
+    "latestWork": [
+      {
+        "title": "Dr. Nour",
+        "slug": "Dr-Nour",
+        "image": "https://www.mwg.co.com/uploads/file1626352169127.jpg",
+        "logo": "https://www.mwg.co.com/uploads/file1776342390713.png"
+      },
+      {
+        "title": "Deka ( Your First Choice )",
+        "slug": "deka-your-first-choice",
+        "image": "https://www.mwg.co.com/uploads/file1626364619930.jpg"
+      },
+      {
+        "title": "Yasmin Ali – Forsa Tetghair",
+        "slug": "yasmin-ali-forsa-tetghair",
+        "image": "https://www.mwg.co.com/uploads/file1626608560580.jpg"
+      },
+      {
+        "title": "Cynosure ( For Everyone)",
+        "slug": "cynosure",
+        "image": "https://www.mwg.co.com/uploads/file1626615577679.jpg"
+      },
+      {
+        "title": "Dr Diaa Sarhan (Hanan Madi)",
+        "slug": "akhaf-lel-hayah",
+        "image": "https://www.mwg.co.com/uploads/file1626617904547.png"
+      },
+      {
+        "title": "Pukka Construction",
+        "slug": "pukka-construction",
+        "image": "https://www.mwg.co.com/uploads/file1626618477017.jpg"
+      },
+      {
+        "title": "CHUBB life Insurance Egypt",
+        "slug": "chubb-life-insurance-egypt",
+        "image": "https://www.mwg.co.com/uploads/file1630840432115.jpg",
+        "logo": "https://www.mwg.co.com/uploads/file1776342277372.png"
+      },
+      {
+        "title": "Duspataline",
+        "slug": "duspataline",
+        "image": "https://www.mwg.co.com/uploads/file1630847927781.jpg"
+      },
+      {
+        "title": "Dr Ramy Helmy",
+        "slug": "dr-ramy-helmy",
+        "image": "https://www.mwg.co.com/uploads/file1630854254156.jpg"
+      },
+      {
+        "title": "The Spot Mall",
+        "slug": "the-spot-mall",
+        "image": "https://www.mwg.co.com/uploads/file1630934282780.jpg"
+      },
+      {
+        "title": "Aroma",
+        "slug": "aroma",
+        "image": "https://www.mwg.co.com/uploads/file1630941491724.jpg"
+      },
+      {
+        "title": "Naguib Selim",
+        "slug": "naguib-selim",
+        "image": "https://www.mwg.co.com/uploads/file1644328167381.jpg",
+        "logo": "https://www.mwg.co.com/uploads/file1776342595684.png"
+      },
+      {
+        "title": "Dr-Nour (Mirror)",
+        "slug": "dr-nour-mirror",
+        "image": "https://www.mwg.co.com/uploads/file1645718203060.png",
+        "logo": "https://www.mwg.co.com/uploads/file1776342368692.png"
+      },
+      {
+        "title": "Chubb \"Mestnyak A7la 7ekyat\"",
+        "slug": "chubb-mestnyak-a7la-7ekyat",
+        "image": "https://www.mwg.co.com/uploads/file1653224772244.png",
+        "logo": "https://www.mwg.co.com/uploads/file1776342311132.png"
+      }
+    ]
+  },
+  "clientLogos": [
+    "https://www.mwg.co.com/uploads/file1773027684084.png",
+    "https://www.mwg.co.com/uploads/file1773027698041.png",
+    "https://www.mwg.co.com/uploads/file1773027707426.png",
+    "https://www.mwg.co.com/uploads/file1773027718269.png",
+    "https://www.mwg.co.com/uploads/file1773027733353.png",
+    "https://www.mwg.co.com/uploads/file1773027744142.png",
+    "https://www.mwg.co.com/uploads/file1773027757198.png",
+    "https://www.mwg.co.com/uploads/file1773027768808.png",
+    "https://www.mwg.co.com/uploads/file1773027783606.png",
+    "https://www.mwg.co.com/uploads/file1773027797250.png",
+    "https://www.mwg.co.com/uploads/file1773027807545.png",
+    "https://www.mwg.co.com/uploads/file1773027818816.png",
+    "https://www.mwg.co.com/uploads/file1773027830384.png",
+    "https://www.mwg.co.com/uploads/file1773027841069.png",
+    "https://www.mwg.co.com/uploads/file1773027852361.png",
+    "https://www.mwg.co.com/uploads/file1773027865069.png",
+    "https://www.mwg.co.com/uploads/file1773027876214.png",
+    "https://www.mwg.co.com/uploads/file1773027888973.png",
+    "https://www.mwg.co.com/uploads/file1773027899538.png",
+    "https://www.mwg.co.com/uploads/file1773027911790.png",
+    "https://www.mwg.co.com/uploads/file1773027925138.png",
+    "https://www.mwg.co.com/uploads/file1773027941440.png",
+    "https://www.mwg.co.com/uploads/file1773027958399.png",
+    "https://www.mwg.co.com/uploads/file1773027984471.png",
+    "https://www.mwg.co.com/uploads/file1773028005125.png",
+    "https://www.mwg.co.com/uploads/file1773028017606.png",
+    "https://www.mwg.co.com/uploads/file1773028034758.png",
+    "https://www.mwg.co.com/uploads/file1773028055398.png",
+    "https://www.mwg.co.com/uploads/file1773028075734.png",
+    "https://www.mwg.co.com/uploads/file1773028094578.png",
+    "https://www.mwg.co.com/uploads/file1773028108090.png",
+    "https://www.mwg.co.com/uploads/file1773028122720.png",
+    "https://www.mwg.co.com/uploads/file1773028137516.png",
+    "https://www.mwg.co.com/uploads/file1773028150561.png",
+    "https://www.mwg.co.com/uploads/file1773028169062.png",
+    "https://www.mwg.co.com/uploads/file1773028185682.png",
+    "https://www.mwg.co.com/uploads/file1773028199640.png",
+    "https://www.mwg.co.com/uploads/file1773028211070.png",
+    "https://www.mwg.co.com/uploads/file1773028228299.png",
+    "https://www.mwg.co.com/uploads/file1773028247089.png",
+    "https://www.mwg.co.com/uploads/file1773028261314.png",
+    "https://www.mwg.co.com/uploads/file1773028277284.png",
+    "https://www.mwg.co.com/uploads/file1773028291188.png",
+    "https://www.mwg.co.com/uploads/file1773028302768.png",
+    "https://www.mwg.co.com/uploads/file1773028313799.png",
+    "https://www.mwg.co.com/uploads/file1773028324642.png",
+    "https://www.mwg.co.com/uploads/file1773028339489.png",
+    "https://www.mwg.co.com/uploads/file1773028350097.png",
+    "https://www.mwg.co.com/uploads/file1773028362644.png",
+    "https://www.mwg.co.com/uploads/file1773028375151.png",
+    "https://www.mwg.co.com/uploads/file1773028385739.png"
+  ],
+  "portfolioFilters": [
+    "ALL",
+    "3D DESIGN",
+    "DIGITAL",
+    "GRAPHICS",
+    "BTL",
+    "PRODUCTION",
+    "WEB & MOBILE APPS"
+  ],
+  "services": [
+    {
+      "slug": "digital-marketing",
+      "title": "Digital Marketing",
+      "metaTitle": "Top Digital Marketing Agency That Delivers Results | MWG",
+      "hero": "https://www.mwg.co.com/uploads/file1769595151611.webp",
+      "slides": 4,
+      "blocks": [
+        {
+          "heading": "Top Digital Marketing Agency for Measurable Growth",
+          "body": "MWG is a top digital marketing agency that creates results-driven strategies tailored to your brand. We focus on increasing visibility, engagement, and ROI while delivering campaigns that truly make an impact."
+        },
+        {
+          "heading": "Comprehensive Digital Marketing Services",
+          "body": "Our digital marketing services cover SEO, PPC, social media, email campaigns, and content creation, designed to help your brand stand out. We are also recognized as a top digital marketing agency GCC, providing performance marketing solutions across the Middle East. Every campaign we deliver is customized to meet your business goals and drive measurable results."
+        }
+      ]
+    },
+    {
+      "slug": "graphic-design",
+      "title": "Graphic Design",
+      "metaTitle": "Graphic Design Services That Turn Vision Into Visual Art Pro",
+      "hero": "https://www.mwg.co.com/uploads/file1769951575627.webp",
+      "slides": 4,
+      "blocks": [
+        {
+          "heading": "Graphic Design Services Driven by Art and Visual Vision",
+          "body": "MWG’s graphic design services are built on creativity and visual clarity. We transform ideas into expressive designs that communicate brand identity, emotion, and purpose across every touchpoint."
+        },
+        {
+          "heading": "A Graphic Design Agency Shaping Brands Across the GCC",
+          "body": "As a creative graphic design agency, MWG delivers branding & graphic design GCC solutions that balance culture with strategy. As a creative design agency in the Middle East, we create visuals that resonate locally, perform commercially, and help brands stand out with confidence."
+        }
+      ]
+    },
+    {
+      "slug": "web-mobile-apps",
+      "title": "Web & Mobile Apps",
+      "metaTitle": "Top Web and Mobile App Development Services | MWG",
+      "hero": "https://www.mwg.co.com/uploads/file1769952136222.webp",
+      "slides": 4,
+      "blocks": [
+        {
+          "heading": "Web and Mobile App Development",
+          "body": "At MWG, we provide complete web and mobile app development solutions from A to Z — covering web designing, UI & UX, privacy, safety, and building full websites and apps. We create secure, scalable, and user-friendly platforms that drive engagement and growth."
+        },
+        {
+          "heading": "Top Web and Mobile App Development Services in the GCC & Middle East",
+          "body": "Our top web and mobile app development services deliver modern UI & UX design, full website creation, and seamless functionality. As a trusted app development company GCC and web development agency Middle East, we build digital experiences that are reliable, secure, and tailored for business success."
+        }
+      ]
+    },
+    {
+      "slug": "btl",
+      "title": "BTL",
+      "metaTitle": "BTL Agency for Unique Brand Activations That Truly Stand Out",
+      "hero": "https://www.mwg.co.com/uploads/file1769952411011.webp",
+      "slides": 4,
+      "blocks": [
+        {
+          "heading": "BTL Agency That Makes Your Brand Stand Out",
+          "body": "MWG is a creative BTL agency crafting a strong and memorable on-ground brand presence. Our approach to expert BTL marketing focuses on meaningful interaction and real audience engagement. Each experience is designed to help your brand stand out with clarity and impact."
+        },
+        {
+          "heading": "A Strategic BTL Marketing Agency for GCC & Middle East",
+          "body": "As a performance-focused BTL marketing agency, MWG delivers tailored activations across regional markets. We support brands as an experiential marketing agency GCC companies trust for effective engagement. Our team also operates as an activation agency Middle East businesses rely on for flawless execution."
+        }
+      ]
+    },
+    {
+      "slug": "content-creation",
+      "title": "Content Creation",
+      "metaTitle": "Content Creation Agency | Creative Content Solutions by MWG",
+      "hero": "https://www.mwg.co.com/uploads/file1769952587471.webp",
+      "slides": 5,
+      "blocks": [
+        {
+          "heading": "Fueling Brands Through Strategic Content Creation",
+          "body": "As a results-driven content creation agency, MWG transforms ideas into impactful digital stories. We blend strategy, creativity, and performance-focused execution to help brands communicate clearly, consistently, and effectively across all platforms."
+        },
+        {
+          "heading": "Why MWG Is the Content Agency Brands Trust",
+          "body": "As a leading content agency Egypt, we support brands across the region and beyond. From local growth to regional expansion, our expertise as a content agency GCC ensures every piece of content aligns with business goals and audience intent."
+        }
+      ]
+    },
+    {
+      "slug": "social-media",
+      "title": "Social Media",
+      "metaTitle": "Social Media Marketing Services | Top Social Media Agency",
+      "hero": "https://www.mwg.co.com/uploads/file1769952766229.webp",
+      "slides": 4,
+      "blocks": [
+        {
+          "heading": "Social Media Marketing That Reaches the Right Audience",
+          "body": "MWG delivers social media marketing focused on wide, targeted reach. As a results-driven social media agency, we help brands appear in front of the audiences that matter most. Our strategies increase visibility, engagement, and brand demand across key platforms."
+        },
+        {
+          "heading": "Social Media Agency for GCC & Middle East Growth",
+          "body": "As a trusted social media agency GCC brands depend on, we provide scalable social media marketing services. Our expertise in social media management Middle East markets ensures strong regional reach, relevance, and measurable performance."
+        }
+      ]
+    },
+    {
+      "slug": "seo",
+      "title": "SEO",
+      "metaTitle": "Search Engine Optimization Agency | Data-Driven SEO Services",
+      "hero": "https://www.mwg.co.com/uploads/file1769952950342.webp",
+      "slides": 3,
+      "blocks": [
+        {
+          "heading": "Comprehensive Keyword Research & Strategy",
+          "body": "As a search engine optimization agency, we perform in-depth keyword research to identify high-value search terms. Our SEO services target relevant audiences and ensure strategies that drive measurable results."
+        },
+        {
+          "heading": "On-Page, Off-Page & Technical SEO Excellence",
+          "body": "Our SEO services cover precise on-page optimization, authoritative off-page link building, and advanced technical SEO. As a full-service SEO company Middle East, also recognized as a leading SEO agency GCC, we help brands increase visibility, traffic, and conversions."
+        }
+      ]
+    },
+    {
+      "slug": "media-buying",
+      "title": "Media Buying",
+      "metaTitle": "Media Buying Agency for Precise Targeting & KPI Growth Result",
+      "hero": "https://www.mwg.co.com/uploads/file1769953078665.webp",
+      "slides": 3,
+      "blocks": [
+        {
+          "heading": "Expert Media Buying Strategy Built for Performance",
+          "body": "As a performance-focused media buying agency, MWG builds every campaign around precision targeting and measurable results. Our data-led media buying strategy ensures your ads reach the right audience at the right time. We allocate budgets intelligently to reduce waste, improve efficiency, and drive clear KPIs. Every media buying campaign is optimized to maximize reach, conversions, and ROI."
+        },
+        {
+          "heading": "Precision Targeting & Budget Optimization Across GCC",
+          "body": "MWG delivers advanced targeting through audience segmentation, behavioral data, and real-time insights. As specialists in media planning & buying GCC, we focus on controlling spend while scaling results. Our expertise as a paid media agency Middle East ensures full visibility, smarter bidding, and continuous optimization. The result: predictable performance, controlled budgets, and KPI-driven growth."
+        }
+      ]
+    },
+    {
+      "slug": "media-production",
+      "title": "Media Production",
+      "metaTitle": "Media Production Agency Where Vision Meets Artful Execution!",
+      "hero": "https://www.mwg.co.com/uploads/file1769953170071.webp",
+      "slides": 4,
+      "blocks": [
+        {
+          "heading": "Where Vision Becomes Visual Art",
+          "body": "Media production is more than execution — it’s an artistic industry where imagination, storytelling, and emotion come together. As a creative media agency, MWG transforms ideas into powerful visuals through refined concept development and expressive direction. Every frame is crafted to reflect your brand’s identity with purpose and artistry."
+        },
+        {
+          "heading": "Creative Media Production Built for Impact",
+          "body": "As a full-service media production company, we deliver cinematic storytelling with strategic execution. From brand films to commercial production Middle East projects, our work blends art and performance. As a video production agency GCC brands trust, we create visuals designed to connect, engage, and inspire action."
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "naguib-selim",
+      "title": "Naguib Selim",
+      "category": "Digital",
+      "excerpt": "A mass-market campaign about individuality through fabric",
+      "metaTitle": "Naguib Selim Textile Industry Campaign, MWG Advertising Agency",
+      "image": "https://www.mwg.co.com/uploads/file1644328167381.jpg",
+      "logo": "https://www.mwg.co.com/uploads/file1776342595684.png",
+      "body": "For Naguib Selim, MWG delivered a fully integrated campaign tailored to the textile industry, designed to resonate with a broad and diverse audience. As a 360 advertising agency and digital marketing agency, we built the campaign around the slogan “2omashtak eh,” leading into the tagline “Mah Ma Kanet 2omashtak” (No Matter the Cut of Your Cloth). The idea reflected the reality of the textile market in Egypt, where individuality, lifestyle, and personal taste shape buying decisions. By highlighting that every person is different, the campaign positioned Naguib Selim as a brand that offers fabric solutions for every background, preference, and style, strengthening its relevance and mass appeal."
+    },
+    {
+      "slug": "chubb-mestnyak-a7la-7ekyat",
+      "title": "Chubb \"Mestnyak A7la 7ekyat\"",
+      "category": "Graphics",
+      "excerpt": "A storytelling campaign connecting life insurance to joy",
+      "image": "https://www.mwg.co.com/uploads/file1653224772244.png",
+      "logo": "https://www.mwg.co.com/uploads/file1776342311132.png",
+      "body": "For Chubb, MWG developed a distinctive video-led campaign that brought a fresh emotional perspective to life insurance. Acting as a 360 advertising agency, we combined strategic storytelling with high-quality media production to create a campaign launched across Chubb’s social platforms. Collaborating with superstar Medhat Saleh, we produced an original music video built around the tagline “Mestnyak A7la 7ekayat” (the good times are waiting for you). The concept positioned Chubb as a brand that protects life’s joyful moments, helping it stand out among insurance companies in Egypt while connecting with audiences on a human, optimistic level."
+    },
+    {
+      "slug": "chubb-life-insurance-egypt",
+      "title": "CHUBB life Insurance Egypt",
+      "category": "BTL",
+      "excerpt": "Visual storytelling for insurance companies in Egypt",
+      "image": "https://www.mwg.co.com/uploads/file1630840432115.jpg",
+      "logo": "https://www.mwg.co.com/uploads/file1776342277372.png",
+      "body": "For Chubb Life Insurance Egypt, MWG built a visual storytelling platform that translated complex insurance products into human moments. Executed as a 360 advertising agency, the work spanned campaign concepting, media production and on-ground presence, positioning Chubb among the most recognisable insurance companies in Egypt."
+    },
+    {
+      "slug": "duspataline",
+      "title": "Duspataline",
+      "category": "Production",
+      "excerpt": "Commercial showcasing Duspataline for epigastric pain relief",
+      "image": "https://www.mwg.co.com/uploads/file1630847927781.jpg",
+      "body": "For Duspataline, MWG carefully selected authentic characters to bring the brand to life, ensuring the commercial resonated with audiences. As a media production agency and production house, we produced both the video and accompanying photoshoot to complement the campaign, featuring Mohamed Salah, one of Egypt’s most famous foodies. By highlighting Duspataline as a solution for epigastric pain, the campaign delivered a memorable, relatable, and engaging message, reinforcing the brand’s presence and credibility while showing real-life impact on the target audience."
+    },
+    {
+      "slug": "Cosmoshop",
+      "title": "Cosmoshop",
+      "category": "Digital",
+      "excerpt": "Vibrant campaign for a leading cosmetics store experience",
+      "image": "https://www.mwg.co.com/uploads/file1630934282780.jpg",
+      "body": "For Cosmoshop, MWG created one of our most colorful productions to date. As a media house production and in-house production team, we meticulously designed, built, and executed every element on set, from sketches to painted props, ensuring a visually stunning campaign for the cosmetics store. The dedication, long hours, and creative energy behind this project brought Cosmoshop’s vibrant brand identity to life, delivering a memorable and engaging experience that connects with their audience and showcases the full spectrum of their products."
+    },
+    {
+      "slug": "dr-nour-mirror",
+      "title": "Dr-Nour (Mirror)",
+      "category": "Production",
+      "excerpt": "A video series for the best dental clinic in Cairo",
+      "image": "https://www.mwg.co.com/uploads/file1645718203060.png",
+      "logo": "https://www.mwg.co.com/uploads/file1776342368692.png",
+      "body": "In this series of candid videos, MWG collaborated with the renowned Dr. Nour to deliver an educational yet engaging campaign that highlights exceptional dental care. Through media house productions and commercial production, the content explored everyday dental habits while naturally connecting them to the wide range of services offered across Dr. Nour’s clinics. The campaign reinforced the brand’s positioning as the best dental clinic in Cairo, showcasing expertise, accessibility, and trust, supported by one of the largest dental teams in the Middle East."
+    },
+    {
+      "slug": "Dr-Nour",
+      "title": "Dr. Nour",
+      "category": "Digital",
+      "excerpt": "An elegant visual campaign for the best dentist in Cairo",
+      "image": "https://www.mwg.co.com/uploads/file1626352169127.jpg",
+      "logo": "https://www.mwg.co.com/uploads/file1776342390713.png",
+      "body": "Dr. Nour is widely recognized for his elegance, sophistication, and world-class expertise in dentistry. To reflect this positioning, MWG designed a cinematic campaign that portrayed him and his elite team in a grand, refined setting featuring a red carpet and classical Roman columns. Executed by MWG as a creative media agency and video production agency, the campaign reinforced Dr. Nour’s status as the best dentist in Cairo, combining visual luxury with professional credibility to create a strong and memorable brand presence."
+    },
+    {
+      "slug": "Vezeeta",
+      "title": "Vezeeta",
+      "category": "Graphics",
+      "excerpt": "An awareness campaign for a digital healthcare platform",
+      "image": "https://www.mwg.co.com/uploads/file1626615577679.jpg",
+      "body": "For Vezeeta, MWG developed an awareness-driven campaign focused on education, prevention, and public well-being. As a digital healthcare platform, Vezeeta carries a responsibility to inform and protect its audience, which shaped the core idea of this campaign. Through advertising agency work and execution as a video production agency, we produced a series of informative episodes featuring doctors from diverse medical fields, including dermatology, dentistry, psychiatry, neurology, gynaecology, and cardiology. The campaign positioned Vezeeta as a trusted digital healthcare platform by delivering credible, accessible medical knowledge through expert voices."
+    },
+    {
+      "slug": "the-spot-mall",
+      "title": "The Spot Mall",
+      "category": "Graphics",
+      "excerpt": "Ramadan BTL services bringing The Spot Mall to life",
+      "image": "https://www.mwg.co.com/uploads/file1630934282780.jpg",
+      "body": "For The Spot Mall, MWG delivered a full Ramadan activation, combining BTL services, décor and content to turn the mall into a destination for the season. The work covered concept, build and on-ground execution, giving visitors an experience worth sharing."
+    },
+    {
+      "slug": "deka-your-first-choice",
+      "title": "Deka ( Your First Choice )",
+      "category": "Production",
+      "excerpt": "A commercial positioning Deka as the first choice",
+      "image": "https://www.mwg.co.com/uploads/file1626364619930.jpg",
+      "body": "For Deka, MWG produced a commercial built around a simple promise: your first choice. The production balanced product clarity with warm, family-first storytelling to build recall in a crowded category."
+    },
+    {
+      "slug": "yasmin-ali-forsa-tetghair",
+      "title": "Yasmin Ali – Forsa Tetghair",
+      "category": "Production",
+      "excerpt": "An original song campaign about the chance to change",
+      "image": "https://www.mwg.co.com/uploads/file1626608560580.jpg",
+      "body": "For Yasmin Ali, MWG saw an opportunity to break away from traditional healthcare campaigning and create something emotionally powerful. Centered around a bariatric doctor’s role in transforming lives, the campaign took the form of an original song that highlighted missed opportunities and the brighter possibilities that come with confidence and self-acceptance. Executed by MWG as an ads marketing agency through media production and creating marketing content, the campaign encouraged audiences to take the step toward change, positioning Yasmin Ali as a bariatric doctor who empowers people to reclaim control over their lives."
+    },
+    {
+      "slug": "cynosure",
+      "title": "Cynosure ( For Everyone)",
+      "category": "Production",
+      "excerpt": "Motivational storytelling that made laser hair removal for everyone",
+      "image": "https://www.mwg.co.com/uploads/file1626615577679.jpg",
+      "body": "For this campaign, MWG set out to push beyond traditional advertising and reframe how laser hair removal options are perceived. As a digital marketing agency, the goal was to give audiences an emotional boost by leaning into motivational storytelling inspired by global sports brands. Executed by MWG as a media production agency through bold creative media production, the campaign positioned Cynosure as inclusive and empowering. Built around three distinct copies with three messages, the concept reinforced that Cynosure’s laser hair removal options are truly for everyone."
+    },
+    {
+      "slug": "akhaf-lel-hayah",
+      "title": "Dr Diaa Sarhan (Hanan Madi)",
+      "category": "Production",
+      "excerpt": "A music-led healthcare campaign with Hanan Madi",
+      "image": "https://www.mwg.co.com/uploads/file1626617904547.png",
+      "body": "For Dr Diaa Sarhan, MWG produced a music-led campaign performed by Hanan Madi, turning a medical message into an emotional anthem about choosing life."
+    },
+    {
+      "slug": "pukka-construction",
+      "title": "Pukka Construction",
+      "category": "Graphics",
+      "excerpt": "Brand and campaign work for a construction developer",
+      "image": "https://www.mwg.co.com/uploads/file1626618477017.jpg",
+      "body": "For Pukka Construction, MWG built a visual language and campaign that communicated scale, credibility and craftsmanship across digital and print touchpoints."
+    },
+    {
+      "slug": "dr-ramy-helmy",
+      "title": "Dr Ramy Helmy",
+      "category": "Digital",
+      "excerpt": "A personal-brand campaign for a leading practitioner",
+      "image": "https://www.mwg.co.com/uploads/file1630854254156.jpg",
+      "body": "For Dr Ramy Helmy, MWG developed a personal brand campaign that combined authority with approachability, produced and distributed across digital platforms."
+    },
+    {
+      "slug": "aroma",
+      "title": "Aroma",
+      "category": "Digital",
+      "excerpt": "Appetite-led content and production for Aroma",
+      "image": "https://www.mwg.co.com/uploads/file1630941491724.jpg",
+      "body": "For Aroma, MWG delivered appetite-led content and production, translating flavour into visuals designed for social-first consumption."
+    },
+    {
+      "slug": "seropipe-hair",
+      "title": "Seropipe Hair",
+      "category": "Production",
+      "excerpt": "Sequel campaign for hair care across all hair types",
+      "image": "https://www.mwg.co.com/uploads/file1626618477017.jpg",
+      "body": "For Seropipe Hair, MWG developed a sequel campaign building on the success of “Da Nzami,” while adding a fresh creative twist. Featuring shampoo, sprays, and serums for all hair types, the campaign highlighted the versatility and effectiveness of Seropipe’s hair care products. Executed by MWG as a graphic design ad agency with full digital marketing services and professional video production, the campaign ensured that the message reached audiences clearly and memorably. This approach reinforced Seropipe Hair’s position as a trusted brand for hair care products, combining creativity, visual appeal, and informative messaging."
+    },
+    {
+      "slug": "eye-contour",
+      "title": "Eye Contour",
+      "category": "Production",
+      "excerpt": "An emotional campaign centred entirely on the eyes",
+      "image": "https://www.mwg.co.com/uploads/file1626617904547.png",
+      "body": "For Strongville’s Eye Contour, MWG crafted a campaign that centered entirely on the eyes, highlighting their importance and care. Executed as an ads marketing agency with full digital marketing services and professional video production, the campaign delivered an emotional and sweet message emphasizing the need to keep eyes safe, young, and bright. By focusing on the benefits and features of Strongville’s eye care products, MWG ensured the brand resonated with its target audience while reinforcing trust and awareness in the competitive eye care market."
+    },
+    {
+      "slug": "suncapital-construction",
+      "title": "Suncapital construction",
+      "category": "Digital",
+      "excerpt": "Real footage proving development was actively underway",
+      "image": "https://www.mwg.co.com/uploads/file1626618477017.jpg",
+      "body": "For Suncapital Construction, MWG focused on building credibility by showing real progress on the ground. Rather than presenting the project as plans on paper, the campaign documented construction work in its current state, proving that development was actively underway. Delivered through media house productions and commercial production, the content positioned Suncapital confidently among trusted construction companies by demonstrating that actions speak louder than words, using real footage to reflect scale, momentum, and execution."
+    },
+    {
+      "slug": "uriage",
+      "title": "URIAGE",
+      "category": "Graphics",
+      "excerpt": "An educational campaign led by medical professionals",
+      "image": "https://www.mwg.co.com/uploads/file1630941491724.jpg",
+      "body": "For URIAGE, MWG produced an educational campaign led by medical professionals to clearly communicate product benefits, usage, and skincare expertise. As a pharmaceutical skincare brand, credibility and clarity were essential, which shaped the clean and informative approach of the content. Executed through media house productions, the campaign maintained a simple, minimal set that stayed true to the brand’s visual identity. By focusing on medical authority and consistency, the campaign reinforced URIAGE’s positioning among the best skin care products in Egypt."
+    },
+    {
+      "slug": "bassem-samir",
+      "title": "Bassem Samir ( Ahmed Saad song)",
+      "category": "Production",
+      "excerpt": "Every smile has a story, told through an Ahmed Saad song",
+      "image": "https://www.mwg.co.com/uploads/file1626352169127.jpg",
+      "body": "For Dr. Bassem Samir, MWG built a creative campaign rooted in storytelling and wordplay. Inspired by the Arabic word “Dehkaya,” which can mean both a laugh and a story, the idea celebrated the belief that every smile has a story behind it. Executed by MWG as an ads marketing agency, influencer marketing agency, and through creative media production, the concept came to life in a song performed by Ahmed Saad. The lyrics and visuals each reflected a different personal story, positioning Dr. Bassem Samir as a dentist who understands the emotional value behind every smile."
+    },
+    {
+      "slug": "dukes",
+      "title": "Dukes",
+      "category": "BTL",
+      "excerpt": "A triple grand opening for the sweetest spot in Alexandria",
+      "image": "https://www.mwg.co.com/uploads/file1630840432115.jpg",
+      "body": "For Dukes, MWG executed a vibrant triple grand opening campaign that celebrated the sweetest experiences in Alexandria. As a BTL advertising agency, we handled BTL services and overall advertising agency work to bring the campaign to life with sunny smiles, immersive experiences, and engaging visuals. The campaign positioned Dukes as a top-tier dessert shop, connecting with its audience through creative, on-the-ground activations that perfectly reflected the brand’s fun, welcoming, and indulgent identity."
+    },
+    {
+      "slug": "black-bear",
+      "title": "Black Bear",
+      "category": "BTL",
+      "excerpt": "Street-culture energy for the best burger in Cairo",
+      "image": "https://www.mwg.co.com/uploads/file1630854254156.jpg",
+      "body": "Black Bear is an American burger spot with locations in Zamalek, Mohandesseen, and Wust El Balad, widely recognized as serving some of the best burger in Cairo. With all three branches located near public skateboarding spaces, the brand wanted to connect directly with skaters of all ages and reflect their raw, urban energy. For this campaign, MWG advertising agency developed dynamic video footage alongside a strong master visual concept, supported by additional campaign visuals and digital assets. Delivered through full commercial production, MWG executed the project as a hands-on media production agency, creating a campaign that felt authentic, energetic, and deeply rooted in Black Bear’s street culture identity."
+    }
+  ],
+  "caseStudies": [
+    {
+      "slug": "naguib-selim",
+      "title": "Naguib Selim",
+      "category": "PRODUCTION",
+      "image": "https://www.mwg.co.com/uploads/file1774541023056.jpg",
+      "body": "For Naguib Selim, MWG delivered a fully integrated campaign tailored to the textile industry, designed to resonate with a broad and diverse audience. Built around the slogan “2omashtak eh,” the campaign celebrated individuality and positioned Naguib Selim as a brand with fabric solutions for every background, preference, and style."
+    },
+    {
+      "slug": "Amico",
+      "title": "Amico",
+      "category": "PRODUCTION",
+      "image": "https://www.mwg.co.com/uploads/file1774541232268.webp",
+      "body": "For Amico, MWG handled full commercial production — from concept development and casting to shooting, post-production and delivery — creating a campaign that carried the brand's promise with cinematic clarity."
+    }
+  ],
+  "bigBang": {
+    "title": "Breakthrough Campaigns by a Top Advertising Agency in Egypt",
+    "heading": "advertising agency in egypt",
+    "items": [
+      {
+        "title": "Naguib Selim",
+        "slug": "naguib-selim",
+        "image": "https://www.mwg.co.com/uploads/file1644328167381.jpg",
+        "body": "For Naguib Selim, MWG delivered a fully integrated campaign tailored to the textile industry, designed to resonate with a broad and diverse audience. As a 360 advertising agency and digital marketing agency, we built the campaign around the slogan “2omashtak eh,” leading into the tagline “Mah Ma Kanet 2omashtak” (No Matter the Cut of Your Cloth). The idea reflected the reality of the textile market in Egypt, where individuality, lifestyle, and personal taste shape buying decisions. By highlighting that every person is different, the campaign positioned Naguib Selim as a brand that offers fabric solutions for every background, preference, and style, strengthening its relevance and mass appeal."
+      },
+      {
+        "title": "Chubb \"Mestnyak A7la 7ekyat\"",
+        "slug": "chubb-mestnyak-a7la-7ekyat",
+        "image": "https://www.mwg.co.com/uploads/file1653224772244.png",
+        "body": "For Chubb, MWG developed a distinctive video-led campaign that brought a fresh emotional perspective to life insurance. Acting as a 360 advertising agency, we combined strategic storytelling with high-quality media production to create a campaign launched across Chubb’s social platforms. Collaborating with superstar Medhat Saleh, we produced an original music video built around the tagline “Mestnyak A7la 7ekayat” (the good times are waiting for you). The concept positioned Chubb as a brand that protects life’s joyful moments, helping it stand out among insurance companies in Egypt while connecting with audiences on a human, optimistic level."
+      },
+      {
+        "title": "Duspataline",
+        "slug": "duspataline",
+        "image": "https://www.mwg.co.com/uploads/file1630847927781.jpg",
+        "body": "For Duspataline, MWG carefully selected authentic characters to bring the brand to life, ensuring the commercial resonated with audiences. As a media production agency and production house, we produced both the video and accompanying photoshoot to complement the campaign, featuring Mohamed Salah, one of Egypt’s most famous foodies. By highlighting Duspataline as a solution for epigastric pain, the campaign delivered a memorable, relatable, and engaging message, reinforcing the brand’s presence and credibility while showing real-life impact on the target audience."
+      },
+      {
+        "title": "Cosmoshop",
+        "slug": "Cosmoshop",
+        "image": "https://www.mwg.co.com/uploads/file1630934282780.jpg",
+        "body": "For Cosmoshop, MWG created one of our most colorful productions to date. As a media house production and in-house production team, we meticulously designed, built, and executed every element on set, from sketches to painted props, ensuring a visually stunning campaign for the cosmetics store. The dedication, long hours, and creative energy behind this project brought Cosmoshop’s vibrant brand identity to life, delivering a memorable and engaging experience that connects with their audience and showcases the full spectrum of their products."
+      },
+      {
+        "title": "Dr-Nour (Mirror)",
+        "slug": "dr-nour-mirror",
+        "image": "https://www.mwg.co.com/uploads/file1645718203060.png",
+        "body": "In this series of candid videos, MWG collaborated with the renowned Dr. Nour to deliver an educational yet engaging campaign that highlights exceptional dental care. Through media house productions and commercial production, the content explored everyday dental habits while naturally connecting them to the wide range of services offered across Dr. Nour’s clinics. The campaign reinforced the brand’s positioning as the best dental clinic in Cairo, showcasing expertise, accessibility, and trust, supported by one of the largest dental teams in the Middle East."
+      },
+      {
+        "title": "Dr. Nour",
+        "slug": "Dr-Nour",
+        "image": "https://www.mwg.co.com/uploads/file1626352169127.jpg",
+        "body": "Dr. Nour is widely recognized for his elegance, sophistication, and world-class expertise in dentistry. To reflect this positioning, MWG designed a cinematic campaign that portrayed him and his elite team in a grand, refined setting featuring a red carpet and classical Roman columns. Executed by MWG as a creative media agency and video production agency, the campaign reinforced Dr. Nour’s status as the best dentist in Cairo, combining visual luxury with professional credibility to create a strong and memorable brand presence."
+      },
+      {
+        "title": "Vezeeta",
+        "slug": "Vezeeta",
+        "image": "https://www.mwg.co.com/uploads/file1626615577679.jpg",
+        "body": "For Vezeeta, MWG developed an awareness-driven campaign focused on education, prevention, and public well-being. As a digital healthcare platform, Vezeeta carries a responsibility to inform and protect its audience, which shaped the core idea of this campaign. Through advertising agency work and execution as a video production agency, we produced a series of informative episodes featuring doctors from diverse medical fields, including dermatology, dentistry, psychiatry, neurology, gynaecology, and cardiology. The campaign positioned Vezeeta as a trusted digital healthcare platform by delivering credible, accessible medical knowledge through expert voices."
+      },
+      {
+        "title": "Seropipe Hair",
+        "slug": "seropipe-hair",
+        "image": "https://www.mwg.co.com/uploads/file1626618477017.jpg",
+        "body": "For Seropipe Hair, MWG developed a sequel campaign building on the success of “Da Nzami,” while adding a fresh creative twist. Featuring shampoo, sprays, and serums for all hair types, the campaign highlighted the versatility and effectiveness of Seropipe’s hair care products. Executed by MWG as a graphic design ad agency with full digital marketing services and professional video production, the campaign ensured that the message reached audiences clearly and memorably. This approach reinforced Seropipe Hair’s position as a trusted brand for hair care products, combining creativity, visual appeal, and informative messaging."
+      },
+      {
+        "title": "Eye Contour",
+        "slug": "eye-contour",
+        "image": "https://www.mwg.co.com/uploads/file1626617904547.png",
+        "body": "For Strongville’s Eye Contour, MWG crafted a campaign that centered entirely on the eyes, highlighting their importance and care. Executed as an ads marketing agency with full digital marketing services and professional video production, the campaign delivered an emotional and sweet message emphasizing the need to keep eyes safe, young, and bright. By focusing on the benefits and features of Strongville’s eye care products, MWG ensured the brand resonated with its target audience while reinforcing trust and awareness in the competitive eye care market."
+      },
+      {
+        "title": "Suncapital construction",
+        "slug": "suncapital-construction",
+        "image": "https://www.mwg.co.com/uploads/file1626618477017.jpg",
+        "body": "For Suncapital Construction, MWG focused on building credibility by showing real progress on the ground. Rather than presenting the project as plans on paper, the campaign documented construction work in its current state, proving that development was actively underway. Delivered through media house productions and commercial production, the content positioned Suncapital confidently among trusted construction companies by demonstrating that actions speak louder than words, using real footage to reflect scale, momentum, and execution."
+      },
+      {
+        "title": "URIAGE",
+        "slug": "uriage",
+        "image": "https://www.mwg.co.com/uploads/file1630941491724.jpg",
+        "body": "For URIAGE, MWG produced an educational campaign led by medical professionals to clearly communicate product benefits, usage, and skincare expertise. As a pharmaceutical skincare brand, credibility and clarity were essential, which shaped the clean and informative approach of the content. Executed through media house productions, the campaign maintained a simple, minimal set that stayed true to the brand’s visual identity. By focusing on medical authority and consistency, the campaign reinforced URIAGE’s positioning among the best skin care products in Egypt."
+      },
+      {
+        "title": "Yasmin Ali – Forsa Tetghair",
+        "slug": "yasmin-ali-forsa-tetghair",
+        "image": "https://www.mwg.co.com/uploads/file1626608560580.jpg",
+        "body": "For Yasmin Ali, MWG saw an opportunity to break away from traditional healthcare campaigning and create something emotionally powerful. Centered around a bariatric doctor’s role in transforming lives, the campaign took the form of an original song that highlighted missed opportunities and the brighter possibilities that come with confidence and self-acceptance. Executed by MWG as an ads marketing agency through media production and creating marketing content, the campaign encouraged audiences to take the step toward change, positioning Yasmin Ali as a bariatric doctor who empowers people to reclaim control over their lives."
+      },
+      {
+        "title": "Bassem Samir ( Ahmed Saad song)",
+        "slug": "bassem-samir",
+        "image": "https://www.mwg.co.com/uploads/file1626352169127.jpg",
+        "body": "For Dr. Bassem Samir, MWG built a creative campaign rooted in storytelling and wordplay. Inspired by the Arabic word “Dehkaya,” which can mean both a laugh and a story, the idea celebrated the belief that every smile has a story behind it. Executed by MWG as an ads marketing agency, influencer marketing agency, and through creative media production, the concept came to life in a song performed by Ahmed Saad. The lyrics and visuals each reflected a different personal story, positioning Dr. Bassem Samir as a dentist who understands the emotional value behind every smile."
+      },
+      {
+        "title": "Cynosure ( For Everyone)",
+        "slug": "cynosure",
+        "image": "https://www.mwg.co.com/uploads/file1626615577679.jpg",
+        "body": "For this campaign, MWG set out to push beyond traditional advertising and reframe how laser hair removal options are perceived. As a digital marketing agency, the goal was to give audiences an emotional boost by leaning into motivational storytelling inspired by global sports brands. Executed by MWG as a media production agency through bold creative media production, the campaign positioned Cynosure as inclusive and empowering. Built around three distinct copies with three messages, the concept reinforced that Cynosure’s laser hair removal options are truly for everyone."
+      },
+      {
+        "title": "Dukes",
+        "slug": "dukes",
+        "image": "https://www.mwg.co.com/uploads/file1630840432115.jpg",
+        "body": "For Dukes, MWG executed a vibrant triple grand opening campaign that celebrated the sweetest experiences in Alexandria. As a BTL advertising agency, we handled BTL services and overall advertising agency work to bring the campaign to life with sunny smiles, immersive experiences, and engaging visuals. The campaign positioned Dukes as a top-tier dessert shop, connecting with its audience through creative, on-the-ground activations that perfectly reflected the brand’s fun, welcoming, and indulgent identity."
+      },
+      {
+        "title": "Black Bear",
+        "slug": "black-bear",
+        "image": "https://www.mwg.co.com/uploads/file1630854254156.jpg",
+        "body": "Black Bear is an American burger spot with locations in Zamalek, Mohandesseen, and Wust El Balad, widely recognized as serving some of the best burger in Cairo. With all three branches located near public skateboarding spaces, the brand wanted to connect directly with skaters of all ages and reflect their raw, urban energy. For this campaign, MWG advertising agency developed dynamic video footage alongside a strong master visual concept, supported by additional campaign visuals and digital assets. Delivered through full commercial production, MWG executed the project as a hands-on media production agency, creating a campaign that felt authentic, energetic, and deeply rooted in Black Bear’s street culture identity."
+      }
+    ]
+  },
+  "blog": {
+    "heading": "THE BIG BANG LOG.",
+    "subheading": "Insights, Strategies, and Digital Victories",
+    "posts": [
+      {
+        "slug": "in-house-marketing-vs-agency",
+        "date": "May 13, 2026",
+        "title": "In-House Marketing vs Agency: What’s Better for Scaling Brands?",
+        "excerpt": "As businesses grow and competition intensifies, choosing the right marketing structure becomes a critical decision",
+        "image": "https://www.mwg.co.com/uploads/file1778751066710.webp"
+      },
+      {
+        "slug": "SEO-vs-PPC",
+        "date": "May 4, 2026",
+        "title": "SEO vs PPC: Key Differences, Benefits, and Which Strategy to Choose",
+        "excerpt": "When it comes to digital marketing, the debate around SEO vs PPC is one of the most common"
+      },
+      {
+        "slug": "chatgpt-vs-claude",
+        "date": "April 27, 2026",
+        "title": "ChatGPT vs Claude: A Complete Comparison for Content, Marketing, and Business in 2026",
+        "excerpt": "Artificial intelligence is reshaping how businesses create content, plan marketing strategies, and scale operations. Among the leading tools in this space are ChatGPT and Claude."
+      },
+      {
+        "slug": "DOOH-advertising-in-Egypt",
+        "date": "April 22, 2026",
+        "title": "DOOH Advertising in Egypt: The Future of Smart Outdoor Marketing",
+        "excerpt": "The advertising landscape in Egypt is evolving rapidly, and one of the most significant transformations is happening in outdoor media"
+      },
+      {
+        "slug": "video-production-for-brands",
+        "date": "April 18, 2026",
+        "title": "Video Production for Brands: The Ultimate Guide to High-Impact Content",
+        "excerpt": "Consumers are increasingly drawn to visual storytelling"
+      },
+      {
+        "slug": "marketing-and-advertising-agency",
+        "date": "April 15, 2026",
+        "title": "Marketing and Advertising Agency: How to Choose the Right Partner for Growth",
+        "excerpt": "In today’s competitive digital landscape, choosing the right marketing and advertising agency can be the difference between stagnant growth and scalable success"
+      },
+      {
+        "slug": "top-digital-marketing-agencies-in-egypt",
+        "date": "April 11, 2026",
+        "title": "Top Digital Marketing Agencies in Egypt",
+        "excerpt": "Navigating the digital marketing landscape requires a nuanced understanding of both the global market trends and local consumer behaviors"
+      },
+      {
+        "slug": "tiktok-seo",
+        "date": "April 8, 2026",
+        "title": "Search is Becoming Social TikTok SEO",
+        "excerpt": "TikTok is reshaping how we search online. It's not just a platform for dance challenges anymore."
+      },
+      {
+        "slug": "search-engine-agency",
+        "date": "April 4, 2026",
+        "title": "Why Choosing the Right Search Engine Agency Determines Your Online Success",
+        "excerpt": "Businesses that appear on the first page of search results earn more traffic, leads, and authority than those buried beneath competitors."
+      },
+      {
+        "slug": "video-seo",
+        "date": "March 30, 2026",
+        "title": "Video SEO in 2026: How YouTube and Short-Form Content Drive Search Traffic",
+        "excerpt": "Video is no longer just a content format, it’s a search engine growth channel"
+      },
+      {
+        "slug": "ramadan-marketing-campaigns",
+        "date": "March 23, 2026",
+        "title": "Ramadan Marketing Campaigns: Analyzing the Ads That Defined the Season",
+        "excerpt": "Ramadan marketing campaigns become the highlight of the advertising industry in Egypt and across the Middle East"
+      },
+      {
+        "slug": "successful-ramadan-campaigns",
+        "date": "March 16, 2026",
+        "title": "Breaking Down the Most Successful Ramadan Campaigns of the Year",
+        "excerpt": "Ramadan is not just a religious month, it is the biggest marketing season of the year"
+      },
+      {
+        "slug": "google-e-e-a-t",
+        "date": "March 7, 2026",
+        "title": "Google E-E-A-T: The Complete Guide to Winning Trust, Authority, and Rankings",
+        "excerpt": "In today’s search landscape, ranking on page one isn’t just about keywords or backlinks"
+      },
+      {
+        "slug": "aeo-answer-engine-optimization",
+        "date": "March 4, 2026",
+        "title": "(AEO) Answer Engine Optimization: The New SEO Skill You Can’t Ignore",
+        "excerpt": "Search is changing fast—and if you’re still optimizing only for blue links, you’re already behind"
+      },
+      {
+        "slug": "generative-search",
+        "date": "February 28, 2026",
+        "title": "From SEO to GEO: How Generative Search AI Is Changing Search Visibility",
+        "excerpt": "Search is no longer just about blue links and rankings"
+      },
+      {
+        "slug": "web-development-trends",
+        "date": "February 21, 2026",
+        "title": "Web Development Trends Brands Can’t Ignore This Year",
+        "excerpt": "Websites are no longer digital brochures"
+      },
+      {
+        "slug": "media-production-services",
+        "date": "February 17, 2026",
+        "title": "Why Most Brand Videos Fail (And How Smart Media Production Fixes It)",
+        "excerpt": "In today’s digital-first world, video is no longer optional. Brands invest heavily in content, campaigns, and visuals"
+      },
+      {
+        "slug": "scientific-advertising",
+        "date": "February 14, 2026",
+        "title": "Scientific Advertising: The Data-Driven Way to Build Profitable Campaigns",
+        "excerpt": "In today’s competitive digital world, creativity alone is no longer enough"
+      },
+      {
+        "slug": "ideas-to-visual-stories",
+        "date": "February 11, 2026",
+        "title": "How Brands Turn Simple Ideas Into Powerful Visual Stories",
+        "excerpt": "In a world flooded with content, brands no longer compete only with each other — they compete with attention itself"
+      },
+      {
+        "slug": "seo-in-ai-search",
+        "date": "February 7, 2026",
+        "title": "SEO in the Age of AI Search: How to Make Your Website Appear in AI Overviews",
+        "excerpt": "Search is no longer what it used to be"
+      },
+      {
+        "slug": "storytelling-in-marketing",
+        "date": "January 31, 2026",
+        "title": "The Power of Storytelling in Marketing: Techniques That Turn Attention Into Action",
+        "excerpt": "In a world flooded with ads, promotions, and endless content, audiences no longer respond to noise—they respond to meaning"
+      },
+      {
+        "slug": "third-party-cookies-ends",
+        "date": "January 27, 2026",
+        "title": "The End of Third-Party Cookies: How Advertisers Are Adapting Right Now",
+        "excerpt": "digital advertising landscape is undergoing one of its biggest transformations in decades"
+      },
+      {
+        "slug": "digital-marketing-at-mwg",
+        "date": "January 24, 2026",
+        "title": "Digital Marketing Services: Grow Your Brand with MWG Advertising Agency",
+        "excerpt": "At MWG Advertising Agency, we specialize in helping brands thrive with creative and data-driven solutions"
+      },
+      {
+        "slug": "medical-vision-icce-2025",
+        "date": "January 21, 2026",
+        "title": "The Making of Medical Vision at ICCE 2025: A Story You Didn’t See",
+        "excerpt": "If you visited ICCE 2025, you probably saw the Medical Vision booth from the outside"
+      },
+      {
+        "slug": "social-commerce-advertising",
+        "date": "January 17, 2026",
+        "title": "From Scroll to Sale: How Social Commerce Is Reshaping Advertising",
+        "excerpt": "The way people discover, evaluate, and buy products has changed dramatically"
+      },
+      {
+        "slug": "AI-marketing-trends",
+        "date": "January 14, 2026",
+        "title": "AI Marketing Trends Shaping the Future of Advertising in 2026",
+        "excerpt": "Artificial intelligence is no longer an emerging trend in marketing—it’s a defining force"
+      },
+      {
+        "slug": "podcast-advertising",
+        "date": "January 11, 2026",
+        "title": "Podcast Advertising Is Changing: Why Video Is Now Part of the Strategy",
+        "excerpt": "Podcast advertising has entered a new era"
+      },
+      {
+        "slug": "meta-ai-advertising-2026",
+        "date": "January 7, 2026",
+        "title": "Google & Meta’s AI Revolution: The New Rules of Advertising in 2026",
+        "excerpt": "The year 2026 marks one of the biggest turning points in the history of digital marketing"
+      },
+      {
+        "slug": "modern-advertising-2026",
+        "date": "January 3, 2026",
+        "title": "Automation vs Creativity: The Real Battle Inside Modern Advertising",
+        "excerpt": "Modern advertising is undergoing its biggest transformation in decades. Automation tools, AI-driven platforms, and data-powered systems are reshaping how brands communicate, target, and convert audiences."
+      },
+      {
+        "slug": "cynosure-behind-the-scenes",
+        "date": "December 30, 2025",
+        "title": "Cynosure: A Behind-the-Scenes Story From the Team Who Lived It",
+        "excerpt": "This is how Cynosure came to life—from A to Z, from panic to perfection, from an idea to a regional success."
+      },
+      {
+        "slug": "ai-advertising-trends-2026",
+        "date": "December 27, 2025",
+        "title": "AI Advertising 2026: How Smart Brands Are Transforming Creativity and ROI",
+        "excerpt": "In 2026, AI advertising is no longer a futuristic concept—it’s the driving force behind smarter campaigns, creative precision, and measurable returns."
+      },
+      {
+        "slug": "art-filler-commercial-production",
+        "date": "December 20, 2025",
+        "title": "Behind the Lens of Art Filler: How MWG Turned a French Innovation Into a Celebrity-Led Commercial Masterpiece",
+        "excerpt": "Art Filler Commercial Production With Rana Raes one of the most ambitious journeys we've had this year."
+      },
+      {
+        "slug": "social-media-marketing-agency",
+        "date": "December 17, 2025",
+        "title": "Social Media Marketing Agency: How Experts Drive Brand Growth in 2025",
+        "excerpt": "Social media platforms today require more than posting content. Brands must navigate evolving algorithms, competition, paid media options, consumer expectations, and new formats like short-form videos and live content."
+      },
+      {
+        "slug": "glow-medics-icce-2025",
+        "date": "December 13, 2025",
+        "title": "How MWG Won the GlowMedics ICCE 2025 Pitch With a Bold Booth Design That Redefined Luxury in Exhibition Marketing",
+        "excerpt": "For ICCE 2025 Egypt, GlowMedics needed a booth concept that could elevate three of their brands while maintaining a unified, premium presence."
+      },
+      {
+        "slug": "sun-international-commercial",
+        "date": "December 10, 2025",
+        "title": "Behind the Scenes of Sun International’s Sharm El Sheikh Commercial: How MWG Created a Love Story at Savoy & Royal Savoy",
+        "excerpt": "Have you ever wondered how a simple client brief transforms into a cinematic commercial that gets showcased on a global stage like WTM London?"
+      },
+      {
+        "slug": "skinfill-icce-2025",
+        "date": "December 6, 2025",
+        "title": "Skinfill Behind The Scenes At ICCE 2025 From The Teams Perspective",
+        "excerpt": "The MWG team didn’t wait for event day — oh no, the journey to Skinfill ICCE 2025 started long before. Thirty team members, endless meetings, too many coffee cups to count, and one mission: Create a booth that doesn’t just show the brand."
+      },
+      {
+        "slug": "roi-in-advertising",
+        "date": "December 3, 2025",
+        "title": "Stop Wasting Ad Spend: Mistakes That Kill ROI — The MWG Way",
+        "excerpt": "At MWG, a leading performance advertising agency in Egypt, we know that effective advertising is a science of precision, data, and storytelling. Our philosophy is simple: creativity fuels attention, but strategy drives ROI in advertising."
+      },
+      {
+        "slug": "3-d-design-agency-egypt",
+        "date": "November 26, 2025",
+        "title": "3D Design: The Future of Advertising",
+        "excerpt": "Advertising has evolved beyond pixels, it’s now about creating worlds. Brands across Egypt are turning to 3D design studios in Cairo to capture emotion, elevate creativity, and convert interest into impact."
+      },
+      {
+        "slug": "vision-and-mission",
+        "date": "November 22, 2025",
+        "title": "How AI Is Shaping Your Company’s Vision and Mission in Modern Marketing",
+        "excerpt": "In the ever-evolving world of marketing, Artificial Intelligence (AI) is not just a buzzword it's a game-changer."
+      },
+      {
+        "slug": "seo-vs-paid-search",
+        "date": "November 19, 2025",
+        "title": "SEO vs Paid Search: Which Strategy Drives Better Results for Your Business?",
+        "excerpt": "In today’s fast-moving digital advertising world, brands keep asking the same question — SEO vs Paid Search: which works best?"
+      },
+      {
+        "slug": "ads-marketing-agency",
+        "date": "November 15, 2025",
+        "title": "How an Ads Marketing Agency Can Transform Your Brand's Online Presence",
+        "excerpt": "Many Egyptian businesses today partner with professional marketing agency ads teams to handle their advertising efforts, ensuring every campaign is built on strategy, creativity, and results."
+      },
+      {
+        "slug": "immersive-marketing-25",
+        "date": "November 12, 2025",
+        "title": "Immersive Marketing 2025: Winning Through Gaming",
+        "excerpt": "In 2025, the advertising landscape is being reshaped by Immersive Marketing, a trend that goes beyond traditional ads and creates interactive experiences within digital worlds."
+      },
+      {
+        "slug": "LLM-optimization-explained",
+        "date": "November 8, 2025",
+        "title": "LLM Optimization Explained: How Brands Can Rank Inside AI Response",
+        "excerpt": "As artificial intelligence transforms how users search and interact online, the rise of Large Language Models (LLMs) has changed the rules of digital visibility."
+      },
+      {
+        "slug": "out-of-home-advertising",
+        "date": "November 5, 2025",
+        "title": "OOH: Reinventing Out-of-Home Advertising in the Digital Age",
+        "excerpt": "As digital transformation accelerates, OOH (Out-of-Home) advertising is experiencing a remarkable resurgence."
+      },
+      {
+        "slug": "mixed-reality-in-advertising",
+        "date": "November 1, 2025",
+        "title": "Mixed Reality: The Future of Interactive Advertising",
+        "excerpt": "In today’s evolving digital landscape, Mixed Reality (MR) is redefining how brands communicate and connect with audiences."
+      },
+      {
+        "slug": "omnichannel-marketing",
+        "date": "October 29, 2025",
+        "title": "Omnichannel Marketing: How to Deliver a Seamless Brand Experience Across All Touchpoints",
+        "excerpt": "In today’s fast-paced digital world, consumers interact with brands across multiple platforms, from social media and websites to physical stores and customer service channels."
+      },
+      {
+        "slug": "green-marketing",
+        "date": "October 25, 2025",
+        "title": "Sustainability in Advertising: How Green Marketing Wins Consumer Trust",
+        "excerpt": "In today’s world, consumers are more conscious than ever about the environmental and social impact of the brands they support."
+      },
+      {
+        "slug": "master-budget-optimization",
+        "date": "October 22, 2025",
+        "title": "Adapting Budget Optimization Across Multiple Channels Using Adaptive Models",
+        "excerpt": "In today’s competitive digital landscape, businesses can’t afford to throw money blindly into advertising. Every dollar spent needs to deliver measurable value."
+      },
+      {
+        "slug": "how-to-get-more-leads-from-your-website",
+        "date": "October 20, 2025",
+        "title": "How To Generate More Leads From Your Website",
+        "excerpt": "Generating more leads from your website is crucial for business growth. It’s not just about traffic; it’s about converting visitors into potential customers."
+      },
+      {
+        "slug": "why-brands-choose-mwg",
+        "date": "October 15, 2025",
+        "title": "Why Brands Trust Our Agency to Handle Their Online Presence",
+        "excerpt": "In today’s digital-first world, building a strong online presence is no longer optional, it’s essential."
+      },
+      {
+        "slug": "video-marketing-in-2026",
+        "date": "October 11, 2025",
+        "title": "Video Marketing in 2026: How Our Media Team Creates Impact",
+        "excerpt": "In the fast-moving world of digital media, video has proven itself as one of the most powerful tools to connect with audiences and drive brand growth."
+      },
+      {
+        "slug": "ai-in-digital-marketing",
+        "date": "October 7, 2025",
+        "title": "How AI in Digital Marketing Is Transforming the Future of It",
+        "excerpt": "Today, brands are leveraging AI to create hyper-personalized experiences, automate processes, and make smarter marketing decisions."
+      },
+      {
+        "slug": "how-to-use-google-analytics",
+        "date": "October 4, 2025",
+        "title": "How to Use Google Analytics for Marketing Success",
+        "excerpt": "This guide will walk you through the most essential aspects of using Google Analytics from setup to data interpretation helping you make informed decisions that drive traffic, increase engagement, and boost conversions."
+      },
+      {
+        "slug": "how-to-get-more-leads",
+        "date": "October 1, 2025",
+        "title": "How To Get More Leads If You Have a Lead Generation Struggle!",
+        "excerpt": "You’ve launched your business, built a sleek website, and maybe even run a few ads, but the leads just aren’t coming in. Sound familiar? You’re not alone."
+      },
+      {
+        "slug": "brand-identity-vs-brand-image",
+        "date": "September 27, 2025",
+        "title": "Brand Identity vs Brand Image: What Designers Must Know",
+        "excerpt": "In the world of branding, two concepts often get misunderstood or used interchangeably, brand identity and brand image. For designers, understanding the difference between them isn’t just helpful, it’s essential."
+      },
+      {
+        "slug": "booths-and-media-coverage",
+        "date": "September 24, 2025",
+        "title": "Behind the Scenes at ICCE 2025: How MWG Advertising Agency Delivered Impactful Booths & Media Coverage",
+        "excerpt": "In today’s competitive marketplace, events like the International Cosmetic Congress & Exhibition (ICCE) have become vital platforms for brand visibility and audience engagement."
+      },
+      {
+        "slug": "media-buying-budget",
+        "date": "September 23, 2025",
+        "title": "How to Optimise Your Media Buying Budget",
+        "excerpt": "Pouring money into advertising without a clear strategy is like trying to fill a leaky bucket. You can keep adding more, but you’ll never see the results you want."
+      },
+      {
+        "slug": "5-common-branding-mistakes",
+        "date": "September 22, 2025",
+        "title": "5 Common Branding Mistakes Startups Make and How to Avoid Them",
+        "excerpt": "In this article, we’ll explore the common branding mistakes that startups make and show you how to avoid them, step by step."
+      },
+      {
+        "slug": "production-house-bring-brand-to-life",
+        "date": "September 15, 2025",
+        "title": "Behind the Scenes at MWG: How Our Full Production House Brings Brands to Life",
+        "excerpt": "As a leading production house, MWG Advertising Agency empowers brands to shine from ideation all the way to final release."
+      },
+      {
+        "slug": "high-quality-media-production",
+        "date": "September 6, 2025",
+        "title": "Why Brands Are Investing in HighQuality Media Production: Trends MWG Is Leading in 2025",
+        "excerpt": "In today’s fast-paced digital landscape, media production has transitioned from a luxury to a necessity. Brands are investing heavily in high-quality content that captivates audiences, builds trust, and drives measurable ROI."
+      },
+      {
+        "slug": "web-design-vs-development",
+        "date": "July 28, 2025",
+        "title": "Web Design vs Web Development: What's the Difference?",
+        "excerpt": "Understand the core differences between web design and web development, including their roles, tools, and how they work together to build effective websites."
+      },
+      {
+        "slug": "roi-btl-campaigns",
+        "date": "July 28, 2025",
+        "title": "How to Measure ROI from BTL Campaigns?",
+        "excerpt": "Discover the best methods to measure ROI from BTL campaigns and optimize your marketing spend through accurate tracking and performance analysis."
+      },
+      {
+        "slug": "marketing-funnel",
+        "date": "July 26, 2025",
+        "title": "What Is a Marketing Funnel and How to Build One?",
+        "excerpt": "If you’ve ever wondered What is a Marketing Funnel or how to leverage one effectively, this expert guide breaks down the fundamentals and provides a step-by-step approach to building your own funnel."
+      },
+      {
+        "slug": "15-marketing-kpis",
+        "date": "July 23, 2025",
+        "title": "Top 15 Marketing KPIs Every Brand Should Track",
+        "excerpt": "Discover the top 15 marketing KPIs every brand must track to measure success, optimize performance, and drive growth. Start making data-driven decisions today."
+      },
+      {
+        "slug": "how-long-seo-take",
+        "date": "July 22, 2025",
+        "title": "How Long Does SEO Take to Work?",
+        "excerpt": "Curious about how long SEO takes to deliver real results? This guide breaks down key factors that influence SEO timelines and what you can expect month by month."
+      },
+      {
+        "slug": "boost-marketing-with-ugc",
+        "date": "July 19, 2025",
+        "title": "User-Generated Content UGC How to Turn Your Customers into Your Best Marketers",
+        "excerpt": "User-generated content (UGC) is transforming the marketing landscape. It empowers customers to become brand advocates. This shift is reshaping how businesses engage with their audience."
+      },
+      {
+        "slug": "instagram-vs-tikTok",
+        "date": "July 15, 2025",
+        "title": "Instagram vs TikTok: Which Is Better in 2026?",
+        "excerpt": "Instagram and TikTok continue to dominate in 2026, but which is better for your brand? We compare features, reach, and marketing potential to help you decide."
+      },
+      {
+        "slug": "master-short-form-video",
+        "date": "July 15, 2025",
+        "title": "Short Form Video Production: 16 Reasons Why Short Form Video Dominates in 2025 and How You Can Utilize It",
+        "excerpt": "In a content-saturated world where attention spans are shrinking, short-form video has emerged as the most effective medium for engagement."
+      },
+      {
+        "slug": "digital-marketing-trends",
+        "date": "July 9, 2025",
+        "title": "Top Digital Marketing Trends in 2025",
+        "excerpt": ""
+      },
+      {
+        "slug": "btl-marketing-deeper-engagement",
+        "date": "June 10, 2025",
+        "title": "How BTL Marketing Drives Deeper Engagement?",
+        "excerpt": ""
+      },
+      {
+        "slug": "media-buying-ad-budget",
+        "date": "June 3, 2025",
+        "title": "Maximize Your Ad Budget with a Media Buying Agency 2025?",
+        "excerpt": ""
+      },
+      {
+        "slug": "video-production-company-for-brands",
+        "date": "June 1, 2025",
+        "title": "Why Your Brand Needs a Video Production Company?",
+        "excerpt": ""
+      },
+      {
+        "slug": "graphic-design-build-brand-identity",
+        "date": "May 28, 2025",
+        "title": "How Graphic Design Services Build Strong Brand Identities?",
+        "excerpt": ""
+      },
+      {
+        "slug": "content-marketing-strategies",
+        "date": "May 27, 2025",
+        "title": "Content Marketing Strategies: Creating High-Value Content That Converts Customers",
+        "excerpt": ""
+      },
+      {
+        "slug": "influencer-marketing-agency",
+        "date": "May 25, 2025",
+        "title": "Influencer Marketing Agency: How to Leverage Industry Leaders for Brand Growth",
+        "excerpt": "In today's digital landscape, influencer marketing has emerged as a powerful strategy for brands aiming to enhance their visibility and engagement."
+      },
+      {
+        "slug": "social-media-platforms-growth",
+        "date": "April 21, 2025",
+        "title": "Leveraging Social Media Platforms for Brand Growth",
+        "excerpt": "In today’s digital world, social media platforms have become essential for businesses aiming to build their brand, engage with their audience, and increase sales."
+      },
+      {
+        "slug": "importance-of-seo-in-digital-marketing",
+        "date": "April 19, 2025",
+        "title": "The Importance of SEO in Digital Marketing",
+        "excerpt": "In today's competitive digital world, having an online presence isn't enough—your brand needs to be easily discoverable."
+      },
+      {
+        "slug": "digital-marketing-strategy-guide_2025",
+        "date": "April 15, 2025",
+        "title": "How to Create a Comprehensive Digital Marketing Strategy Guide for 2025",
+        "excerpt": "Crafting a robust digital marketing strategy guide is paramount for businesses aiming to thrive in 2025."
+      },
+      {
+        "slug": "why-you-need-rebranding",
+        "date": "November 26, 2023",
+        "title": "Top Reasons for Rebranding: Why Companies Redefine Their Identity",
+        "excerpt": "Tips to rebrand"
+      },
+      {
+        "slug": "improve-your-online-presence",
+        "date": "September 2, 2023",
+        "title": "Improve Your Online Presence: A Guide for Advertising Agencies",
+        "excerpt": "10 strategies will help you improve your organization's online presence"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Hire Advertising Agency | Biggest Advertising Agencies Egypt",
+    "heading": "Let's Talk.",
+    "subheading": "Ready to achieve victories with us?",
+    "explore": "Explore our offices below",
+    "image": "https://www.mwg.co.com/assets/images/landing/lead%20form%20(3).jpg"
+  }
+}

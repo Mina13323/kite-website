@@ -1,58 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MWG Advertising Agency — website clone
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full clone of [mwg.co.com](https://www.mwg.co.com/home/about) rebuilt from scratch, shipped in two
+renderers that share **one content source**:
 
-## About Laravel
+| Renderer | Path | Purpose |
+| --- | --- | --- |
+| **Static site** | `tools/build-static.mjs` → `static/` | Runs anywhere with Node, no PHP required. Used for preview. |
+| **Laravel Blade** | `routes/web.php` + `resources/views/` | Native to this repo. Run with `php artisan serve`. |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Both read `resources/data/site.json`, so editing content once updates both.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Quick start
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Static site (no PHP needed)
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+npm run site:build     # generate ./static
+npm run site:serve     # http://localhost:4173
+# or both at once
+npm run site:dev
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Laravel app
 
-## Contributing
+```bash
+composer install
+cp .env.example .env && php artisan key:generate
+php artisan serve      # http://localhost:8000
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+No database is required — all content is read from JSON.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Routes
 
-## Security Vulnerabilities
+Every route below exists in both renderers (123 static pages total).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+| Route | Description |
+| --- | --- |
+| `/`, `/home`, `/home/about` | Home: video hero, pillars, work marquees, About/Mission/Vision tabs, case studies, clients |
+| `/big-bang` | 16 breakthrough campaign write-ups |
+| `/services` | Service index (9 tiles) |
+| `/services/{slug}` | 9 detail pages: digital-marketing, graphic-design, web-mobile-apps, btl, content-creation, social-media, seo, media-buying, media-production |
+| `/portfolio` | Filterable project grid + load-more |
+| `/project/{slug}` | 23 project pages (video frames, making-of, photoshoots, related work) |
+| `/case-studies` | Featured case study + grid |
+| `/case-study/{slug}` | Individual case studies |
+| `/blog` | THE BIG BANG LOG — 79 posts, load-more |
+| `/post/{slug}` | Article layout with related posts |
+| `/contact-us` | Map, three offices, lead form |
 
-## License
+Plus `404.html`, `sitemap.xml` and `robots.txt` in the static build.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Structure
+
+```
+resources/data/site.json      ← all content (nav, services, projects, posts, offices…)
+public/assets/css/site.css    ← full design system (no framework)
+public/assets/js/site.js      ← nav, tabs, filters, marquees, multiselect, reveals
+tools/templates.mjs           ← shared HTML fragments for the static build
+tools/build-static.mjs        ← static site generator
+tools/serve-static.mjs        ← clean-URL static server
+app/Support/SiteData.php      ← JSON loader (cached in production)
+app/Http/Controllers/PageController.php
+resources/views/              ← layouts, partials, components, pages
+```
+
+## Features
+
+- Sticky header with multi-level dropdowns and a mobile drawer
+- Auto-scrolling work and client marquees (pause on hover)
+- Tabbed About section (About MWG / Mission / Vision)
+- Portfolio category filtering + progressive "load more"
+- Lead form with a "Select Services" multiselect, select-all and mock reCAPTCHA
+  (POSTs to a validated Laravel endpoint; static build handles it client-side)
+- Scroll reveal animations, back-to-top, preloader
+- Responsive down to 360px, SEO meta and Open Graph tags per page
+
+## Notes
+
+- Images and video are referenced from the original `mwg.co.com` CDN, so the layout matches the
+  source exactly. To self-host, download them into `public/assets/` and update the URLs in
+  `resources/data/site.json`.
+- Article bodies for the 79 blog posts use a shared editorial template with each post's real title,
+  date and excerpt; only the linked article was published in full on the source site.
+- Content and trademarks belong to MWG Advertising Agency — this is a rebuild for reference.
