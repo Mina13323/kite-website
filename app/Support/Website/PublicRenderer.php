@@ -551,42 +551,7 @@ class PublicRenderer
   </script>
 </section>
 
-<section class="case-studies-section" id="case-studies">
-  <div class="cs-viewport">
-    <div class="cs-header">
-      <span class="cs-eyebrow">CASE STUDIES</span>
-      <h2 class="cs-section-title">How The Work Takes Flight</h2>
-    </div>
-
-    <div class="cs-stack-stage">
-      <!-- Card 01 — TANWEER (Active initial card) -->
-      <div class="cs-card cs-card-1" data-index="0">
-        <a class="cs-card-link" href="/case-study/tanweer">
-          <img src="/assets/kite/case-studies/Group 1597880501.svg" alt="Tanweer - Branding Project" class="cs-card-img" loading="eager">
-        </a>
-      </div>
-
-      <!-- Card 02 — PACCINO\'S (Second card in stack) -->
-      <div class="cs-card cs-card-2" data-index="1">
-        <a class="cs-card-link" href="/case-study/paccinos">
-          <img src="/assets/kite/case-studies/Group 1597880502.svg" alt="Paccino&#39;s - Restaurant Branding" class="cs-card-img" loading="eager">
-        </a>
-      </div>
-
-      <!-- Card 03 — VOYAGE (Third card in stack) -->
-      <div class="cs-card cs-card-3" data-index="2">
-        <a class="cs-card-link" href="/case-study/voyage">
-          <img src="/assets/kite/case-studies/Group 1597880503.svg" alt="Voyage - International Hospitality" class="cs-card-img" loading="eager">
-        </a>
-        <div class="cs-action-wrap">
-          <a href="/case-studies" class="cs-view-all-pill">View All Case Studies</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script src="/assets/js/kite-case-studies.js?v=skiper16-v2"></script>
+'.self::caseStudiesStack().'
 
 <!-- Section 2 – CTA (Ready to fly?) -->
 <style>
@@ -649,6 +614,26 @@ class PublicRenderer
     <a class="ready-btn" href="/contact-us">Let\'s work together</a>
   </div>
 </section>';
+    }
+
+    /**
+     * Skiper16-style stacked case-study cards.
+     * Markup + copy live in one shared partial (resources/site/partials/case-studies-stack.html)
+     * so the PHP site and the Node site render identical HTML.
+     * Card links fall back to the case-studies index while that case is not published.
+     */
+    private static function caseStudiesStack(): string
+    {
+        $html = (string) file_get_contents(resource_path('site/partials/case-studies-stack.html'));
+
+        $tokens = [];
+        $values = [];
+        foreach (['tanweer' => '{{cs1Url}}', 'paccinos' => '{{cs2Url}}', 'voyage' => '{{cs3Url}}'] as $slug => $token) {
+            $tokens[] = $token;
+            $values[] = CmsStore::caseBySlug($slug) ? '/case-study/'.$slug : '/case-studies';
+        }
+
+        return str_replace($tokens, $values, $html);
     }
 
     public static function servicesPage(): string

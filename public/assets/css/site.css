@@ -1388,126 +1388,230 @@ ul { list-style: none; }
 }
 
 /* ==========================================================
-   CASE STUDIES – SKIPER16 STACKED CARD SCROLL
+   CASE STUDIES — SKIPER16 STACKED CARD SCROLL
+   Sticky viewport + absolutely stacked cards + scroll-scrubbed
+   transforms (see /assets/js/kite-case-studies.js).
    ========================================================== */
-.case-studies-section {
-  background-color: #78CBE3 !important;
-  width: 100% !important;
+.cs16-section {
+  /* Scroll distance: sticky viewport + one step per transition + settle zone. */
+  --cs16-vh: 100vh;
+  --cs16-step: 105vh;
+  --cs16-settle: 26vh;
   position: relative !important;
+  width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+  background-color: #78CBE3 !important;
+  height: calc(var(--cs16-vh) + (var(--cs16-step) * 2) + var(--cs16-settle));
 }
 
-/* 100vh Pinned Viewport */
-.cs-viewport {
-  width: 100% !important;
-  height: 100vh !important;
-  min-height: 560px !important;
-  max-height: 100vh !important;
+@supports (height: 100svh) {
+  .cs16-section { --cs16-vh: 100svh; }
+}
+
+/* Pinned viewport — stays put for the whole card sequence, then releases. */
+.cs16-sticky {
+  position: sticky !important;
+  top: 0 !important;
+  height: var(--cs16-vh) !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
   align-items: center !important;
-  padding: clamp(16px, 3vh, 36px) clamp(16px, 4vw, 48px) clamp(24px, 4vh, 44px) !important;
+  justify-content: center !important;
+  gap: clamp(12px, 2.2vh, 28px) !important;
+  padding: clamp(64px, 9vh, 100px) clamp(16px, 4vw, 48px) clamp(26px, 5vh, 54px) !important;
   box-sizing: border-box !important;
-  position: relative !important;
-  background-color: #78CBE3 !important;
-  overflow: hidden !important;
+  overflow: hidden !important; /* clips cards lifting out of the stack */
 }
 
-/* Header */
-.cs-header {
-  text-align: center !important;
-  margin-bottom: clamp(12px, 2.2vh, 24px) !important;
+/* JS-driven fallback pin: only applied when native sticky is neutralised by an
+   ancestor scroll container (e.g. `overflow-x: hidden` on html/body). */
+.cs16-section.cs16-pinned .cs16-sticky {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  will-change: transform;
+}
+
+/* ── Heading ─────────────────────────────────────────────── */
+.cs16-head {
   flex: 0 0 auto !important;
+  text-align: center !important;
   position: relative !important;
-  z-index: 10 !important;
+  z-index: 6 !important;
 }
 
-.cs-eyebrow {
+.cs16-eyebrow {
   display: block !important;
   font-family: 'Poppins', sans-serif !important;
   font-weight: 700 !important;
   font-size: clamp(11px, 1.05vw, 14px) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.16em !important;
   color: #111111 !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 6px !important;
 }
 
-.cs-section-title {
+.cs16-title {
   font-family: 'Sour Gummy', cursive, sans-serif !important;
   font-weight: 800 !important;
   color: #ffffff !important;
   font-size: clamp(1.9rem, 3.6vw, 3.2rem) !important;
-  line-height: 1.12 !important;
+  line-height: 1.1 !important;
   margin: 0 !important;
   letter-spacing: -0.5px !important;
+  text-shadow: 0 2px 18px rgba(0, 60, 95, 0.16);
 }
 
-/* The card stage: exact visual position where all cards reside */
-.cs-stack-stage {
+/* ── Stack stage ─────────────────────────────────────────── */
+.cs16-stack {
   position: relative !important;
-  width: 100% !important;
-  max-width: 1060px !important;
-  aspect-ratio: 9262 / 4229 !important;
-  max-height: clamp(300px, 52vh, 500px) !important;
-  margin: 0 auto !important;
+  width: min(1140px, 94vw) !important;
+  height: clamp(320px, 48vh, 540px) !important;
   flex: 0 0 auto !important;
+  margin: 0 auto !important;
 }
 
-/* Cards: absolute positioned, filling the exact stage */
-.cs-card {
+.cs16-card {
   position: absolute !important;
   inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  will-change: transform, opacity, filter !important;
-  transform-origin: center top !important;
+  will-change: transform, opacity;
+  transform-origin: 50% 50% !important;
+  backface-visibility: hidden !important;
 }
 
-/* Layering: Card 1 on top, Card 2 middle, Card 3 bottom */
-.cs-card-1 { z-index: 3 !important; }
-.cs-card-2 { z-index: 2 !important; }
-.cs-card-3 { z-index: 1 !important; }
+/* DOM order = paint order: 01 in front, 03 at the back. */
+.cs16-card--1 { z-index: 3 !important; }
+.cs16-card--2 { z-index: 2 !important; transform: translate3d(0, 5.5%, 0) scale(0.955); opacity: 0.86; }
+.cs16-card--3 { z-index: 1 !important; transform: translate3d(0, 11%, 0) scale(0.91); opacity: 0.72; }
 
-.cs-card-link {
-  display: block !important;
+.cs16-card-inner {
+  display: flex !important;
   width: 100% !important;
   height: 100% !important;
+  background: #ffffff !important;
+  border-radius: 36px !important;
+  overflow: hidden !important;
+  box-shadow: 0 26px 60px rgba(0, 55, 90, 0.22) !important;
+}
+
+/* ── Copy column ─────────────────────────────────────────── */
+.cs16-copy {
+  flex: 0 0 44% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: clamp(9px, 1.3vh, 16px) !important;
+  padding: clamp(22px, 3vw, 46px) !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+/* Voyage stays image-dominant with minimal text. */
+.cs16-card--visual .cs16-copy { flex: 0 0 30% !important; }
+.cs16-card--visual .cs16-media { flex: 1 1 70% !important; }
+
+.cs16-label {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(10px, 0.85vw, 12px) !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: #17ABE2 !important;
+}
+
+.cs16-card-title {
+  font-family: 'Sour Gummy', cursive, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(1.55rem, 2.9vw, 2.85rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.01em !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+.cs16-desc {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(12.5px, 1.02vw, 15.5px) !important;
+  line-height: 1.6 !important;
+  color: rgba(17, 17, 17, 0.76) !important;
+  margin: 0 !important;
+  max-width: 46ch !important;
+}
+
+.cs16-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: clamp(2px, 0.8vh, 10px) !important;
+  padding: 11px 22px !important;
+  border-radius: 999px !important;
+  background: #FAB944 !important;
+  color: #111111 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(12.5px, 1vw, 14.5px) !important;
   text-decoration: none !important;
-  filter: drop-shadow(0 20px 48px rgba(0, 60, 95, 0.22)) !important;
-  transition: filter 0.25s ease !important;
+  box-shadow: 0 6px 18px rgba(250, 185, 68, 0.35) !important;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease) !important;
 }
 
-.cs-card-link:hover {
-  filter: drop-shadow(0 24px 56px rgba(0, 60, 95, 0.28)) !important;
+.cs16-cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(250, 185, 68, 0.45) !important;
 }
 
-.cs-card-img {
+.cs16-cta-arrow {
+  width: 15px !important;
+  height: 15px !important;
+  transition: transform 0.25s var(--ease) !important;
+}
+
+.cs16-cta:hover .cs16-cta-arrow { transform: translate(2px, -2px) !important; }
+
+/* ── Media column ────────────────────────────────────────── */
+.cs16-media {
+  position: relative !important;
+  flex: 1 1 auto !important;
+  overflow: hidden !important;
+  background: #dff1fa !important;
+  min-width: 0 !important;
+}
+
+.cs16-media picture,
+.cs16-media img {
+  display: block !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
+}
+
+.cs16-media img {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Light blend so the copy panel melts into the image — never a heavy scrim. */
+.cs16-media::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 26%) !important;
   pointer-events: none !important;
 }
 
-/* "View All Case Studies" pill button under Voyage */
-.cs-action-wrap {
-  position: absolute !important;
-  bottom: clamp(-46px, -6vh, -56px) !important;
-  left: 0 !important;
-  right: 0 !important;
-  text-align: center !important;
-  z-index: 20 !important;
+/* ── "View All Case Studies" pill ────────────────────────── */
+.cs16-action {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  z-index: 6 !important;
   opacity: 0;
-  transform: translateY(12px);
-  will-change: transform, opacity !important;
-  pointer-events: auto !important;
+  will-change: transform, opacity;
 }
 
-.cs-view-all-pill {
+.cs16-pill {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1516,33 +1620,90 @@ ul { list-style: none; }
   font-family: 'Poppins', sans-serif !important;
   font-weight: 700 !important;
   font-size: clamp(13px, 1.05vw, 15px) !important;
-  padding: 9px 28px !important;
-  border-radius: 9999px !important;
+  padding: 10px 28px !important;
+  border-radius: 999px !important;
   text-decoration: none !important;
-  box-shadow: 0 4px 14px rgba(0, 159, 227, 0.3) !important;
+  box-shadow: 0 6px 16px rgba(0, 159, 227, 0.3) !important;
   transition: background-color 0.2s ease, transform 0.2s ease !important;
 }
 
-.cs-view-all-pill:hover {
+.cs16-pill:hover {
   background-color: #0ea1d6 !important;
-  transform: translateY(-2px) scale(1.02) !important;
+  transform: translateY(-2px) !important;
 }
 
-/* GSAP pin spacer background guarantee */
-.pin-spacer {
-  background-color: #78CBE3 !important;
+/* ── Reduced motion / no-JS: plain stacked cards ─────────── */
+.cs16-section.is-static {
+  height: auto !important;
+  padding: clamp(60px, 8vw, 110px) 0 !important;
+}
+
+.cs16-section.is-static .cs16-sticky {
+  position: static !important;
+  height: auto !important;
+  overflow: visible !important;
+  padding: 0 clamp(16px, 4vw, 48px) !important;
+}
+
+.cs16-section.is-static .cs16-stack {
+  height: auto !important;
+  display: grid !important;
+  gap: clamp(18px, 3vw, 30px) !important;
+}
+
+.cs16-section.is-static .cs16-card {
+  position: relative !important;
+  inset: auto !important;
+  height: clamp(320px, 46vw, 480px) !important;
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+}
+
+.cs16-section.is-static .cs16-action { opacity: 1 !important; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cs16-section { --cs16-step: 92vh; }
+  .cs16-stack { width: min(920px, 94vw) !important; height: clamp(300px, 44vh, 460px) !important; }
+  .cs16-copy { flex: 0 0 48% !important; }
+  .cs16-card-title { font-size: clamp(1.4rem, 3.4vw, 2.2rem) !important; }
 }
 
 @media (max-width: 768px) {
-  .cs-viewport {
-    padding: 16px 12px 20px !important;
-    min-height: 480px !important;
+  .cs16-section { --cs16-step: 78vh; --cs16-settle: 18vh; }
+  .cs16-sticky {
+    padding: 64px 14px 22px !important;
+    gap: 12px !important;
   }
-  .cs-stack-stage {
-    max-height: 46vh !important;
+  .cs16-stack { width: 92vw !important; height: clamp(380px, 58vh, 540px) !important; }
+  .cs16-card-inner { flex-direction: column !important; border-radius: 26px !important; }
+  .cs16-copy {
+    flex: 0 0 auto !important;
+    order: 2 !important;
+    padding: 16px 18px 20px !important;
+    gap: 8px !important;
   }
-  .cs-action-wrap {
-    bottom: -44px !important;
+  .cs16-media { flex: 1 1 auto !important; order: 1 !important; min-height: 0 !important; }
+  .cs16-card--visual .cs16-copy,
+  .cs16-card--visual .cs16-media { flex: 0 0 auto !important; }
+  .cs16-card--visual .cs16-media { flex: 1 1 auto !important; }
+  .cs16-media::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 58%, rgba(255, 255, 255, 0.32) 100%) !important;
   }
+  .cs16-desc {
+    font-size: 13px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden !important;
+  }
+  .cs16-cta { padding: 9px 18px !important; }
 }
 
+@media (max-width: 480px) {
+  .cs16-stack { width: 94vw !important; height: clamp(320px, 58vh, 500px) !important; }
+  .cs16-desc { -webkit-line-clamp: 4; }
+}
