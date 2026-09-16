@@ -823,7 +823,7 @@ class PublicRenderer
 
         $inner = '<section class="page-hero"><div class="container"><h1>Let\'s work together</h1><p>Tell us about the brand and the brief.</p></div></section>
     <section class="section"><div class="container">
-      <div class="offices">
+      <div class="offices offices-2col">
         <article class="office">
           <h4>Talk to KITE</h4>'
           .(! empty($settings['phone']) ? '<p><a href="'.self::esc($settings['socials']['whatsapp'] ?? '#').'">'.self::esc($settings['phone']).'</a></p>' : '')
