@@ -35,6 +35,11 @@ em, .sour-gummy, .highlight {
   font-family: 'Sour Gummy', sans-serif !important;
 }
 body { overflow-y: auto; }
+/* Clip decoration without creating a second scroll container. */
+html.scroll-unlocked, body.home-intro.scroll-unlocked {
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+}
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font-family: inherit; color: inherit; }
@@ -1397,19 +1402,18 @@ ul { list-style: none; }
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+  padding: clamp(72px, 10vh, 140px) 0 clamp(90px, 16vh, 220px) !important;
 }
 
-/* 100vh Pinned Viewport */
+/* Skiper16 pattern: cards are sticky in the natural document flow. */
 .cs-viewport {
   width: 100% !important;
-  height: 100vh !important;
-  min-height: 560px !important;
-  max-height: 100vh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  display: block !important;
   align-items: center !important;
-  padding: clamp(16px, 3vh, 36px) clamp(16px, 4vw, 48px) clamp(24px, 4vh, 44px) !important;
+  padding: 0 clamp(16px, 4vw, 48px) !important;
   box-sizing: border-box !important;
   position: relative !important;
   background-color: #78CBE3 !important;
@@ -1419,7 +1423,7 @@ ul { list-style: none; }
 /* Header */
 .cs-header {
   text-align: center !important;
-  margin-bottom: clamp(12px, 2.2vh, 24px) !important;
+  margin-bottom: 0 !important;
   flex: 0 0 auto !important;
   position: relative !important;
   z-index: 10 !important;
@@ -1451,26 +1455,27 @@ ul { list-style: none; }
   position: relative !important;
   width: 100% !important;
   max-width: 1060px !important;
-  aspect-ratio: 9262 / 4229 !important;
-  max-height: clamp(300px, 52vh, 500px) !important;
-  margin: 0 auto !important;
-  flex: 0 0 auto !important;
+  max-height: none !important;
+  margin: clamp(44px, 9vh, 110px) auto 0 !important;
+  padding-bottom: clamp(110px, 18vh, 240px) !important;
 }
 
-/* Cards: absolute positioned, filling the exact stage */
+/* Later cards sit a little lower, then stack naturally over the first. */
 .cs-card {
-  position: absolute !important;
-  inset: 0 !important;
+  position: sticky !important;
+  top: calc(12vh + var(--stack-offset, 0px)) !important;
   width: 100% !important;
-  height: 100% !important;
+  aspect-ratio: 9262 / 4229 !important;
+  margin: 0 0 clamp(32vh, 38vw, 58vh) !important;
   will-change: transform, opacity, filter !important;
   transform-origin: center top !important;
+  transition: none !important;
 }
 
-/* Layering: Card 1 on top, Card 2 middle, Card 3 bottom */
-.cs-card-1 { z-index: 3 !important; }
-.cs-card-2 { z-index: 2 !important; }
-.cs-card-3 { z-index: 1 !important; }
+/* Later DOM nodes layer over earlier sticky cards, like Skiper16. */
+.cs-card-1 { --stack-offset: 0px; z-index: 1 !important; }
+.cs-card-2 { --stack-offset: 20px; z-index: 2 !important; }
+.cs-card-3 { --stack-offset: 40px; z-index: 3 !important; margin-bottom: 0 !important; }
 
 .cs-card-link {
   display: block !important;
@@ -1501,8 +1506,8 @@ ul { list-style: none; }
   right: 0 !important;
   text-align: center !important;
   z-index: 20 !important;
-  opacity: 0;
-  transform: translateY(12px);
+  opacity: 1;
+  transform: none;
   will-change: transform, opacity !important;
   pointer-events: auto !important;
 }
@@ -1528,21 +1533,74 @@ ul { list-style: none; }
   transform: translateY(-2px) scale(1.02) !important;
 }
 
-/* GSAP pin spacer background guarantee */
-.pin-spacer {
-  background-color: #78CBE3 !important;
-}
-
 @media (max-width: 768px) {
   .cs-viewport {
-    padding: 16px 12px 20px !important;
-    min-height: 480px !important;
+    padding: 0 12px !important;
+    min-height: 0 !important;
   }
   .cs-stack-stage {
-    max-height: 46vh !important;
+    width: min(100%, 680px) !important;
+    padding-bottom: 90px !important;
   }
+  .cs-card { top: calc(14vh + var(--stack-offset, 0px)) !important; margin-bottom: 34vh !important; }
   .cs-action-wrap {
     bottom: -44px !important;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .case-studies-section { padding: 48px 0 !important; }
+  .cs-viewport { position: relative !important; height: auto !important; min-height: 0 !important; overflow: visible !important; }
+  .cs-stack-stage { display: grid !important; gap: 16px !important; height: auto !important; aspect-ratio: auto !important; max-height: none !important; }
+  .cs-card { position: relative !important; inset: auto !important; transform: none !important; opacity: 1 !important; filter: none !important; }
+  .cs-action-wrap { display: none !important; }
+}
+
+/* Each later card scrolls over the preceding sticky card. */
+.cs-deck { width: min(1160px, calc(100% - 48px)); margin: clamp(44px, 7vw, 90px) auto 0; padding-bottom: 0; isolation: isolate; }
+.cs-deck-card {
+  display: block;
+  position: sticky;
+  top: 100px;
+  aspect-ratio: 9262 / 4229;
+  height: auto;
+  min-height: 0;
+  margin-bottom: 12vh;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform-origin: center top;
+}
+.cs-deck-card:nth-child(1) { z-index: 1; }
+.cs-deck-card:nth-child(2) { z-index: 2; }
+.cs-deck-card:nth-child(3) { z-index: 3; margin-bottom: 0; }
+.cs-deck-art { width: 100%; height: 100%; display: block; object-fit: contain; }
+.cs-deck-card:focus-visible { outline: 4px solid #fab944; outline-offset: 4px; }
+.cs-all-wrap { display: flex; justify-content: center; margin-top: clamp(24px, 3vw, 38px); }
+.cs-view-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  background: #17abe2;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 5px 12px rgba(0, 117, 171, .24);
+  transition: transform .2s ease, background-color .2s ease;
+}
+.cs-view-all:hover { background: #0d9bd0; transform: translateY(-2px); }
+.cs-view-all:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .cs-deck { width: calc(100% - 32px); }
+  .cs-deck-card { aspect-ratio: 9262 / 4229; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-deck-card { position: relative; top: auto; }
+}

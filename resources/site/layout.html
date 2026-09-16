@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{canonical}}">
   <link rel="icon" href="/assets/kite/preloader/logo-icon.svg">
-  <link rel="stylesheet" href="/assets/css/site.css?v=skiper16-v2">
+  <link rel="stylesheet" href="/assets/css/site.css?v=sticky-deck-v7">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
@@ -192,15 +192,16 @@
         margin: 0 auto;
         padding: 0 32px;
       }
-      .footer-brand-title {
-        font-family: 'Poppins', sans-serif !important;
-        font-size: clamp(1.8rem, 2.5vw, 2.2rem);
-        font-weight: 800;
-        color: #ffffff;
-        margin: 0 0 18px 0;
-        line-height: 1.1;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
+      .footer-brand-logo-wrap {
+        margin: 0 0 20px 0;
+        display: inline-block;
+      }
+      .footer-brand-logo {
+        height: clamp(36px, 3.8vw, 46px);
+        width: auto;
+        max-width: 175px;
+        display: block;
+        object-fit: contain;
       }
       .footer-brand-tag {
         font-family: 'Poppins', sans-serif !important;
@@ -281,7 +282,9 @@
     <div class="container footer-grid-new">
       <!-- Col 1: Brand & Tagline -->
       <div class="footer-col-brand">
-        <h3 class="footer-brand-title">KITE</h3>
+        <a href="/home" class="footer-brand-logo-wrap">
+          <img src="/assets/kite/kite-footer-logo.png" alt="KITE Design Studio" class="footer-brand-logo" loading="lazy">
+        </a>
         <p class="footer-brand-tag">KITE is a creative and marketing studio in Cairo, bringing strategy, branding, content, production, and digital together. We turn bold ideas into thoughtful work that gives brands a clear voice, a strong direction, and what they need to fly higher.</p>
       </div>
 
@@ -373,21 +376,21 @@
       <span>Instagram</span>
     </a>
     <!-- 3. WhatsApp -->
-    <a href="https://wa.me/201000000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="sticky-social-item">
+    <a href="https://wa.me/201275510701" target="_blank" rel="noopener" aria-label="WhatsApp" class="sticky-social-item">
       <svg viewBox="0 472.6 195 165">
         <path d="M97.1035 472.642C109.889 472.646 122.501 475.567 133.959 481.176C145.416 486.786 155.411 494.934 163.165 504.985C170.919 515.037 176.223 526.722 178.666 539.131C181.108 551.54 180.623 564.34 177.247 576.533C173.871 588.726 167.696 599.986 159.202 609.435C150.709 618.884 140.125 626.268 128.274 631.013C116.424 635.758 103.626 637.736 90.876 636.794C78.1262 635.851 65.7683 632.013 54.7633 625.577L20.8184 636.755C19.9038 637.055 18.923 637.098 17.9854 636.878C17.0478 636.659 16.1904 636.186 15.5091 635.512C14.8278 634.838 14.3494 633.991 14.1273 633.064C13.9053 632.136 13.9483 631.167 14.2517 630.262L25.5667 596.708C18.0925 584.227 14.0921 570.012 13.9716 555.507C13.851 541.003 17.6148 526.725 24.8806 514.124C32.1463 501.523 42.6553 491.047 55.3401 483.762C68.025 476.476 82.4339 472.639 97.1035 472.642ZM68.1563 513.778C67.0992 513.813 66.0625 514.076 65.1186 514.548C64.1747 515.02 63.3462 515.69 62.691 516.511C60.8208 518.679 55.5426 523.959 55.5426 534.665C55.5426 545.39 62.8677 555.767 63.8963 557.226C64.9146 558.644 78.318 580.65 98.8387 590.102C102.648 591.849 106.527 593.376 110.476 594.684C115.38 596.328 119.848 596.112 123.38 595.557C127.318 594.941 135.475 590.287 137.189 585.181C138.883 580.116 138.883 575.75 138.363 574.835C137.854 573.931 136.493 573.376 134.436 572.267C132.399 571.188 122.331 565.917 120.461 565.209C118.591 564.459 117.219 564.12 115.858 566.287C114.486 573.387 110.59 573.387 109.385 574.835C108.211 576.263 106.995 576.469 104.969 575.38C102.912 574.301 96.3346 571.989 88.5108 564.551C82.4325 558.787 78.3284 551.627 77.1439 549.459C75.9386 547.271 77.0088 546.11 78.027 545.01C78.9622 544.045 80.0843 542.483 81.1025 541.199C82.1104 539.945 82.4741 539.041 83.1598 537.572C83.8248 536.123 83.4819 534.839 82.9728 533.76C82.4637 532.682 78.3699 521.925 76.6659 517.559C75.0035 513.316 73.3099 513.911 72.063 513.829C70.8786 513.778 69.5174 513.778 68.1563 513.778Z" fill="#000000"/>
       </svg>
       <span>WhatsApp</span>
     </a>
     <!-- 4. LinkedIn -->
-    <a href="https://www.linkedin.com/company/kite-design-studio" target="_blank" rel="noopener" aria-label="LinkedIn" class="sticky-social-item">
+    <a href="linkedin.com/company/kite-design-studio/" target="_blank" rel="noopener" aria-label="LinkedIn" class="sticky-social-item">
       <svg viewBox="0 697.4 195 165">
         <path d="M97.0839 697.404C52.5662 697.404 16.4785 733.492 16.4785 778.01C16.4785 822.527 52.5662 858.615 97.0839 858.615C141.602 858.615 177.689 822.527 177.689 778.01C177.689 733.492 141.602 697.404 97.0839 697.404ZM77.3524 811.419H61.0298V758.891H77.3524V811.419ZM69.0903 752.443C63.935 752.443 60.6016 748.79 60.6016 744.273C60.6016 739.663 64.0357 736.12 69.3003 736.12C74.5648 736.12 77.789 739.663 77.8898 744.273C77.8898 748.79 74.5648 752.443 69.0903 752.443ZM136.967 811.419H120.644V782.309C120.644 775.533 118.276 770.932 112.374 770.932C107.865 770.932 105.186 774.047 104.003 777.044C103.566 778.11 103.457 779.622 103.457 781.125V811.411H87.1258V775.642C87.1258 769.084 86.9159 763.601 86.6976 758.883H100.879L101.626 766.179H101.954C104.103 762.753 109.368 757.699 118.176 757.699C128.915 757.699 136.967 764.895 136.967 780.361V811.419Z" fill="#000000"/>
       </svg>
       <span>LinkedIn</span>
     </a>
     <!-- 5. YouTube -->
-    <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="sticky-social-item">
+    <a href="https://www.youtube.com/@kitedesignsstudio" target="_blank" rel="noopener" aria-label="YouTube" class="sticky-social-item">
       <svg viewBox="0 922.3 195 165">
         <path d="M110.403 1000.7L91.7415 991.992C90.1129 991.236 88.7752 992.083 88.7752 993.886V1010.29C88.7752 1012.09 90.1129 1012.94 91.7415 1012.18L110.395 1003.47C112.032 1002.71 112.032 1001.46 110.403 1000.7ZM97.0841 922.321C53.0302 922.321 17.3184 958.033 17.3184 1002.09C17.3184 1046.14 53.0302 1081.85 97.0841 1081.85C141.138 1081.85 176.85 1046.14 176.85 1002.09C176.85 958.033 141.138 922.321 97.0841 922.321ZM97.0841 1034.49C56.254 1034.49 55.5395 1030.81 55.5395 1002.09C55.5395 973.363 56.254 969.682 97.0841 969.682C137.914 969.682 138.629 973.363 138.629 1002.09C138.629 1030.81 137.914 1034.49 97.0841 1034.49Z" fill="#000000"/>
       </svg>

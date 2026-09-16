@@ -221,13 +221,13 @@ ${servicesHorizon(services, projects)}
 
           <!-- Header 2: Vision -->
           <div class="about-header-item" data-header-panel="vision" style="display:none;">
-            <span class="about-tag">VISION</span>
+            <span class="about-tag">OUR VISION</span>
             <h2 class="about-headline">A sky full of<br>remarkable kites</h2>
           </div>
 
           <!-- Header 3: Mission -->
           <div class="about-header-item" data-header-panel="mission" style="display:none;">
-            <span class="about-tag">MISSION</span>
+            <span class="about-tag">OUR MISSION</span>
             <h2 class="about-headline">Give every kite<br>what it needs to<br>fly higher</h2>
           </div>
         </div>
@@ -412,39 +412,18 @@ ${servicesHorizon(services, projects)}
 <section class="case-studies-section" id="case-studies">
   <div class="cs-viewport">
     <div class="cs-header">
-      <span class="cs-eyebrow">CASE STUDIES</span>
-      <h2 class="cs-section-title">How The Work Takes Flight</h2>
-    </div>
-
-    <div class="cs-stack-stage">
-      <!-- Card 01 — TANWEER (Active initial card) -->
-      <div class="cs-card cs-card-1" data-index="0">
-        <a class="cs-card-link" href="/case-study/tanweer">
-          <img src="/assets/kite/case-studies/Group 1597880501.svg" alt="Tanweer - Branding Project" class="cs-card-img" loading="eager">
-        </a>
-      </div>
-
-      <!-- Card 02 — PACCINO'S (Second card in stack) -->
-      <div class="cs-card cs-card-2" data-index="1">
-        <a class="cs-card-link" href="/case-study/paccinos">
-          <img src="/assets/kite/case-studies/Group 1597880502.svg" alt="Paccino's - Restaurant Branding" class="cs-card-img" loading="eager">
-        </a>
-      </div>
-
-      <!-- Card 03 — VOYAGE (Third card in stack) -->
-      <div class="cs-card cs-card-3" data-index="2">
-        <a class="cs-card-link" href="/case-study/voyage">
-          <img src="/assets/kite/case-studies/Group 1597880503.svg" alt="Voyage - International Hospitality" class="cs-card-img" loading="eager">
-        </a>
-        <div class="cs-action-wrap">
-          <a href="/case-studies" class="cs-view-all-pill">View All Case Studies</a>
-        </div>
-      </div>
+      <h2 class="cs-section-title"><strong>Case</strong> Studies</h2>
     </div>
   </div>
+
+  <div class="cs-deck" aria-label="Featured case studies">
+    <a class="cs-deck-card" href="/case-study/tanweer"><img class="cs-deck-art" src="/assets/kite/case-studies/Group%201597880501.svg" alt="Tanweer branding project" loading="eager"></a>
+    <a class="cs-deck-card" href="/case-study/paccinos"><img class="cs-deck-art" src="/assets/kite/case-studies/Group%201597880502.svg" alt="Paccino’s restaurant project" loading="lazy"></a>
+    <a class="cs-deck-card" href="/case-study/voyage"><img class="cs-deck-art" src="/assets/kite/case-studies/Group%201597880503.svg" alt="Voyage hospitality project" loading="lazy"></a>
+  </div>
+  <div class="cs-all-wrap"><a class="cs-view-all" href="/case-studies">View All Case Studies</a></div>
 </section>
 
-<script src="/assets/js/kite-case-studies.js?v=skiper16-v2"></script>
 
 <!-- Section 2 – CTA (Ready to fly?) -->
 <style>
