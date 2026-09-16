@@ -685,7 +685,7 @@ function contactPage(settings, success = false, error = '') {
     : (error ? `<p class="form-note" style="display:block;color:#c0392b">${esc(error)}</p>` : '');
   return `<section class="page-hero"><div class="container"><h1>Let's work together</h1><p>Tell us about the brand and the brief.</p></div></section>
     <section class="section"><div class="container">
-      <div class="offices" style="grid-template-columns:1fr 1fr">
+      <div class="offices offices-2col">
         <article class="office">
           <h4>Talk to KITE</h4>
           ${settings.phone ? `<p><a href="${esc(settings.socials.whatsapp || '#')}">${esc(settings.phone)}</a></p>` : ''}

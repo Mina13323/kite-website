@@ -113,7 +113,7 @@
       .nav-tagline { display: none !important; }
       .nav-scrolled-logo img { height: 26px !important; }
     }
-    .page-hero h1, h1, h2, h3 { color: #111111; }
+    .page-hero h1, h1, h2, h3 { color: #111111; word-break: break-word; overflow-wrap: break-word; }
     .mobile-nav { background: #f4efeb !important; color: #111111 !important; }
   </style>
   {{extraHead}}
@@ -186,11 +186,11 @@
       .footer-grid-new {
         display: grid;
         grid-template-columns: 1.6fr 1fr 1.1fr;
-        gap: clamp(36px, 6vw, 90px);
+        gap: clamp(24px, 5vw, 90px);
         align-items: start;
         max-width: 1140px;
         margin: 0 auto;
-        padding: 0 32px;
+        padding: 0 clamp(16px, 4vw, 32px);
       }
       .footer-brand-logo-wrap {
         margin: 0 0 20px 0;
@@ -275,7 +275,19 @@
       @media (max-width: 768px) {
         .footer-grid-new {
           grid-template-columns: 1fr;
-          gap: 40px;
+          gap: clamp(28px, 6vw, 40px);
+        }
+      }
+      @media (max-width: 480px) {
+        .footer-grid-new {
+          padding: 0 16px;
+          gap: 28px;
+        }
+        .footer-brand-logo {
+          max-width: 140px;
+        }
+        .footer-heading {
+          font-size: clamp(1rem, 4vw, 1.2rem);
         }
       }
     </style>
@@ -316,7 +328,7 @@
   <style>
     .sticky-social-bar {
       position: fixed;
-      left: 31px;
+      left: clamp(16px, 2.5vw, 31px);
       top: 50%;
       transform: translateY(-50%);
       z-index: 9999;
@@ -353,9 +365,28 @@
       display: none;
     }
     @media (max-width: 768px) {
-      .sticky-social-bar { left: 14px; padding: 6px 4px; gap: 5px; }
-      .sticky-social-item { width: 24px; height: 24px; }
-      .sticky-social-item svg { width: 24px; height: 24px; }
+      .sticky-social-bar { left: 8px; padding: 5px 3px; gap: 4px; }
+      .sticky-social-item { width: 22px; height: 22px; }
+      .sticky-social-item svg { width: 22px; height: 22px; }
+    }
+    @media (max-width: 520px) {
+      .sticky-social-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        padding: 8px 12px;
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
+        gap: 16px;
+        border-radius: 16px 16px 0 0 !important;
+        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08) !important;
+      }
+      .sticky-social-item { width: 32px; height: 32px; }
+      .sticky-social-item svg { width: 32px; height: 32px; }
     }
   </style>
   <div class="sticky-social-bar">
