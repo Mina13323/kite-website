@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /studio
+Disallow: /studio/
+Sitemap: https://www.kiteagency-eg.com/sitemap.xml

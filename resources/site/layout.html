@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{canonical}}">
+  <link rel="icon" href="/assets/kite/preloader/logo-icon.svg">
+  <link rel="stylesheet" href="/assets/css/site.css?v=skiper16-v2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      --bg: #f4efeb !important;
+      --bg-soft: #e8ddd0 !important;
+      --bg-card: #ffffff !important;
+      --text: #111111 !important;
+      --muted: rgba(17, 17, 17, 0.72) !important;
+      --dim: #6c292e !important;
+      --line: rgba(17, 17, 17, 0.12) !important;
+      --line-strong: rgba(17, 17, 17, 0.22) !important;
+      --sky: #7fc4e5 !important;
+      --sky-deep: #31a8d0 !important;
+      --wine: #dd1f27 !important;
+      --sun: #ffca1c !important;
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    ::-webkit-scrollbar { display: none; }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    html { -ms-overflow-style: none; scrollbar-width: none; }
+    .site-header {
+      background: transparent !important;
+      box-shadow: none !important;
+      color: #111111 !important;
+      transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    .site-header.is-solid,
+    .site-header.is-scrolled {
+      background: transparent !important;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none !important;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; position: relative; padding: 0 28px; }
+    .header-left { flex: 1; display: flex; align-items: center; }
+    .header-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+    .header-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; }
+    
+    .nav-circle-btn {
+      background: #ffffff !important; border-radius: 50%; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; border: none; cursor: pointer; padding: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin: 0; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nav-circle-btn:hover {
+      transform: scale(1.05); box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .burger-icon-svg {
+      width: 22px; height: 18px; display: block; overflow: visible;
+    }
+    .burger-icon-svg rect {
+      transform-box: fill-box !important;
+      transform-origin: center !important;
+      transition: transform 0.3s ease, opacity 0.3s ease !important;
+    }
+    .burger-icon-svg .bar-blue { fill: #6BBDE3 !important; }
+    .burger-icon-svg .bar-yellow { fill: #FAB944 !important; }
+    .burger-icon-svg .bar-red { fill: #DE1827 !important; }
+    .menu-btn.is-active .bar-blue { transform: translateY(7.25px) rotate(45deg) !important; }
+    .menu-btn.is-active .bar-yellow { opacity: 0 !important; transform: scale(0) !important; }
+    .menu-btn.is-active .bar-red { transform: translateY(-7.25px) rotate(-45deg) !important; }
+    
+    .nav-tagline { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1); font-family: 'Sour Gummy', sans-serif; font-size: 20px; font-weight: bold; color: #111111; letter-spacing: 0.5px; transition: opacity 0.3s, transform 0.3s; white-space: nowrap; text-align: center; }
+    .nav-scrolled-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.85); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; display: flex; justify-content: center; align-items: center; width: 140px; height: 36px; }
+    .nav-scrolled-logo img { height: 36px !important; width: auto !important; max-width: none !important; display: block; margin: 0 auto; }
+    
+    .site-header.is-scrolled .nav-tagline { opacity: 0 !important; transform: translate(-50%, -50%) scale(0.85) !important; pointer-events: none !important; }
+    .site-header.is-scrolled .nav-scrolled-logo { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; pointer-events: auto !important; }
+    .nav-cta-btn {
+      background: #FAB944 !important;
+      color: #111111 !important;
+      padding: 7px 20px;
+      border-radius: 9999px !important;
+      border: 2.5px solid #ffffff !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.1px;
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-cta-btn:hover { opacity: 0.95; transform: translateY(-1px); }
+
+    @media (max-width: 768px) {
+      .header-inner { padding: 0 16px; }
+      .nav-circle-btn { width: 42px; height: 42px; }
+      .nav-cta-btn { padding: 6px 16px; font-size: 12.5px; border-width: 2px !important; }
+      .nav-tagline { font-size: 13px; }
+      .nav-scrolled-logo img { height: 30px !important; }
+    }
+    @media (max-width: 520px) {
+      .header-inner { padding: 0 12px; }
+      .nav-circle-btn { width: 38px; height: 38px; }
+      .nav-cta-btn { padding: 5px 12px; font-size: 11.5px; border-width: 1.5px !important; }
+      .nav-tagline { display: none !important; }
+      .nav-scrolled-logo img { height: 26px !important; }
+    }
+    .page-hero h1, h1, h2, h3 { color: #111111; }
+    .mobile-nav { background: #f4efeb !important; color: #111111 !important; }
+  </style>
+  {{extraHead}}
+</head>
+<body class="{{bodyClass}}">
+  <header class="site-header {{headerClass}}">
+    <div class="header-inner">
+      <div class="header-left">
+        <button class="menu-btn nav-circle-btn" type="button" aria-label="Open menu">
+          <svg class="burger-icon-svg" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="bar-blue" width="22" height="3.5" rx="1.75" fill="#6BBDE3"/>
+            <rect class="bar-yellow" y="7.25" width="22" height="3.5" rx="1.75" fill="#FAB944"/>
+            <rect class="bar-red" y="14.5" width="22" height="3.5" rx="1.75" fill="#DE1827"/>
+          </svg>
+        </button>
+      </div>
+      <div class="header-center">
+        <span class="nav-tagline">Aim High Fly Higher</span>
+        <a href="/home" aria-label="KITE home" class="nav-scrolled-logo">
+          <img src="/assets/kite/logo-red.png" alt="KITE">
+        </a>
+      </div>
+      <div class="header-right">
+        <a href="/contact-us" class="nav-cta-btn">Lets fly together</a>
+      </div>
+    </div>
+  </header>
+  <script>
+    (function() {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+      const onScroll = () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 30);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      // Also check periodically in case of GSAP manipulations
+      setInterval(onScroll, 500);
+      onScroll();
+    })();
+  </script>
+  <nav class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a class="nav-link" href="/home">Home</a>
+      <div class="mobile-nav-group">
+        <a class="nav-link" href="/services">Services</a>
+        <div class="mobile-subnav">
+          <a href="/services/branding">· Branding</a>
+          <a href="/services/media-production">· Media Production</a>
+          <a href="/services/web-development">· Web Development</a>
+          <a href="/services/digital-content">· Digital Content</a>
+          <a href="/services/marketing-materials">· Marketing Materials</a>
+        </div>
+      </div>
+      <a class="nav-link" href="/home#about">About</a>
+      <a class="nav-link" href="/case-studies">Case Studies</a>
+      <a class="nav-link" href="/portfolio">Portfolio</a>
+      <a class="nav-link" href="/contact-us">Contact</a>
+    </div>
+  </nav>
+  <main>{{content}}</main>
+  <footer class="site-footer" id="kite-footer">
+    <style>
+      .site-footer {
+        background-color: #10A9E2 !important;
+        color: #ffffff !important;
+        border-top: none !important;
+        padding: clamp(70px, 8vw, 110px) 0 clamp(60px, 8vw, 90px) !important;
+        margin: 0 !important;
+      }
+      .footer-grid-new {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1.1fr;
+        gap: clamp(36px, 6vw, 90px);
+        align-items: start;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      .footer-brand-title {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 18px 0;
+        line-height: 1.1;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .footer-brand-tag {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+        line-height: 1.68;
+        color: #ffffff;
+        opacity: 0.95;
+        max-width: 440px;
+        margin: 0;
+        font-weight: 400;
+      }
+      .footer-heading {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: clamp(1.08rem, 1.25vw, 1.22rem);
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 24px 0;
+        line-height: 1.2;
+      }
+      .footer-nav-links a {
+        display: block;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+        margin-bottom: 16px;
+        text-decoration: none;
+        opacity: 0.95;
+        font-weight: 400;
+        transition: opacity 0.2s ease;
+      }
+      .footer-nav-links a:hover {
+        opacity: 0.8;
+      }
+      .footer-email {
+        display: block;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+        margin-bottom: 14px;
+        text-decoration: none;
+        opacity: 0.95;
+        font-weight: 400;
+      }
+      .footer-location {
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+        margin: 0 0 24px 0;
+        opacity: 0.95;
+        font-weight: 400;
+      }
+      .footer-cta-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FAB944;
+        color: #111111 !important;
+        padding: 9px 24px;
+        border-radius: 9999px;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      .footer-cta-pill:hover {
+        transform: translateY(-1px);
+        opacity: 0.92;
+      }
+      @media (max-width: 768px) {
+        .footer-grid-new {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+    </style>
+    <div class="container footer-grid-new">
+      <!-- Col 1: Brand & Tagline -->
+      <div class="footer-col-brand">
+        <h3 class="footer-brand-title">KITE</h3>
+        <p class="footer-brand-tag">KITE is a creative and marketing studio in Cairo, bringing strategy, branding, content, production, and digital together. We turn bold ideas into thoughtful work that gives brands a clear voice, a strong direction, and what they need to fly higher.</p>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div class="footer-col-nav">
+        <h4 class="footer-heading">Navigation</h4>
+        <nav class="footer-nav-links">
+          <a href="/home">Home</a>
+          <a href="/home#about">About Kite</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/case-studies">Case studies</a>
+          <a href="/contact-us">contact us</a>
+        </nav>
+      </div>
+
+      <!-- Col 3: Contact -->
+      <div class="footer-col-contact">
+        <h4 class="footer-heading">Contact</h4>
+        <a class="footer-email" href="mailto:hello@kite.design.com">hello@kite.design.com</a>
+        <p class="footer-location">Cairo, Egypt</p>
+        <a class="footer-cta-pill" href="/contact-us">Let's Fly Together</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/site.js?v=kite-sky-13"></script>
+  <script src="/assets/js/kite-motion.js?v=kite-sky-9"></script>
+  {{extraScript}}
+  <!-- Sticky Right Social Bar -->
+  <style>
+    .sticky-social-bar {
+      position: fixed;
+      left: 31px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 5px;
+      background: #ffffff !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+    }
+    .sticky-social-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50% !important;
+      background: transparent !important;
+      color: #ffffff !important;
+      text-decoration: none;
+      transition: transform 0.25s ease;
+    }
+    .sticky-social-item:hover {
+      transform: scale(1.14);
+    }
+    .sticky-social-item svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+    .sticky-social-item span {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .sticky-social-bar { left: 14px; padding: 6px 4px; gap: 5px; }
+      .sticky-social-item { width: 24px; height: 24px; }
+      .sticky-social-item svg { width: 24px; height: 24px; }
+    }
+  </style>
+  <div class="sticky-social-bar">
+    <!-- 1. Facebook -->
+    <a href="https://www.facebook.com/kitedesignstudios" target="_blank" rel="noopener" aria-label="Facebook" class="sticky-social-item">
+      <svg viewBox="0 0 195 165">
+        <path d="M179.298 82.7178C179.298 37.027 142.486 -0.0107422 97.0829 -0.0107422C51.6593 -0.000465347 14.8477 37.027 14.8477 82.7281C14.8477 124.01 44.9177 158.232 84.2163 164.439V106.632H63.3543V82.7281H84.2369V64.4867C84.2369 43.7583 96.5177 32.3099 115.293 32.3099C124.296 32.3099 133.699 33.9234 133.699 33.9234V54.2715H123.33C113.125 54.2715 109.939 60.6534 109.939 67.1998V82.7178H132.733L129.095 106.622H109.929V164.429C149.228 158.222 179.298 124 179.298 82.7178Z" fill="#000000"/>
+      </svg>
+      <span>Facebook</span>
+    </a>
+    <!-- 2. Instagram -->
+    <a href="https://www.instagram.com/kite_designs_studio/" target="_blank" rel="noopener" aria-label="Instagram" class="sticky-social-item">
+      <svg viewBox="0 237.6 195 165">
+        <path d="M110.109 320.501C110.06 323.064 109.252 325.554 107.786 327.657C106.32 329.76 104.262 331.38 101.875 332.312C99.4867 333.244 96.8759 333.447 94.373 332.893C91.8701 332.34 89.5878 331.056 87.8154 329.204C86.043 327.352 84.8604 325.016 84.4174 322.491C83.9744 319.966 84.291 317.367 85.3271 315.022C86.3631 312.678 88.072 310.693 90.237 309.321C92.4021 307.949 94.9258 307.25 97.4884 307.314C100.894 307.44 104.116 308.887 106.472 311.349C108.828 313.811 110.133 317.093 110.109 320.501Z" fill="#000000"/>
+        <path d="M119.436 279.971H75.5466C71.2038 279.971 67.0388 281.696 63.9679 284.767C60.8971 287.838 59.1719 292.003 59.1719 296.345V341.222C59.1719 343.373 59.5954 345.502 60.4183 347.489C61.2412 349.475 62.4474 351.28 63.9679 352.801C65.4885 354.321 67.2936 355.528 69.2803 356.35C71.2669 357.173 73.3962 357.597 75.5466 357.597H119.436C121.587 357.597 123.716 357.173 125.703 356.35C127.689 355.528 129.495 354.321 131.015 352.801C132.536 351.28 133.742 349.475 134.565 347.489C135.388 345.502 135.811 343.373 135.811 341.222V296.426C135.82 294.27 135.402 292.133 134.584 290.138C133.765 288.143 123.56 286.329 131.039 284.8C129.518 283.271 127.71 282.058 125.719 281.229C123.728 280.4 121.593 279.973 119.436 279.971ZM97.4874 342.452C93.1427 342.55 88.8672 341.351 85.2067 339.009C81.5462 336.666 78.6667 333.286 76.9356 329.3C75.2045 325.314 74.7004 320.902 75.4877 316.628C76.2749 312.354 78.3177 308.412 81.3554 305.304C84.3932 302.196 88.288 300.064 92.5429 299.179C96.7978 298.295 101.22 298.698 105.244 300.338C109.269 301.977 112.714 304.779 115.139 308.385C117.565 311.991 118.861 316.238 118.862 320.584C118.897 323.424 118.372 326.243 117.316 328.88C116.261 331.517 114.696 333.92 112.71 335.951C110.725 337.982 108.358 339.602 105.746 340.717C103.134 341.833 100.328 342.422 97.4874 342.452ZM121.24 298.724C120.707 298.724 120.178 298.618 119.686 298.411C119.194 298.204 118.748 297.901 118.374 297.52C118 297.139 117.706 296.687 117.51 296.191C117.313 295.695 117.217 295.164 117.228 294.63C117.228 293.545 117.659 292.503 118.427 291.736C119.194 290.968 120.236 290.537 121.321 290.537C122.407 290.537 123.448 290.968 124.216 291.736C124.984 292.503 125.415 293.545 125.415 294.63C125.431 295.208 125.322 295.783 125.096 296.315C124.869 296.847 124.53 297.323 124.102 297.712C123.674 298.101 123.167 298.392 122.616 298.567C122.065 298.742 121.483 298.795 120.909 298.724H121.24Z" fill="#000000"/>
+        <path d="M97.4861 237.634C76.0293 237.527 55.4087 245.947 40.1607 261.044C24.9126 276.14 16.286 296.675 16.1787 318.132C16.0715 339.589 24.4922 360.209 39.5886 375.458C54.6849 390.706 75.2203 399.332 96.677 399.439C107.301 399.493 117.832 397.453 127.668 393.436C137.504 389.419 146.452 383.505 154.002 376.03C161.553 368.555 167.556 359.666 171.671 349.871C175.786 340.075 177.931 329.565 177.984 318.941C178.037 308.317 175.997 297.786 171.981 287.95C167.964 278.114 162.049 269.166 154.574 261.616C147.1 254.066 138.211 248.062 128.415 243.947C118.62 239.832 108.11 237.687 97.4861 237.634ZM146.618 340.397C146.641 344.026 145.943 347.624 144.564 350.982C143.186 354.34 141.155 357.39 138.589 359.957C136.023 362.524 132.972 364.556 129.615 365.935C126.258 367.315 122.66 368.014 119.03 367.993H75.9578C72.3283 368.015 68.7303 367.317 65.3726 365.939C62.0148 364.56 58.9641 362.529 56.3971 359.963C53.8302 357.397 51.7982 354.347 50.4189 350.989C49.0396 347.632 48.3404 344.034 48.3619 340.405V297.324C48.3393 293.694 49.0375 290.096 50.4158 286.739C51.7941 283.381 53.8252 280.33 56.3914 277.763C58.9576 275.196 62.0077 273.164 65.3651 271.785C68.7224 270.406 72.3202 269.706 75.9497 269.728H119.03C122.659 269.706 126.256 270.405 129.613 271.784C132.97 273.163 136.02 275.194 138.586 277.76C141.152 280.326 143.183 283.376 144.562 286.733C145.941 290.09 146.64 293.687 146.618 297.316V340.397Z" fill="#000000"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+    <!-- 3. WhatsApp -->
+    <a href="https://wa.me/201000000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="sticky-social-item">
+      <svg viewBox="0 472.6 195 165">
+        <path d="M97.1035 472.642C109.889 472.646 122.501 475.567 133.959 481.176C145.416 486.786 155.411 494.934 163.165 504.985C170.919 515.037 176.223 526.722 178.666 539.131C181.108 551.54 180.623 564.34 177.247 576.533C173.871 588.726 167.696 599.986 159.202 609.435C150.709 618.884 140.125 626.268 128.274 631.013C116.424 635.758 103.626 637.736 90.876 636.794C78.1262 635.851 65.7683 632.013 54.7633 625.577L20.8184 636.755C19.9038 637.055 18.923 637.098 17.9854 636.878C17.0478 636.659 16.1904 636.186 15.5091 635.512C14.8278 634.838 14.3494 633.991 14.1273 633.064C13.9053 632.136 13.9483 631.167 14.2517 630.262L25.5667 596.708C18.0925 584.227 14.0921 570.012 13.9716 555.507C13.851 541.003 17.6148 526.725 24.8806 514.124C32.1463 501.523 42.6553 491.047 55.3401 483.762C68.025 476.476 82.4339 472.639 97.1035 472.642ZM68.1563 513.778C67.0992 513.813 66.0625 514.076 65.1186 514.548C64.1747 515.02 63.3462 515.69 62.691 516.511C60.8208 518.679 55.5426 523.959 55.5426 534.665C55.5426 545.39 62.8677 555.767 63.8963 557.226C64.9146 558.644 78.318 580.65 98.8387 590.102C102.648 591.849 106.527 593.376 110.476 594.684C115.38 596.328 119.848 596.112 123.38 595.557C127.318 594.941 135.475 590.287 137.189 585.181C138.883 580.116 138.883 575.75 138.363 574.835C137.854 573.931 136.493 573.376 134.436 572.267C132.399 571.188 122.331 565.917 120.461 565.209C118.591 564.459 117.219 564.12 115.858 566.287C114.486 573.387 110.59 573.387 109.385 574.835C108.211 576.263 106.995 576.469 104.969 575.38C102.912 574.301 96.3346 571.989 88.5108 564.551C82.4325 558.787 78.3284 551.627 77.1439 549.459C75.9386 547.271 77.0088 546.11 78.027 545.01C78.9622 544.045 80.0843 542.483 81.1025 541.199C82.1104 539.945 82.4741 539.041 83.1598 537.572C83.8248 536.123 83.4819 534.839 82.9728 533.76C82.4637 532.682 78.3699 521.925 76.6659 517.559C75.0035 513.316 73.3099 513.911 72.063 513.829C70.8786 513.778 69.5174 513.778 68.1563 513.778Z" fill="#000000"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+    <!-- 4. LinkedIn -->
+    <a href="https://www.linkedin.com/company/kite-design-studio" target="_blank" rel="noopener" aria-label="LinkedIn" class="sticky-social-item">
+      <svg viewBox="0 697.4 195 165">
+        <path d="M97.0839 697.404C52.5662 697.404 16.4785 733.492 16.4785 778.01C16.4785 822.527 52.5662 858.615 97.0839 858.615C141.602 858.615 177.689 822.527 177.689 778.01C177.689 733.492 141.602 697.404 97.0839 697.404ZM77.3524 811.419H61.0298V758.891H77.3524V811.419ZM69.0903 752.443C63.935 752.443 60.6016 748.79 60.6016 744.273C60.6016 739.663 64.0357 736.12 69.3003 736.12C74.5648 736.12 77.789 739.663 77.8898 744.273C77.8898 748.79 74.5648 752.443 69.0903 752.443ZM136.967 811.419H120.644V782.309C120.644 775.533 118.276 770.932 112.374 770.932C107.865 770.932 105.186 774.047 104.003 777.044C103.566 778.11 103.457 779.622 103.457 781.125V811.411H87.1258V775.642C87.1258 769.084 86.9159 763.601 86.6976 758.883H100.879L101.626 766.179H101.954C104.103 762.753 109.368 757.699 118.176 757.699C128.915 757.699 136.967 764.895 136.967 780.361V811.419Z" fill="#000000"/>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+    <!-- 5. YouTube -->
+    <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="sticky-social-item">
+      <svg viewBox="0 922.3 195 165">
+        <path d="M110.403 1000.7L91.7415 991.992C90.1129 991.236 88.7752 992.083 88.7752 993.886V1010.29C88.7752 1012.09 90.1129 1012.94 91.7415 1012.18L110.395 1003.47C112.032 1002.71 112.032 1001.46 110.403 1000.7ZM97.0841 922.321C53.0302 922.321 17.3184 958.033 17.3184 1002.09C17.3184 1046.14 53.0302 1081.85 97.0841 1081.85C141.138 1081.85 176.85 1046.14 176.85 1002.09C176.85 958.033 141.138 922.321 97.0841 922.321ZM97.0841 1034.49C56.254 1034.49 55.5395 1030.81 55.5395 1002.09C55.5395 973.363 56.254 969.682 97.0841 969.682C137.914 969.682 138.629 973.363 138.629 1002.09C138.629 1030.81 137.914 1034.49 97.0841 1034.49Z" fill="#000000"/>
+      </svg>
+      <span>YouTube</span>
+    </a>
+    <!-- 6. Behance -->
+    <a href="https://www.behance.net/kiteagency2020" target="_blank" rel="noopener" aria-label="Behance" class="sticky-social-item">
+      <svg viewBox="0 1153.6 195 165">
+        <path d="M80.6348 1226.55C82.1953 1225.42 82.9486 1223.56 82.9486 1220.99C83.0025 1219.77 82.7513 1218.57 82.2132 1217.48C81.729 1216.6 81.0115 1215.86 80.1326 1215.34C79.2213 1214.79 78.2092 1214.43 77.1551 1214.27C76.0072 1214.05 74.8413 1213.94 73.6933 1213.96H61.0839V1228.26H74.7337C77.0834 1228.28 79.0743 1227.7 80.6348 1226.55ZM82.7513 1239.47C80.9936 1238.12 78.6439 1237.46 75.7202 1237.46H61.048V1254.32H75.4332C76.7784 1254.32 78.0161 1254.19 79.2178 1253.94C80.3549 1253.72 81.4387 1253.28 82.4106 1252.65C83.3253 1252.06 84.0607 1251.25 84.6168 1250.21C85.1549 1249.17 85.4239 1247.85 85.4239 1246.25C85.4239 1243.07 84.5271 1240.83 82.7513 1239.47ZM97.0827 1153.68C52.7075 1153.68 16.7266 1189.66 16.7266 1234.03C16.7266 1278.41 52.7075 1314.39 97.0827 1314.39C141.458 1314.39 177.439 1278.41 177.439 1234.03C177.439 1189.66 141.458 1153.68 97.0827 1153.68ZM112.598 1205.14H137.422V1211.18H112.598V1205.14ZM97.0827 1254.98C95.9217 1257.19 94.2637 1259.09 92.2398 1260.54C90.1233 1262.02 87.7736 1263.09 85.2804 1263.72C82.6719 1264.42 79.9811 1264.76 77.2807 1264.74H47.5776V1203.56H76.4556C79.3793 1203.56 82.0339 1203.83 84.4553 1204.33C86.8588 1204.83 88.9036 1205.69 90.6255 1206.86C92.3295 1208.03 93.6748 1209.59 94.6254 1211.52C95.5581 1213.44 96.0424 1215.85 96.0424 1218.7C96.0424 1221.78 95.3429 1224.33 93.9438 1226.39C92.5268 1228.46 90.482 1230.12 87.7019 1231.43C91.4865 1232.51 94.2667 1234.43 96.0962 1237.12C97.9616 1239.85 98.8764 1243.11 98.8764 1246.95C98.8764 1250.07 98.2845 1252.74 97.0827 1254.98ZM147.09 1245.51H115.091C115.091 1248.99 116.293 1252.33 118.104 1254.12C119.934 1255.9 122.553 1256.8 125.979 1256.8C128.454 1256.8 130.552 1256.17 132.346 1254.93C134.122 1253.69 135.198 1252.38 135.593 1251.02H146.319C144.597 1256.35 141.978 1260.15 138.427 1262.45C134.911 1264.74 130.606 1265.89 125.602 1265.89C122.104 1265.89 118.965 1265.32 116.149 1264.22C113.441 1263.16 111.002 1261.55 108.993 1259.47C107.012 1257.33 105.481 1254.82 104.491 1252.08C103.396 1249.05 102.858 1245.85 102.894 1242.64C102.894 1239.33 103.45 1236.24 104.526 1233.37C106.589 1227.79 110.876 1223.33 116.347 1221.01C119.27 1219.79 122.409 1219.18 125.584 1219.22C129.351 1219.22 132.615 1219.94 135.449 1221.41C138.177 1222.81 140.546 1224.82 142.373 1227.29C144.184 1229.75 145.458 1232.55 146.265 1235.7C147.036 1238.81 147.305 1242.07 147.09 1245.51ZM125.207 1228.37C123.27 1228.37 121.638 1228.71 120.382 1229.37C119.127 1230.03 118.087 1230.86 117.297 1231.81C116.546 1232.73 115.99 1233.79 115.665 1234.93C115.378 1235.88 115.181 1236.85 115.109 1237.84H134.929C134.642 1234.73 133.566 1232.44 132.131 1230.82C130.624 1229.23 128.203 1228.37 125.207 1228.37Z" fill="#000000"/>
+      </svg>
+      <span>Behance</span>
+    </a>
+  </div>
+  <script>
+    (function() {
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href*="#"]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        const hashIndex = href.indexOf('#');
+        if (hashIndex === -1) return;
+        const hash = href.slice(hashIndex);
+        const path = href.slice(0, hashIndex);
+        
+        if (path === '' || path === window.location.pathname || (path === '/home' && (window.location.pathname === '/' || window.location.pathname === '/home'))) {
+          if (hash && hash !== '#') {
+            const target = document.querySelector(hash);
+            if (target) {
+              e.preventDefault();
+              const headerOffset = 80;
+              const elementPosition = target.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

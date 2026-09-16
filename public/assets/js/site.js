@@ -1,0 +1,109 @@
+(() => {
+  document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('error', () => { img.style.display = 'none'; });
+  });
+
+  const header = document.querySelector('.site-header');
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobile = document.querySelector('.mobile-nav');
+
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  if (menuBtn && mobile) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobile.classList.toggle('open');
+      menuBtn.classList.toggle('is-active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobile.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobile.classList.remove('open');
+        menuBtn.classList.remove('is-active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  document.querySelectorAll('.about-tabs button[data-panel]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.about-tabs button[data-panel]').forEach((b) => b.classList.remove('is-on'));
+      document.querySelectorAll('.about-panel').forEach((p) => (p.hidden = true));
+      btn.classList.add('is-on');
+      const panel = document.getElementById(btn.dataset.panel);
+      if (panel) panel.hidden = false;
+    });
+  });
+
+  document.querySelectorAll('[data-filter]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach((b) => b.classList.remove('is-on'));
+      btn.classList.add('is-on');
+      document.querySelectorAll('[data-cat]').forEach((card) => {
+        card.style.display = key === 'all' || card.dataset.cat === key ? '' : 'none';
+      });
+    });
+  });
+
+  const dd = document.querySelector('.services-dd');
+  if (dd) {
+    const toggle = dd.querySelector('[data-services-toggle]');
+    toggle?.addEventListener('click', (e) => {
+      e.preventDefault();
+      dd.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!dd.contains(e.target)) dd.classList.remove('open');
+    });
+    const boxes = dd.querySelectorAll('input[type="checkbox"]');
+    const selectAll = dd.querySelector('[data-select-all]');
+    selectAll?.addEventListener('change', () => {
+      boxes.forEach((b) => {
+        if (b !== selectAll) b.checked = selectAll.checked;
+      });
+    });
+  }
+
+  document.querySelectorAll('form[data-lead]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const note = form.querySelector('.form-note');
+      const body = new URLSearchParams(new FormData(form));
+      try {
+        const res = await fetch(form.getAttribute('action') || '/contact-us', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+        if (!res.ok) throw new Error('send-failed');
+        if (note) {
+          note.style.display = 'block';
+          note.style.color = '';
+          note.textContent = 'Thank you. Our team will get in touch shortly.';
+        }
+        form.reset();
+      } catch {
+        if (note) {
+          note.style.display = 'block';
+          note.style.color = '#c0392b';
+          note.textContent = 'Could not send. Please try again or WhatsApp KITE.';
+        }
+      }
+    });
+  });
+
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.nav a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    if (href === path || (href !== '/' && path.startsWith(href))) {
+      a.classList.add('is-active');
+    }
+  });
+})();
