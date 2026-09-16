@@ -1,183 +1,212 @@
 /**
- * KITE Case Studies — Skiper16 Card Stack Scroll
+ * KITE Case Studies — Skiper16 card stack scroll (Laravel / vanilla JS port).
  *
- * Interaction Behavior:
- * 1. The section pins the 100vh viewport (.cs-viewport) inside #case-studies.
- * 2. Card 1 (TANWEER) is the active, dominant card in front (z-index: 3).
- *    Card 2 (PACCINO'S) and Card 3 (VOYAGE) reside behind it in the stack.
- * 3. As the user scrolls down, TANWEER smoothly scales/transforms away
- *    (lifting upward with scale reduction and fade) to reveal PACCINO'S.
- * 4. PACCINO'S becomes the dominant card (scale: 1, opacity: 1).
- * 5. On continued scroll, PACCINO'S transforms away to reveal VOYAGE.
- * 6. VOYAGE becomes dominant, and the "View All Case Studies" pill button appears.
- * 7. When the sequence finishes, the sticky section releases and normal scroll continues.
- * 8. Scrolling upward reverses the animation 1:1.
- * 9. The animation is 100% scrubbed to scroll progress (no autoplay, no timers).
+ * The interaction pattern of Skiper UI "Skiper16 — Card Stack Scroll", rebuilt for
+ * Blade/vanilla-JS: sticky viewport + absolutely stacked cards + scroll-scrubbed
+ * scale/translate transforms.
+ *
+ * How it works
+ * ------------
+ *  #case-studies (.cs16-section) is tall: it supplies the scroll distance
+ *  (100vh + one step per card transition + a settle zone).
+ *  .cs16-sticky is `position: sticky; top: 0; height: 100vh`, so it parks in the
+ *  viewport while the user scrolls through that distance.
+ *  Every card lives absolutely inside .cs16-stack. A single scroll progress value
+ *  (0 → 1) is converted to a "step" (0 → cards-1) and each card is transformed by
+ *  its depth = index - step:
+ *
+ *    depth  0     → active card: full size, fully opaque
+ *    depth  < 0   → leaving: lifts up, scales down, fades out (scrubbed)
+ *    depth  > 0   → waiting behind: slightly smaller, nudged down, dimmed
+ *
+ * Guarantees
+ *  - 100% scroll-linked. No autoplay, no timers, no next/prev, no snapping.
+ *  - Stop scrolling → the cards freeze at exactly the current progress.
+ *  - Scrolling up reverses the sequence 1:1 (Voyage → Paccino's → Tanweer).
+ *  - When the last card has settled, the sticky viewport releases and the page
+ *    continues scrolling normally into the next section.
+ *  - Only `transform`, `opacity` and `filter` are animated (no layout thrash).
+ *  - rAF-throttled, and idle (no rAF loop) while the section is off-screen.
  */
 (() => {
-  function initSkiperCaseStudies() {
-    const section = document.getElementById('case-studies');
-    if (!section) return;
+  const section = document.querySelector('[data-cs16-section]');
+  if (!section) return;
 
-    if (!window.gsap || !window.ScrollTrigger) {
-      setTimeout(initSkiperCaseStudies, 100);
+  const sticky = section.querySelector('[data-cs16-sticky]');
+  const stack = section.querySelector('[data-cs16-stack]');
+  const cards = Array.prototype.slice.call(section.querySelectorAll('[data-cs16-card]'));
+  const action = section.querySelector('[data-cs16-action]');
+  if (!sticky || !stack || cards.length < 2) return;
+
+  const reduceMotion =
+    typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canObserve = typeof IntersectionObserver === 'function';
+
+  if (reduceMotion) {
+    section.classList.add('is-static');
+    return;
+  }
+
+  const COUNT = cards.length;
+  const TRANSITIONS = COUNT - 1; // 3 cards → 2 scrubbed transitions
+  const SETTLE = 0.12; // last slice of the scroll: hold on the final card before release
+  const EXIT_TRAVEL = 1.18; // leaving card lifts this × stack height
+  const EXIT_SCALE = 0.1; // leaving card shrinks by this much
+  const PEEK = 0.055; // downward offset per waiting card (× stack height)
+  const DEPTH_SCALE = 0.045; // scale reduction per waiting card
+  const DEPTH_FADE = 0.14; // opacity reduction per waiting card
+  const DEPTH_DIM = 0.05; // brightness reduction per waiting card
+
+  let travel = 1; // scrollable distance inside the section
+  let stackHeight = stack.offsetHeight || 1;
+  let sectionTop = 0; // document offset of the section
+  let progress = -1;
+  let frame = null;
+  let inView = true;
+  let resizeTimer = null;
+  let pinMode = 'sticky'; // 'sticky' (native) or 'pinned' (JS-driven fallback)
+
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+  const smoothstep = (t) => t * t * (3 - 2 * t);
+  const scrollY = () => window.pageYOffset || window.scrollY || 0;
+
+  function measure() {
+    travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+    stackHeight = stack.offsetHeight || 1;
+    sectionTop = section.getBoundingClientRect().top + scrollY();
+  }
+
+  /**
+   * Fallback for pages where an ancestor is a scroll container (for example
+   * `html, body { overflow-x: hidden }` in kite-intro.css), which silently
+   * disables `position: sticky`. In that case the sticky element is absolutely
+   * positioned inside the section and translated to follow the viewport.
+   */
+  function applyPin(p) {
+    if (pinMode === 'pinned') {
+      const offset = clamp(scrollY() - sectionTop, 0, Math.max(section.offsetHeight - sticky.offsetHeight, 0));
+      sticky.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
+    // While inside the pinned range the viewport must rest at top: 0.
+    if (p > 0.03 && p < 0.97 && Math.abs(sticky.getBoundingClientRect().top) > 4) {
+      pinMode = 'pinned';
+      section.classList.add('cs16-pinned');
+      measure();
+      applyPin(p);
+    }
+  }
 
-    const viewport = section.querySelector('.cs-viewport');
-    const card1 = section.querySelector('.cs-card-1');
-    const card2 = section.querySelector('.cs-card-2');
-    const card3 = section.querySelector('.cs-card-3');
-    const actionWrap = section.querySelector('.cs-action-wrap');
+  function readProgress() {
+    const rect = section.getBoundingClientRect();
+    return clamp(-rect.top / travel, 0, 1);
+  }
 
-    if (!viewport || !card1 || !card2 || !card3) return;
+  function paint(p) {
+    const animated = clamp(p / (1 - SETTLE), 0, 1);
+    const step = animated * TRANSITIONS;
 
-    // Clean up any existing ScrollTrigger instances for this section
-    ScrollTrigger.getAll().forEach((st) => {
-      if (st.vars && (st.vars.trigger === section || st.vars.pin === viewport || st.vars.pin === section)) {
-        st.kill();
+    // Only the card closest to the front is interactive, so a click in the
+    // middle of a transition always hits the card the user actually sees.
+    const dominant = Math.round(step);
+
+    for (let i = 0; i < COUNT; i += 1) {
+      const card = cards[i];
+      const depth = i - step;
+      let y = 0;
+      let scale = 1;
+      let opacity = 1;
+      let dim = 1;
+
+      if (depth < 0) {
+        // Leaving the stack: lift up + scale down + fade out.
+        const t = smoothstep(clamp(-depth, 0, 1));
+        y = -t * stackHeight * EXIT_TRAVEL;
+        scale = 1 - EXIT_SCALE * t;
+        opacity = 1 - t;
+      } else {
+        // Waiting in the stack behind the active card.
+        const d = Math.min(depth, TRANSITIONS);
+        y = d * stackHeight * PEEK;
+        scale = Math.max(1 - DEPTH_SCALE * d, 0.8);
+        opacity = Math.max(1 - DEPTH_FADE * d, 0.4);
+        dim = Math.max(1 - DEPTH_DIM * d, 0.82);
       }
-    });
 
-    // Ensure pin spacer matches blue background
-    function styleSpacer(self) {
-      if (self && self.spacer) {
-        self.spacer.style.backgroundColor = '#78CBE3';
-      }
+      card.style.transform = 'translate3d(0,' + y.toFixed(2) + 'px,0) scale(' + scale.toFixed(4) + ')';
+      card.style.opacity = opacity.toFixed(3);
+      card.style.filter = depth > 0 ? 'brightness(' + dim.toFixed(3) + ')' : 'none';
+
+      const isActive = i === dominant;
+      card.style.pointerEvents = isActive ? 'auto' : 'none';
+      card.style.visibility = opacity < 0.02 ? 'hidden' : 'visible';
+      card.setAttribute('aria-hidden', isActive ? 'false' : 'true');
     }
 
-    // Initial state:
-    // Card 1 (Tanweer): Front, fully active, 100% visible
-    gsap.set(card1, {
-      xPercent: 0,
-      yPercent: 0,
-      scale: 1,
-      opacity: 1,
-      filter: 'brightness(1)',
-      zIndex: 3,
-      transformOrigin: 'center top',
-      force3D: true,
-    });
-
-    // Card 2 (Paccino's): Resting directly behind Card 1 in the stack
-    gsap.set(card2, {
-      xPercent: 0,
-      yPercent: 0,
-      scale: 0.95,
-      opacity: 0.75,
-      filter: 'brightness(0.92)',
-      zIndex: 2,
-      transformOrigin: 'center top',
-      force3D: true,
-    });
-
-    // Card 3 (Voyage): Resting directly behind Card 2 in the stack
-    gsap.set(card3, {
-      xPercent: 0,
-      yPercent: 0,
-      scale: 0.90,
-      opacity: 0.45,
-      filter: 'brightness(0.82)',
-      zIndex: 1,
-      transformOrigin: 'center top',
-      force3D: true,
-    });
-
-    if (actionWrap) {
-      gsap.set(actionWrap, { opacity: 0, y: 15 });
+    if (action) {
+      // "View All Case Studies" fades in as Voyage takes over.
+      const a = clamp((p - (1 - SETTLE - 0.18)) / 0.18, 0, 1);
+      action.style.opacity = a.toFixed(3);
+      action.style.transform = 'translate3d(0,' + ((1 - a) * 14).toFixed(2) + 'px,0)';
     }
+  }
 
-    // Scroll distance = enough travel for 2 full, deliberate card transitions
-    const scrollDistance = Math.max(window.innerHeight * 2.2, 1700);
+  function run() {
+    frame = null;
+    if (!inView) return;
+    const p = readProgress();
+    if (p === progress) return; // nothing moved → no repaint, no extra rAF
+    progress = p;
+    applyPin(p);
+    paint(p);
+  }
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        pin: viewport,
-        start: 'top top',
-        end: () => `+=${scrollDistance}`,
-        scrub: 0.7,
-        anticipatePin: 1,
-        pinSpacing: true,
-        invalidateOnRefresh: true,
-        onRefreshInit: styleSpacer,
-        onRefresh: styleSpacer,
+  function schedule() {
+    if (frame === null) frame = window.requestAnimationFrame(run);
+  }
+
+  function onResize() {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      measure();
+      progress = -1;
+      schedule();
+    }, 120);
+  }
+
+  // Initial state: the stack is already laid out, so paint where we are now.
+  measure();
+  progress = readProgress();
+  paint(progress);
+  applyPin(progress);
+
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', onResize);
+  window.addEventListener('orientationchange', onResize);
+
+  if (canObserve) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (let i = 0; i < entries.length; i += 1) {
+          if (entries[i].isIntersecting) inView = true;
+          else if (entries.length === 1) inView = false;
+        }
+        if (inView) {
+          measure();
+          progress = -1;
+          schedule();
+        }
       },
-    });
-
-    // ─────────────────────────────────────────────────────────────
-    // TRANSITION 1: Tanweer scales/transforms away -> reveals Paccino's
-    // (Timeline duration: 1.0)
-    // ─────────────────────────────────────────────────────────────
-    tl.to(card1, {
-      yPercent: -105,
-      scale: 0.90,
-      opacity: 0,
-      ease: 'power1.inOut',
-      duration: 1,
-    }, 0)
-    .to(card2, {
-      scale: 1,
-      opacity: 1,
-      filter: 'brightness(1)',
-      ease: 'power1.inOut',
-      duration: 1,
-    }, 0)
-    .to(card3, {
-      scale: 0.95,
-      opacity: 0.75,
-      filter: 'brightness(0.92)',
-      ease: 'power1.inOut',
-      duration: 1,
-    }, 0)
-
-    // Reading hold on Paccino's
-    .to({}, { duration: 0.25 })
-
-    // ─────────────────────────────────────────────────────────────
-    // TRANSITION 2: Paccino's scales/transforms away -> reveals Voyage
-    // (Timeline duration: 1.0)
-    // ─────────────────────────────────────────────────────────────
-    .to(card2, {
-      yPercent: -105,
-      scale: 0.90,
-      opacity: 0,
-      ease: 'power1.inOut',
-      duration: 1,
-    })
-    .to(card3, {
-      scale: 1,
-      opacity: 1,
-      filter: 'brightness(1)',
-      ease: 'power1.inOut',
-      duration: 1,
-    }, '<');
-
-    // Reveal "View All Case Studies" button under Voyage
-    if (actionWrap) {
-      tl.to(actionWrap, {
-        opacity: 1,
-        y: 0,
-        ease: 'power1.out',
-        duration: 0.4,
-      }, '-=0.35');
-    }
-
-    // Final settle hold before unpinning
-    tl.to({}, { duration: 0.2 });
+      { rootMargin: '25% 0px 25% 0px', threshold: 0 }
+    );
+    io.observe(section);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSkiperCaseStudies);
-  } else {
-    initSkiperCaseStudies();
-  }
-
+  // Images/fonts can change the stack height after first paint.
   window.addEventListener('load', () => {
-    if (window.ScrollTrigger) {
-      ScrollTrigger.refresh();
-    }
+    measure();
+    progress = -1;
+    schedule();
   });
 })();

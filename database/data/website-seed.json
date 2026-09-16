@@ -1476,7 +1476,79 @@
       "status": "published"
     }
   ],
-  "case_studies": [],
+  "case_studies": [
+    {
+      "title": "Tanweer",
+      "slug": "tanweer",
+      "project_slug": null,
+      "introduction": "We created Tanweer’s brand name, logo, and visual identity to reflect its mission of supporting children and families. Inspired by the idea of enlightenment, the identity combines playful forms and warm colors to communicate care, connection, and growth.",
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "gallery": [
+        "/assets/kite/case-studies/case-1-tanweer.jpg"
+      ],
+      "visuals": [],
+      "website_url": null,
+      "services": [
+        "branding",
+        "digital-content"
+      ],
+      "industry": "Human Development",
+      "featured": true,
+      "status": "published",
+      "sort_order": 1
+    },
+    {
+      "title": "Paccino’s",
+      "slug": "paccinos",
+      "project_slug": null,
+      "introduction": "Crafted to be remembered. We shaped Paccino’s Restaurant through branding, packaging, food photography, digital marketing, and media production.",
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "gallery": [
+        "/assets/kite/case-studies/case-2-paccinos.jpg"
+      ],
+      "visuals": [],
+      "website_url": null,
+      "services": [
+        "branding",
+        "media-production",
+        "marketing-materials",
+        "digital-content"
+      ],
+      "industry": "Food & Beverage",
+      "featured": true,
+      "status": "published",
+      "sort_order": 2
+    },
+    {
+      "title": "Voyage",
+      "slug": "voyage",
+      "project_slug": null,
+      "introduction": null,
+      "challenge": null,
+      "approach": null,
+      "solution": null,
+      "results": null,
+      "gallery": [
+        "/assets/kite/case-studies/case-3-voyage.jpg"
+      ],
+      "visuals": [],
+      "website_url": null,
+      "services": [
+        "branding",
+        "media-production"
+      ],
+      "industry": "Hospitality",
+      "featured": true,
+      "status": "published",
+      "sort_order": 3
+    }
+  ],
   "media": [],
   "homepage": {
     "hero": {

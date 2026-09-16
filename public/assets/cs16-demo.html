@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+  Dev/demo harness for the Skiper16-style case-studies stack.
+  It pulls the REAL #case-studies markup off the home page (so it can never drift
+  from the shipped partial) and runs the real /assets/js/kite-case-studies.js.
+  Served at /assets/cs16-demo.html — safe to delete whenever you like.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case studies stack — interaction demo</title>
+  <link rel="stylesheet" href="/assets/css/site.css?v=skiper16-v4">
+  <style>
+    body { margin: 0; background: #f4efeb; }
+    .demo-note, .demo-after {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; text-align: center; padding: 0 24px; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    .demo-note { height: 100vh; }
+    .demo-note h1 { font-family: 'Sour Gummy', cursive, sans-serif; font-size: clamp(28px, 4vw, 48px); margin: 0 0 6px; color: #111; }
+    .demo-note p { margin: 0; max-width: 620px; color: rgba(17, 17, 17, .72); }
+    .demo-arrow { margin-top: 10px; font-size: 26px; animation: bob 1.6s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    .demo-after { height: 80vh; background: #FAB944; color: #fff; font-weight: 700; }
+    @media (prefers-reduced-motion: reduce) { .demo-arrow { animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="demo-note">
+    <h1>Case Studies stack — demo</h1>
+    <p>Scroll down slowly. The viewport pins, the cards scrub with your scroll position, and the stack releases at the end.</p>
+    <p>Stop mid-way: the cards freeze. Scroll back up: it reverses.</p>
+    <div class="demo-arrow" aria-hidden="true">↓</div>
+  </div>
+
+  <div id="mount"></div>
+
+  <div class="demo-after">Next section — normal scrolling resumes here</div>
+
+  <script>
+    fetch('/home', { credentials: 'same-origin' })
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var section = doc.querySelector('#case-studies');
+        var mount = document.getElementById('mount');
+        if (!section) {
+          mount.innerHTML = '<p style="padding:40px">Could not load the case studies section.</p>';
+          return;
+        }
+        mount.appendChild(document.importNode(section, true));
+        var s = document.createElement('script');
+        s.src = '/assets/js/kite-case-studies.js?v=skiper16-v4';
+        document.body.appendChild(s);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!--
+  CASE STUDIES — Skiper16-inspired stacked card scroll (Laravel / vanilla JS).
+  Rendered by app/Support/Website/PublicRenderer.php (PHP) and
+  resources/site/public-render.cjs (Node). Both read the same partial, so the
+  markup and copy live in exactly one place.
+
+  Structure:
+    .cs16-section  → creates the scroll distance for the animation
+    .cs16-sticky   → position: sticky; stays in the viewport while scrubbing
+    .cs16-stack    → stage that holds the three absolutely stacked cards
+  The scroll-scrubbed transforms are applied by /assets/js/kite-case-studies.js
+-->
+<noscript>
+  <style>
+    /* No JS: keep the three cards readable instead of hidden behind each other. */
+    .cs16-section { height: auto !important; padding: clamp(60px, 8vw, 110px) 0 !important; }
+    .cs16-sticky { position: static !important; height: auto !important; overflow: visible !important; padding: 0 clamp(16px, 4vw, 48px) !important; }
+    .cs16-stack { height: auto !important; display: grid !important; gap: clamp(18px, 3vw, 30px) !important; }
+    .cs16-card { position: relative !important; inset: auto !important; height: clamp(320px, 46vw, 480px) !important; transform: none !important; opacity: 1 !important; filter: none !important; }
+    .cs16-action { opacity: 1 !important; }
+  </style>
+</noscript>
+
+<section class="cs16-section" id="case-studies" data-cs16-section aria-label="Case studies">
+  <div class="cs16-sticky" data-cs16-sticky>
+    <div class="cs16-head">
+      <span class="cs16-eyebrow">CASE STUDIES</span>
+      <h2 class="cs16-title">How The Work Takes Flight</h2>
+    </div>
+
+    <div class="cs16-stack" data-cs16-stack>
+
+      <!-- 01 — TANWEER (starts as the dominant card) -->
+      <article class="cs16-card cs16-card--1" data-cs16-card>
+        <div class="cs16-card-inner">
+          <div class="cs16-copy">
+            <span class="cs16-label">Branding Project</span>
+            <h3 class="cs16-card-title">TANWEER</h3>
+            <p class="cs16-desc">We created Tanweer’s brand name, logo, and visual identity to reflect its mission of supporting children and families. Inspired by the idea of enlightenment, the identity combines playful forms and warm colors to communicate care, connection, and growth.</p>
+            <a class="cs16-cta" href="{{cs1Url}}">
+              <span>View Case Study</span>
+              <svg class="cs16-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+          <div class="cs16-media">
+            <picture>
+              <source srcset="/assets/kite/case-studies/case-1-tanweer.jpg" type="image/jpeg">
+              <img src="/assets/kite/case-studies/case-1-tanweer.png" alt="Tanweer — branding and visual identity case study" loading="eager" decoding="async">
+            </picture>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 — PACCINO'S (behind Tanweer) -->
+      <article class="cs16-card cs16-card--2" data-cs16-card>
+        <div class="cs16-card-inner">
+          <div class="cs16-copy">
+            <span class="cs16-label">Crafted To Be Remembered</span>
+            <h3 class="cs16-card-title">PACCINO’S</h3>
+            <p class="cs16-desc">We shaped Paccino’s Restaurant through branding, packaging, food photography, digital marketing, and media production.</p>
+            <a class="cs16-cta" href="{{cs2Url}}">
+              <span>View Case Study</span>
+              <svg class="cs16-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+          <div class="cs16-media">
+            <picture>
+              <source srcset="/assets/kite/case-studies/case-2-paccinos.jpg" type="image/jpeg">
+              <img src="/assets/kite/case-studies/case-2-paccinos.png" alt="Paccino's — restaurant branding and packaging case study" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 — VOYAGE (behind Paccino's, image dominant) -->
+      <article class="cs16-card cs16-card--3 cs16-card--visual" data-cs16-card>
+        <div class="cs16-card-inner">
+          <div class="cs16-copy">
+            <h3 class="cs16-card-title">VOYAGE</h3>
+            <a class="cs16-cta" href="{{cs3Url}}">
+              <span>View Case Study</span>
+              <svg class="cs16-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+          <div class="cs16-media">
+            <picture>
+              <source srcset="/assets/kite/case-studies/case-3-voyage.jpg" type="image/jpeg">
+              <img src="/assets/kite/case-studies/case-3-voyage.png" alt="Voyage — hospitality branding case study" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="cs16-action" data-cs16-action>
+      <a class="cs16-pill" href="/case-studies">View All Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/kite-case-studies.js?v=skiper16-v4"></script>
