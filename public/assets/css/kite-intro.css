@@ -17,8 +17,9 @@
 
 #preloader.is-scrollable {
   position: relative;
+  height: 100dvh;
   height: 100vh;
-  min-height: 600px;
+  min-height: 480px;
   width: 100%;
   inset: auto;
   z-index: 1;
@@ -46,7 +47,7 @@
   top: 0;
   width: 100%;
   height: calc(88vw * (2867 / 2480));
-  min-height: 88vh;
+  min-height: max(88vh, 600px);
   will-change: transform;
 }
 
@@ -68,7 +69,7 @@
 /* Sun & Brand Ring UI */
 .ui {
   position: absolute;
-  top: 13.5%;
+  top: clamp(8%, 13.5vw, 16%);
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -78,8 +79,8 @@
 
 .sun-wrapper {
   position: relative;
-  width: 125px;
-  height: 125px;
+  width: clamp(90px, 15vw, 140px);
+  height: clamp(90px, 15vw, 140px);
   transform: none;
   transform-origin: center center;
   will-change: transform;
@@ -109,19 +110,20 @@
   top: 50%;
   left: 50%;
   color: #cc2222;
-  font-size: 11.5px;
+  font-size: clamp(8px, 1.2vw, 11.5px);
   font-weight: 750;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1px, 0.25vw, 2px);
   text-transform: uppercase;
   transform-origin: center center;
   pointer-events: none;
   font-family: 'Sour Gummy', sans-serif;
+  white-space: nowrap;
 }
 
 #preloader .circle {
   position: relative;
-  width: 125px;
-  height: 125px;
+  width: clamp(90px, 15vw, 140px);
+  height: clamp(90px, 15vw, 140px);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -135,7 +137,7 @@
 }
 
 #preloader .circle img {
-  width: 40px;
+  width: clamp(28px, 4vw, 40px);
   height: auto;
   z-index: 3;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
@@ -275,52 +277,10 @@ html.scroll-unlocked, body.scroll-unlocked {
   height: auto !important;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 900px) {
-  .hero-illustration-track {
-    height: 180vh;
-  }
-  .hero-copy {
-    margin-top: clamp(60px, 10vh, 100px);
-  }
-}
-
-@media (max-width: 640px) {
-  .ui {
-    top: 5%;
-  }
-  .sun-wrapper, .circle {
-    width: 110px;
-    height: 110px;
-  }
-  .circle img {
-    width: 36px;
-  }
-  .hero-illustration-track {
-    height: 170vh;
-    min-width: 130vw;
-  }
-  .hero-copy {
-    margin-top: clamp(40px, 8vh, 80px);
-    width: min(100% - 24px, 480px);
-  }
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-    margin-top: 18px;
-  }
-  .btn-primary, .btn-secondary {
-    width: 100%;
-    max-width: 260px;
-    padding: 11px 24px;
-    font-size: 14px;
-  }
-}
-
+/* ── Hero Clients Marquee (base styles — must come BEFORE responsive) ── */
 .hero-clients {
   position: absolute;
-  bottom: 60px;
+  bottom: clamp(30px, 6vh, 60px);
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -333,20 +293,6 @@ html.scroll-unlocked, body.scroll-unlocked {
   pointer-events: none;
   -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
   mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-}
-
-@media (max-width: 640px) {
-  .hero-clients {
-    padding: 16px 0 20px;
-    max-width: 90%;
-  }
-  .marquee-track {
-    gap: 32px;
-  }
-  .marquee-track img {
-    height: 38px;
-    max-width: 110px;
-  }
 }
 
 .marquee-track {
@@ -368,4 +314,201 @@ html.scroll-unlocked, body.scroll-unlocked {
 @keyframes marqueeScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* ── Responsive Breakpoints ──────────────────────────────────────────── */
+
+/* Tablet & below */
+@media (max-width: 900px) {
+  .hero-illustration-track {
+    height: max(calc(100vw * (2867 / 2480)), 130vh);
+    min-height: 500px;
+  }
+  .hero-copy {
+    margin-top: clamp(60px, 12vh, 120px);
+  }
+}
+
+/* Mobile landscape & small tablets */
+@media (max-width: 640px) {
+  #preloader {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .hero-illustration-track {
+    --parallax-range: 160px;
+    height: max(calc(120vw * (2867 / 2480)), 140vh);
+    min-width: 100vw;
+    min-height: max(450px, 100vh);
+    min-height: max(450px, 100svh);
+  }
+
+  /* Scale the entire sun+ring UI down on mobile.
+     We use translateX(-50%) to maintain horizontal centering.
+     GSAP does NOT touch .ui's transform, so this CSS is safe. */
+  .ui {
+    top: clamp(6%, 10vw, 14%);
+    transform: translateX(-50%) scale(0.62);
+  }
+
+  /* Hero text pinned to the bottom on mobile (MWG-style layout) */
+  #hero {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    padding: 0 20px 18px;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .hero-copy {
+    margin-top: 0;
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+  }
+
+  #hero h1 {
+    font-size: clamp(24px, 6.5vw, 36px);
+    letter-spacing: -0.5px;
+    line-height: 1.18;
+    max-width: 100%;
+  }
+
+  #hero p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 6px auto 0;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 14px;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    padding: 10px 24px;
+    font-size: 13px;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .hero-clients {
+    bottom: clamp(16px, 3vh, 40px);
+    padding: 12px 0;
+    max-width: 85%;
+  }
+
+  .marquee-track {
+    gap: 28px;
+  }
+
+  .marquee-track img {
+    height: clamp(28px, 5vw, 38px);
+    max-width: 90px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .ui {
+    top: clamp(8%, 12vw, 18%);
+    transform: translateX(-50%) scale(0.5);
+  }
+
+  .hero-copy {
+    max-width: 280px;
+    width: calc(100% - 16px);
+  }
+
+  #hero h1 {
+    font-size: clamp(20px, 6vw, 30px);
+  }
+
+  #hero p {
+    font-size: 13px;
+    max-width: 260px;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    padding: 9px 18px;
+    font-size: 12px;
+    max-width: 240px;
+  }
+
+  .hero-illustration-track {
+    min-height: max(400px, 100vh);
+    min-height: max(400px, 100svh);
+  }
+
+  .hero-clients {
+    max-width: 92%;
+    bottom: 12px;
+  }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ui {
+    top: 3%;
+    transform: translateX(-50%) scale(0.5);
+  }
+
+  .hero-illustration-track {
+    height: max(calc(100vw * (2867 / 2480)), 120vh);
+    min-height: 350px;
+  }
+
+  #hero {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px 8px;
+    align-items: flex-end;
+  }
+
+  .hero-copy {
+    margin-top: 0;
+    max-width: 420px;
+  }
+
+  #hero h1 {
+    font-size: clamp(16px, 2.5vw, 26px);
+  }
+
+  #hero p {
+    font-size: 12px;
+    margin-top: 4px;
+    max-width: 340px;
+  }
+
+  .hero-actions {
+    gap: 8px;
+    margin-top: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    padding: 7px 16px;
+    font-size: 11px;
+    width: auto;
+    max-width: none;
+  }
+
+  .hero-clients {
+    bottom: 8px;
+  }
 }
