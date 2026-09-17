@@ -363,13 +363,13 @@ class PublicRenderer
 
           <!-- Header 2: Vision -->
           <div class="about-header-item" data-header-panel="vision" style="display:none;">
-            <span class="about-tag">VISION</span>
+            <span class="about-tag">OUR VISION</span>
             <h2 class="about-headline">A sky full of<br>remarkable kites</h2>
           </div>
 
           <!-- Header 3: Mission -->
           <div class="about-header-item" data-header-panel="mission" style="display:none;">
-            <span class="about-tag">MISSION</span>
+            <span class="about-tag">OUR MISSION</span>
             <h2 class="about-headline">Give every kite<br>what it needs to<br>fly higher</h2>
           </div>
         </div>
