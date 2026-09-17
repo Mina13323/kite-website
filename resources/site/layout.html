@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{canonical}}">
   <link rel="icon" href="/assets/kite/preloader/logo-icon.svg">
-  <link rel="stylesheet" href="/assets/css/site.css?v=sticky-deck-v7">
+  <link rel="stylesheet" href="/assets/css/site.css?v=sticky-deck-v11">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
@@ -49,7 +49,7 @@
     }
     .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; position: relative; padding: 0 28px; }
     .header-left { flex: 1; display: flex; align-items: center; }
-    .header-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; }
+    .header-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: max-content; max-width: none; }
     .header-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; }
     
     .nav-circle-btn {
@@ -73,11 +73,11 @@
     .menu-btn.is-active .bar-yellow { opacity: 0 !important; transform: scale(0) !important; }
     .menu-btn.is-active .bar-red { transform: translateY(-7.25px) rotate(-45deg) !important; }
     
-    .nav-tagline { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1); font-family: 'Sour Gummy', sans-serif; font-size: 20px; font-weight: bold; color: #111111; letter-spacing: 0.5px; transition: opacity 0.3s, transform 0.3s; white-space: nowrap; text-align: center; }
+    .nav-tagline { position: static; transform: scale(1); max-width: none; font-family: 'Sour Gummy', sans-serif; font-size: 20px; font-weight: bold; color: #111111; letter-spacing: 0.5px; transition: opacity 0.3s, transform 0.3s; white-space: nowrap; text-align: center; }
     .nav-scrolled-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.85); opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; display: flex; justify-content: center; align-items: center; width: 140px; height: 36px; }
     .nav-scrolled-logo img { height: 36px !important; width: auto !important; max-width: none !important; display: block; margin: 0 auto; }
     
-    .site-header.is-scrolled .nav-tagline { opacity: 0 !important; transform: translate(-50%, -50%) scale(0.85) !important; pointer-events: none !important; }
+    .site-header.is-scrolled .nav-tagline { opacity: 0 !important; transform: scale(0.85) !important; pointer-events: none !important; }
     .site-header.is-scrolled .nav-scrolled-logo { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; pointer-events: auto !important; }
     .nav-cta-btn {
       background: #FAB944 !important;
@@ -110,7 +110,7 @@
       .header-inner { padding: 0 12px; }
       .nav-circle-btn { width: 38px; height: 38px; }
       .nav-cta-btn { padding: 5px 12px; font-size: 11.5px; border-width: 1.5px !important; }
-      .nav-tagline { display: none !important; }
+      .nav-tagline { display: block !important; font-size: 11px; letter-spacing: 0.2px; }
       .nav-scrolled-logo img { height: 26px !important; }
     }
     .page-hero h1, h1, h2, h3 { color: #111111; }
@@ -171,6 +171,10 @@
       <a class="nav-link" href="/case-studies">Case Studies</a>
       <a class="nav-link" href="/portfolio">Portfolio</a>
       <a class="nav-link" href="/contact-us">Contact</a>
+      <div class="mobile-nav-social-wrap">
+        <span class="social-row-label">Follow KITE</span>
+        <div class="social-icon-row mobile-nav-socials" aria-label="KITE social media"></div>
+      </div>
     </div>
   </nav>
   <main>{{content}}</main>
@@ -306,6 +310,10 @@
         <a class="footer-email" href="mailto:hello@kite.design.com">hello@kite.design.com</a>
         <p class="footer-location">Cairo, Egypt</p>
         <a class="footer-cta-pill" href="/contact-us">Let's Fly Together</a>
+        <div class="footer-social-wrap">
+          <span class="social-row-label">Follow KITE</span>
+          <div class="social-icon-row footer-social-icons" aria-label="KITE social media"></div>
+        </div>
       </div>
     </div>
   </footer>
@@ -352,10 +360,55 @@
     .sticky-social-item span {
       display: none;
     }
+    .mobile-nav-social-wrap,
+    .footer-social-wrap {
+      margin-top: 24px;
+    }
+    .mobile-nav-social-wrap {
+      padding-top: 22px;
+      border-top: 1px solid rgba(17, 17, 17, 0.14);
+    }
+    .social-row-label {
+      display: block;
+      margin-bottom: 12px;
+      color: inherit;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .social-icon-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .social-icon-row .sticky-social-item {
+      width: 36px !important;
+      height: 36px !important;
+      flex: 0 0 36px;
+      padding: 5px;
+      background: #ffffff !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .social-icon-row .sticky-social-item svg {
+      width: 26px !important;
+      height: 26px !important;
+    }
+    .footer-social-wrap {
+      color: #ffffff;
+    }
+    .footer-social-icons .sticky-social-item {
+      background: rgba(255, 255, 255, 0.94) !important;
+    }
     @media (max-width: 768px) {
-      .sticky-social-bar { left: 14px; padding: 6px 4px; gap: 5px; }
+      .sticky-social-bar { display: none !important; }
       .sticky-social-item { width: 24px; height: 24px; }
       .sticky-social-item svg { width: 24px; height: 24px; }
+    }
+    @media (max-height: 500px) and (orientation: landscape) {
+      .sticky-social-bar { display: none !important; }
     }
   </style>
   <div class="sticky-social-bar">
@@ -383,7 +436,7 @@
       <span>WhatsApp</span>
     </a>
     <!-- 4. LinkedIn -->
-    <a href="linkedin.com/company/kite-design-studio/" target="_blank" rel="noopener" aria-label="LinkedIn" class="sticky-social-item">
+    <a href="https://www.linkedin.com/company/kite-design-studio/" target="_blank" rel="noopener" aria-label="LinkedIn" class="sticky-social-item">
       <svg viewBox="0 697.4 195 165">
         <path d="M97.0839 697.404C52.5662 697.404 16.4785 733.492 16.4785 778.01C16.4785 822.527 52.5662 858.615 97.0839 858.615C141.602 858.615 177.689 822.527 177.689 778.01C177.689 733.492 141.602 697.404 97.0839 697.404ZM77.3524 811.419H61.0298V758.891H77.3524V811.419ZM69.0903 752.443C63.935 752.443 60.6016 748.79 60.6016 744.273C60.6016 739.663 64.0357 736.12 69.3003 736.12C74.5648 736.12 77.789 739.663 77.8898 744.273C77.8898 748.79 74.5648 752.443 69.0903 752.443ZM136.967 811.419H120.644V782.309C120.644 775.533 118.276 770.932 112.374 770.932C107.865 770.932 105.186 774.047 104.003 777.044C103.566 778.11 103.457 779.622 103.457 781.125V811.411H87.1258V775.642C87.1258 769.084 86.9159 763.601 86.6976 758.883H100.879L101.626 766.179H101.954C104.103 762.753 109.368 757.699 118.176 757.699C128.915 757.699 136.967 764.895 136.967 780.361V811.419Z" fill="#000000"/>
       </svg>
@@ -406,6 +459,20 @@
   </div>
   <script>
     (function() {
+      const socialSource = document.querySelectorAll('.sticky-social-bar .sticky-social-item');
+      document.querySelectorAll('.social-icon-row').forEach(function(row) {
+        socialSource.forEach(function(item) {
+          const clone = item.cloneNode(true);
+          clone.classList.add('social-row-item');
+          clone.addEventListener('click', function() {
+            document.querySelector('.mobile-nav')?.classList.remove('open');
+            document.querySelector('.menu-btn')?.classList.remove('is-active');
+            document.body.style.overflow = '';
+          });
+          row.appendChild(clone);
+        });
+      });
+
       document.addEventListener('click', function(e) {
         const link = e.target.closest('a[href*="#"]');
         if (!link) return;

@@ -996,10 +996,16 @@ ul { list-style: none; }
   align-items: center !important;
   gap: 32px !important;
   width: max-content !important;
-  animation: latestMarquee 35s linear infinite !important;
+  max-width: none !important;
+  animation: latestMarquee 28s linear infinite !important;
 }
 .latest-marquee-track:hover {
   animation-play-state: paused !important;
+}
+.latest-cta-wrap {
+  width: 100%;
+  margin-top: 36px;
+  text-align: center;
 }
 .latest-card {
   display: block !important;
@@ -1039,9 +1045,56 @@ ul { list-style: none; }
   object-fit: contain !important;
 }
 @media (max-width: 640px) {
+  #latest {
+    min-height: auto !important;
+    padding: 28px 0 32px !important;
+  }
+
+  #latest .section-head {
+    margin-bottom: 14px !important;
+    padding: 0 20px !important;
+  }
+
+  #latest .latest-title {
+    margin-top: 0 !important;
+    font-size: clamp(1.75rem, 9vw, 2.25rem) !important;
+  }
+
+  #latest .latest-subtitle {
+    max-width: 300px;
+    font-size: 12px !important;
+    line-height: 1.4;
+  }
+
+  .latest-marquee-wrap {
+    margin: 10px 0 8px !important;
+    padding: 6px 0 !important;
+  }
+
+  .latest-marquee-track {
+    gap: 16px !important;
+  }
+
   .latest-card,
   .latest-vector {
-    flex: 0 0 clamp(280px, 75vw, 380px) !important;
+    flex: 0 0 clamp(220px, 68vw, 300px) !important;
+  }
+
+  .latest-card figcaption {
+    padding: 18px 12px 10px !important;
+  }
+
+  .latest-card strong {
+    font-size: 13px !important;
+  }
+
+  .latest-cta-wrap {
+    margin-top: 16px;
+  }
+
+  .btn-portfolio {
+    padding: 10px 24px !important;
+    font-size: 13px !important;
   }
 }
 .latest-card:hover {
@@ -1921,14 +1974,14 @@ ul { list-style: none; }
 @media (max-width: 480px) {
   .latest-card,
   .latest-vector {
-    flex: 0 0 clamp(240px, 80vw, 320px) !important;
+    flex: 0 0 clamp(210px, 68vw, 270px) !important;
   }
   #latest {
-    padding: clamp(40px, 6vw, 60px) 0 !important;
+    padding: 28px 0 32px !important;
   }
   .btn-portfolio {
-    font-size: 14px !important;
-    padding: 12px 28px !important;
+    font-size: 13px !important;
+    padding: 10px 24px !important;
   }
 }
 

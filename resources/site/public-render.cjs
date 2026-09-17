@@ -200,7 +200,7 @@ function homeSections(pub) {
       ${latestGridHtml}
     </div>
   </div>
-  <div style="width: 100%; text-align: center; margin-top: 36px;">
+  <div class="latest-cta-wrap">
     <a class="btn-portfolio" href="/portfolio">View Portfolio</a>
   </div>
 </section>

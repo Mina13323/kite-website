@@ -97,7 +97,7 @@ class PublicRenderer
             'description' => $hero['supporting'] ?? '',
             'bodyClass' => 'home-intro',
             'path' => '/',
-            'extraHead' => '<link rel="preload" as="image" href="/assets/kite/preloader/HP.webp" type="image/webp"><link rel="stylesheet" href="/assets/css/kite-intro.css?v=kite-sky-34">',
+            'extraHead' => '<link rel="preload" as="image" href="/assets/kite/preloader/HP.webp" type="image/webp"><link rel="stylesheet" href="/assets/css/kite-intro.css?v=kite-sky-47">',
             'extraScript' => '<script src="/assets/js/kite-intro.js?v=kite-sky-34"></script><script src="/assets/js/kite-services.js?v=kite-sky-16"></script>',
         ]);
     }
@@ -344,7 +344,7 @@ class PublicRenderer
       '.$latestGridHtml.$latestGridHtml.'
     </div>
   </div>
-  <div style="width: 100%; text-align: center; margin-top: 36px;">
+  <div class="latest-cta-wrap">
     <a class="btn-portfolio" href="/portfolio">View Portfolio</a>
   </div>
 </section>
